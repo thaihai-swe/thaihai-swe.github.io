@@ -414,6 +414,9 @@
                         <button class="btn-project-demo" data-demo="llm-telegram-bot" data-video="pet-projects/llm-tegegram-bot/LLM Telegram bot.mov" aria-label="View LLM Telegram Bot Demo">
                             <span class="demo-icon">🎬</span> View Demo
                         </button>
+                        <button class="btn-project-details" data-project="llm-telegram-bot" aria-label="View LLM Telegram Bot Details">
+                            <span class="details-icon">📋</span> Details
+                        </button>
                         <!-- <a href="#" class="btn-project-link" target="_blank" rel="noopener noreferrer" aria-label="View LLM Telegram Bot on GitHub">
                             <span class="link-icon">🔗</span> GitHub
                         </a> -->
@@ -443,14 +446,56 @@
                             data-video="pet-projects/stock-ai-analysis/Stock BOT AI.mov" aria-label="View Stock Analysis Demo">
                             <span class="demo-icon">🎬</span> View Demo
                         </button>
+                        <button class="btn-project-details" data-project="stock-analysis" aria-label="View Stock Analysis Details">
+                            <span class="details-icon">📋</span> Details
+                        </button>
                         <!-- <a href="#" class="btn-project-link" target="_blank" rel="noopener noreferrer" aria-label="View Stock Analysis on GitHub">
                             <span class="link-icon">🔗</span> GitHub
                         </a> -->
                     </div>
                 </div>
 
+                <!-- Project 3: Multi-Source QA Engine with Hybrid Search & RAGAS -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="project-header">
+                        <div class="project-icon">🧠</div>
+                        <h3 class="project-title">Advanced RAG Multi-Source QA System</h3>
+                    </div>
+                    <p class="project-description">
+                        An intelligent QA system that retrieves accurate, grounded answers from multiple sources (Wikipedia, web, files) with adaptive content-aware chunking and built-in quality assurance.
+                        Features hybrid search (70% semantic via embeddings + 30% keyword-based retrieval via BM25), RAGAS quality metrics (context relevance, answer faithfulness, hallucination detection),
+                        query expansion (4 variations) for improved retrieval coverage, multi-hop reasoning (3-step decomposition) to decompose complex questions into verifiable steps, confidence thresholding (0.6).
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">ChromaDB</span>
+                        <span class="tech-tag">Vector Embeddings</span>
+                        <span class="tech-tag">RAGAS Metrics</span>
+                        <span class="tech-tag">Hallucination Detection</span>
+                        <span class="tech-tag">Context Relevance Evaluation</span>
+                        <span class="tech-tag">Answer Faithfulness Assessment</span>
+                        <span class="tech-tag">Confidence Scoring</span>
+                        <span class="tech-tag">Quality Assurance (AI)</span>
+                        <span class="tech-tag">Semantic Search</span>
+                        <span class="tech-tag">Keyword Search</span>
+                        <span class="tech-tag">Query Expansion</span>
+                        <span class="tech-tag">Multi-hop Reasoning</span>
+                        <span class="tech-tag">Content-aware Chunking</span>
+                    </div>
+                    <div class="project-actions">
+                        <button class="btn-project-demo" data-demo="qa-engine" aria-label="View QA Engine Demo">
+                            <span class="demo-icon">🎬</span> View Demo
+                        </button>
+                        <button class="btn-project-details" data-project="qa-engine" aria-label="View QA Engine Details">
+                            <span class="details-icon">📋</span> Details
+                        </button>
+                        <a href="#" class="btn-project-link" target="_blank" rel="noopener noreferrer" aria-label="View QA Engine on GitHub">
+                            <span class="link-icon">🔗</span> GitHub
+                        </a>
+                    </div>
+                </div>
 
-                <!-- Project 3: Serverless Image Processing Pipeline
+                <!-- Project 5: Serverless Image Processing Pipeline
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
                     <div class="project-header">
                         <div class="project-icon">🖼️</div>
@@ -477,7 +522,7 @@
                     </div>
                 </div>
                 -->
-                <!-- Project 4: Distributed Cache System
+                <!-- Project 6: Distributed Cache System
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
                     <div class="project-header">
                         <div class="project-icon">⚡</div>
@@ -652,6 +697,40 @@
                 <video id="projectDemoVideo" controls class="cert-image" style="width: 100%; max-height: 70vh;">
                     Your browser does not support the video tag.
                 </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div id="projectDetailsModal" class="project-details-modal" role="dialog" aria-labelledby="projectDetailsTitle" aria-hidden="true">
+        <div class="project-details-content">
+            <button class="project-details-close" aria-label="Close project details" id="projectDetailsClose">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="project-details-header">
+                <span class="project-details-icon" id="projectDetailsIcon"></span>
+                <div>
+                    <h2 id="projectDetailsTitle"></h2>
+                </div>
+            </div>
+            <div class="project-details-body">
+                <div class="project-details-section" id="projectDetailsFeaturesSection">
+                    <h3>✨ Key Features</h3>
+                    <ul id="projectDetailsFeatures" class="project-details-features"></ul>
+                </div>
+                <div class="project-details-section">
+                    <h3>🛠️ Technologies & Skills</h3>
+                    <div id="projectDetailsTags" class="project-details-tags"></div>
+                </div>
+            </div>
+            <div class="project-details-footer">
+                <button id="projectDetailsWatchDemo" class="btn btn-primary" style="display:none;">
+                    🎬 Watch Demo
+                </button>
+                <a id="projectDetailsGithub" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display:none;">
+                    🔗 GitHub
+                </a>
+                <button class="btn btn-secondary" id="projectDetailsCloseBtn">Close</button>
             </div>
         </div>
     </div>

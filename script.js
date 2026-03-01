@@ -630,3 +630,122 @@ function closeProjectDemoModal() {
         }
     }
 }
+
+// ==================== PROJECT DETAILS MODAL ====================
+const projectsData = {
+    'llm-telegram-bot': {
+        icon: '🤖',
+        title: 'LLM Telegram Bot',
+        description: 'An intelligent Telegram chatbot powered by a local LLM running on LM Studio, integrated with the OpenAI API for advanced conversational AI — with a strong focus on privacy by keeping model execution fully local.',
+        features: [
+            'Conversation Management: /clear (clear history), /history (show summary), /reset (new thread), /export (export chat as file)',
+            'Custom Personas: /persona <name> — switch between predefined personas (assistant, coder, teacher, creative writer)',
+            'Custom System Prompts: /systemprompt <text> — set a fully custom system prompt with saved user preferences',
+            'Streaming Responses: real-time token delivery with a live "typing…" indicator for a natural conversational feel',
+            'Privacy-first: local LLM execution via LM Studio keeps sensitive conversations off third-party servers',
+        ],
+        tags: ['Python', 'OpenAI', 'Telegram Bot API', 'LM Studio', 'LLM', 'Streaming', 'Prompt Engineering'],
+        video: 'pet-projects/llm-tegegram-bot/LLM Telegram bot.mov',
+        github: null,
+    },
+    'stock-analysis': {
+        icon: '📊',
+        title: 'Stock Analysis AI',
+        description: 'An intelligent AI chatbot that performs real-time stock market analysis through natural conversation. Demonstrates advanced OpenAI function calling by automatically chaining multiple tool invocations to deliver comprehensive market reports.',
+        features: [
+            'Stock Symbol Lookup: find ticker symbols for companies by name and country',
+            'Current Price Retrieval: get the latest stock price, volume, and key market data',
+            'Trend Analysis: historical price trends, moving averages, volatility, momentum, and support/resistance levels',
+            'AI Investment Recommendations: actionable buy/hold/sell suggestions based on technical analysis',
+            'Interactive Console CLI: prompt-based interface for entering company, country, and analysis period',
+            'OpenAI Function Calling: chains tool calls automatically to generate comprehensive, grounded market reports',
+        ],
+        tags: ['Python', 'OpenAI', 'Function Calling', 'LLM', 'yfinance', 'Pydantic', 'Technical Analysis', 'Yahoo Finance'],
+        video: 'pet-projects/stock-ai-analysis/Stock BOT AI.mov',
+        github: null,
+    },
+    'qa-engine': {
+        icon: '🧠',
+        title: 'Advanced RAG Multi-Source QA System',
+        description: 'An intelligent question-answering system that retrieves accurate, grounded answers from multiple sources (Wikipedia, web, files) with adaptive content-aware chunking and built-in quality assurance — including hallucination detection using RAGAS metrics.',
+        features: [
+            '🔍 INTELLIGENT RETRIEVAL (88% context relevance) — Hybrid search: 70% semantic (sentence-transformers) + 30% keyword (BM25). Smart Chunk Sizing: AI-driven auto-sizing (128–2048 tokens) with 8–12% precision improvement. Parent-Child Hierarchical Chunking: small precise chunks (256 tokens) for retrieval + large context chunks (1024 tokens) for LLM, improving coherence by 15%. Two-stage retrieval: bi-encoder + cross-encoder reranking with MMR diversity filtering (+15–20% precision). HyDE: bridges semantic gap (+15–25% on technical queries).',
+            '🧩 ADVANCED REASONING (40% improvement on complex questions) — Multi-hop reasoning: decomposes complex queries into 3 sequential sub-questions, retrieves for each, synthesizes coherent answer. Query expansion: 4-variation expansion (+12–15% coverage). Self-query decomposition: auto-splits multi-aspect questions for focused retrieval. Agentic RAG with ReAct pattern: autonomous agent selects optimal strategy from 10 available actions based on query characteristics.',
+            '✅ QUALITY ASSURANCE (85%+ faithfulness) — RAGAS evaluation: context relevance, answer relevance, faithfulness scoring on every query. Hallucination detection: grounding analysis + auto-mitigation with 3-tier risk scoring (LOW / MEDIUM / HIGH). Fact-checking: claim-level verification against retrieved context. Adversarial testing suite: 8 edge-case tests (87% pass rate). Passage highlighting: sentence-level extraction showing which passages support each answer.',
+            '🛡️ PRODUCTION SAFETY & OBSERVABILITY — Guardrails: blocks prompt injection, XSS, SQL injection, jailbreak attempts; detects & redacts PII (emails, SSN, credit cards); rate limiting. Observability dashboard: real-time metrics tracking, query logging, HTML reports with visualizations. Async pipeline: parallel batch processing (2–3× speedup for concurrent queries). Full audit trail: persistent conversation history + all metrics to JSON.',
+        ],
+        tags: ['RAG', 'Semantic Search', 'Keyword Search (BM25)', 'Vector Embeddings & Cosine Similarity', 'ChromaDB', 'Cross-Encoder Reranking', 'Maximal Marginal Relevance (MMR)', 'Hypothetical Document Embeddings (HyDE)', 'Smart Chunk Sizing', 'Parent-Child Hierarchical Chunking', 'Multi-hop Reasoning', 'Query Decomposition', 'Agentic RAG with ReAct Pattern', 'RAGAS Metrics', 'Hallucination Detection', 'Grounding Analysis', 'Fact-Checking & Claim Verification', 'Prompt Injection Detection', 'PII Detection & Redaction', 'Input/Output Guardrails', 'LRU Embedding Cache', 'Async Pipeline', 'Web Scraping', 'PDF Parsing', 'Tokenization (NLTK)', 'Sentence-Transformers'],
+        video: null,
+        github: '#',
+    },
+};
+
+const projectDetailsModal    = document.getElementById('projectDetailsModal');
+const projectDetailsClose    = document.getElementById('projectDetailsClose');
+const projectDetailsCloseBtn = document.getElementById('projectDetailsCloseBtn');
+const projectDetailsIcon     = document.getElementById('projectDetailsIcon');
+const projectDetailsTitle    = document.getElementById('projectDetailsTitle');
+
+const projectDetailsFeats    = document.getElementById('projectDetailsFeatures');
+const projectDetailsTags     = document.getElementById('projectDetailsTags');
+const projectDetailsWatchDemo = document.getElementById('projectDetailsWatchDemo');
+const projectDetailsGithub   = document.getElementById('projectDetailsGithub');
+
+document.querySelectorAll('.btn-project-details').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const key  = this.getAttribute('data-project');
+        const data = projectsData[key];
+        if (!data) return;
+
+        projectDetailsIcon.textContent     = data.icon;
+        projectDetailsTitle.textContent    = data.title;
+
+
+        projectDetailsFeats.innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
+        projectDetailsTags.innerHTML  = data.tags.map(t => `<span class="tech-tag">${t}</span>`).join('');
+
+        if (data.video) {
+            projectDetailsWatchDemo.style.display = 'inline-flex';
+            projectDetailsWatchDemo.onclick = () => {
+                closeProjectDetails();
+                const demoBtn = document.querySelector(`.btn-project-demo[data-demo="${key}"]`);
+                if (demoBtn) demoBtn.click();
+            };
+        } else {
+            projectDetailsWatchDemo.style.display = 'none';
+        }
+
+        if (data.github && data.github !== '#') {
+            projectDetailsGithub.style.display = 'inline-flex';
+            projectDetailsGithub.href = data.github;
+        } else {
+            projectDetailsGithub.style.display = 'none';
+        }
+
+        projectDetailsModal.classList.add('show');
+        projectDetailsModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+[projectDetailsClose, projectDetailsCloseBtn].forEach(el => {
+    if (el) el.addEventListener('click', closeProjectDetails);
+});
+
+projectDetailsModal && projectDetailsModal.addEventListener('click', e => {
+    if (e.target === projectDetailsModal) closeProjectDetails();
+});
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && projectDetailsModal && projectDetailsModal.classList.contains('show')) {
+        closeProjectDetails();
+    }
+});
+
+function closeProjectDetails() {
+    if (projectDetailsModal) {
+        projectDetailsModal.classList.remove('show');
+        projectDetailsModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
+    }
+}
