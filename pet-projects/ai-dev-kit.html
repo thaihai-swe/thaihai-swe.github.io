@@ -12,7 +12,8 @@
 
     <div class="hero">
         <h1>AI Agents Development Kit</h1>
-        <p class="subtitle">Official <strong>Document standard</strong> for the AI Agents Development Kit. Single-source, HTML-first guide for evaluating, adopting, operating, and maintaining the kit.</p>
+        <p class="subtitle">Official <strong>Document standard</strong> for the AI Agents Development Kit.
+            Single-source, HTML-first guide for evaluating, adopting, operating, and maintaining the kit.</p>
         <div class="hero-meta">
             <span class="hero-badge">For evaluators proposing the solution</span>
             <span class="hero-badge">For teams adopting the workflow</span>
@@ -27,11 +28,10 @@
             <li><a href="#start-here">Start Here</a></li>
             <li><a href="#proposal-summary">Proposal Summary</a></li>
             <li><a href="#non-negotiables">0. Non-negotiables</a></li>
-            <li><a href="#context-checklist">Context Checklist</a></li>
             <li><a href="#vision">1. Strategic Vision</a></li>
             <li><a href="#purpose">2. Purpose and Value</a></li>
             <li><a href="#architecture">3. System Architecture</a></li>
-            <li><a href="#workflow">4. 10-Skill Lifecycle</a></li>
+            <li><a href="#workflow">4. 11-Skill Lifecycle</a></li>
             <li><a href="#profiles">5. Delivery Profiles</a></li>
             <li><a href="#operating-manual">6. How to Use (Playbooks)</a></li>
             <li><a href="#proof-of-workflow">Proof of Workflow</a></li>
@@ -293,77 +293,6 @@
         </div>
     </section>
 
-    <!-- Context Checklist -->
-    <section id="context-checklist">
-        <h2>Context Checklist</h2>
-        <p class="node-desc" style="text-align: center;">Shared checklist for loading the right context before using the existing skills.</p>
-        
-        <div class="arch-grid">
-            <div class="arch-card">
-                <h3>Session Start</h3>
-                <p>Load the durable repository context once per session:</p>
-                <ul>
-                    <li>Read the repo entrypoint such as <code>AGENTS.md</code>.</li>
-                    <li>Read <code>memories/repo/constitution.md</code>.</li>
-                    <li>Read <code>memories/repo/project-knowledge-base.md</code>.</li>
-                    <li>Confirm which existing skill owns the current task.</li>
-                </ul>
-            </div>
-            <div class="arch-card">
-                <h3>Feature Start</h3>
-                <p>Before feature-spec, design, plan, tasks, or implementation work:</p>
-                <ul>
-                    <li>Read the current feature artifact folder under <code>artifacts/features/&lt;slug&gt;/</code>.</li>
-                    <li>Identify which upstream artifact is the current source of truth.</li>
-                    <li>If the current system behavior is unclear, route to <code>/aiddk-research</code> before guessing.</li>
-                    <li>If durable memory is missing or stale, route to <code>/aiddk-memory</code>.</li>
-                </ul>
-            </div>
-            <div class="arch-card">
-                <h3>Before Implementation</h3>
-                <p>Before using <code>spec-implement</code> or <code>refactor-cleaner</code>:</p>
-                <ul>
-                    <li>Read the task, plan, and spec that define the scoped work.</li>
-                    <li>Read the files you will modify and the callers/dependents.</li>
-                    <li>Identify the concrete validation you will run before completion.</li>
-                    <li>Surface contradictions between artifacts and repository reality.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="arch-grid">
-            <div class="arch-card">
-                <h3>Before Review</h3>
-                <p>Before using <code>spec-review-implementation</code> or <code>task-traceability-audit</code>:</p>
-                <ul>
-                    <li>Confirm the relevant artifacts exist and are reviewable.</li>
-                    <li>Confirm task state matches actual validation evidence.</li>
-                    <li>Check that <code>REQ -> AC -> TASK -> validation</code> is still visible.</li>
-                    <li>Reopen tasks if evidence no longer supports the claimed state.</li>
-                </ul>
-            </div>
-            <div class="arch-card">
-                <h3>Promotion Check</h3>
-                <p>Before moving a finding into durable memory:</p>
-                <ul>
-                    <li>Is the finding durable across future changes?</li>
-                    <li>Is it grounded in repository evidence?</li>
-                    <li>Is it descriptive knowledge rather than a repo-wide rule?</li>
-                    <li>Should it stay in feature artifacts instead?</li>
-                </ul>
-            </div>
-            <div class="arch-card">
-                <h3>Drift Signals</h3>
-                <p>Treat these as signs to stop and realign:</p>
-                <ul>
-                    <li>Docs/adapters teach behavior the skills do not require.</li>
-                    <li>Bootstrap creates a different baseline than onboarding docs.</li>
-                    <li>Implementation is broader than upstream artifacts claim.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
     <!-- 1. Strategic Vision -->
     <section id="vision">
         <h2>1. Strategic Vision</h2>
@@ -487,7 +416,8 @@ AGENTS.md</code></pre>
                     artifacts.</li>
                 <li>Do not create competing durable memory files such as <code>AI_CONTRACT.md</code>,
                     <code>ARCHITECTURE.md</code>, or <code>DECISIONS.md</code> unless the repository intentionally
-                    changes the canonical model.</li>
+                    changes the canonical model.
+                </li>
             </ul>
         </div>
         <div class="section-card">
@@ -515,7 +445,7 @@ AGENTS.md</code></pre>
 
     <!-- 4. Workflow -->
     <section id="workflow">
-        <h2>4. The 10-Skill Lifecycle</h2>
+        <h2>4. The 11-Skill Lifecycle</h2>
         <div class="legend">
             <div class="legend-item">
                 <div class="box req"></div> <span>REQUIRED (Core Path)</span>
@@ -526,16 +456,27 @@ AGENTS.md</code></pre>
         </div>
 
         <div class="diagram-container">
+            <!-- Step 0: Status -->
+            <div class="node-wrapper">
+                <div class="node required">
+                    <span class="status-badge">Orchestrator</span>
+                    <span class="node-title">/aiddk-status</span>
+                    <div class="node-desc">Project-wide overview. PM perspective.</div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+
             <!-- Step 1: Memory -->
             <div class="node-wrapper">
                 <div class="node required">
                     <span class="status-badge">Required</span>
                     <span class="node-title">/aiddk-memory</span>
-                    <div class="node-desc">Establish Ubiquitous Language &amp; Constitutional rules.</div>
+                    <div class="node-desc">Load repo rules, maintain durable memory, and promote reusable findings.
+                    </div>
                     <div class="artifacts-list">
                         <span class="artifact-item" data-tooltip="Normative rules/guardrails">constitution.md</span>
                         <span class="artifact-item"
-                            data-tooltip="Descriptive architecture/patterns">project-knowledge-base.md</span>
+                            data-tooltip="Durable descriptive repo memory">project-knowledge-base.md</span>
                     </div>
                 </div>
                 <div class="arrow"></div>
@@ -663,37 +604,37 @@ AGENTS.md</code></pre>
                     <tbody>
                         <tr>
                             <td><strong>Memory</strong></td>
-                            <td>Load durable repo rules and architecture context.</td>
+                            <td>Load repo rules, maintain durable memory, and classify promotion candidates.</td>
                             <td><code>constitution.md</code>, <code>project-knowledge-base.md</code></td>
                         </tr>
                         <tr>
                             <td><strong>Research</strong></td>
-                            <td>Prove current behavior, risks, and unknowns.</td>
+                            <td>Prove behavior via reproduction and findings.</td>
                             <td><code>analysis.md</code></td>
                         </tr>
                         <tr>
                             <td><strong>Spec</strong></td>
-                            <td>Define what changes and why.</td>
-                            <td><code>spec.md</code>, <code>requirements-review.md</code></td>
+                            <td>Define <strong>Early Alignment</strong> and requirements.</td>
+                            <td><code>proposal.md</code>, <code>spec.md</code></td>
                         </tr>
                         <tr>
                             <td><strong>Plan</strong></td>
-                            <td>Sequence the technical approach and task boundaries.</td>
+                            <td>Sequence tasks and perform <strong>Architectural Design</strong>.</td>
                             <td><code>design.md</code>, <code>plan.md</code>, <code>tasks.md</code></td>
                         </tr>
                         <tr>
                             <td><strong>Implement</strong></td>
-                            <td>Execute one bounded task at a time with validation.</td>
+                            <td>Execute bounded tasks with Red-Green-Refactor.</td>
                             <td>Code plus tests</td>
                         </tr>
                         <tr>
                             <td><strong>Verify</strong></td>
-                            <td>Audit spec coverage and evidence quality.</td>
+                            <td>Perform <strong>Drift Detection Check</strong> and audit.</td>
                             <td><code>review.md</code></td>
                         </tr>
                         <tr>
                             <td><strong>Handoff</strong></td>
-                            <td>Package blockers, progress, and the exact next step.</td>
+                            <td>Package blockers, progress, and next steps.</td>
                             <td><code>handoff.md</code></td>
                         </tr>
                     </tbody>
@@ -712,6 +653,16 @@ AGENTS.md</code></pre>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td><code>status.md</code></td>
+                            <td>Process state</td>
+                            <td>Eliminates session amnesia by tracking current phase and blockers.</td>
+                        </tr>
+                        <tr>
+                            <td><code>proposal.md</code></td>
+                            <td>Alignment wave</td>
+                            <td>Mandates user approval on high-level goals before detailed spec'ing.</td>
+                        </tr>
                         <tr>
                             <td><code>analysis.md</code></td>
                             <td>Discovery evidence</td>
@@ -1135,7 +1086,8 @@ Feature slug: my-first-feature</code></pre>
             <h3>Multi-Agent Coordination</h3>
             <ul>
                 <li><strong>Phase locking:</strong> only one agent edits a locked planning artifact such as
-                    <code>spec.md</code> or <code>plan.md</code> at a time.</li>
+                    <code>spec.md</code> or <code>plan.md</code> at a time.
+                </li>
                 <li><strong>Task ownership:</strong> assign explicit task IDs when multiple agents implement in
                     parallel.</li>
                 <li><strong>Branch isolation:</strong> reintegrate only after verification passes.</li>
@@ -1224,25 +1176,29 @@ Feature slug: my-first-feature</code></pre>
         <h2>7. Complete Skill Catalog</h2>
         <div class="skill-grid">
             <div class="skill-card">
+                <h4>aiddk-status</h4>
+                <p>Orchestrates repository work and identifies bottlenecks.</p>
+                <p><strong>References:</strong> Project-wide status report.</p>
+            </div>
+            <div class="skill-card">
                 <h4>aiddk-memory</h4>
-                <p>Maintains repo memory and promotes durable decisions.</p>
-                <p><strong>References:</strong> constitution template, knowledge-base template, decision template.</p>
+                <p>Maintains repo-wide rules and durable descriptive memory.</p>
+                <p><strong>References:</strong> constitution, project knowledge base, and decision templates.</p>
             </div>
             <div class="skill-card">
                 <h4>aiddk-research</h4>
-                <p>Investigation and root-cause discovery with evidence capture.</p>
+                <p>Investigation and root-cause discovery with forensic capture.</p>
                 <p><strong>References:</strong> analysis template, debugging checklist.</p>
             </div>
             <div class="skill-card">
                 <h4>aiddk-spec</h4>
-                <p>Defines requirements and readiness checks.</p>
-                <p><strong>References:</strong> spec template, requirements-review template.</p>
+                <p>Defines requirements with <strong>Early Alignment</strong> wave.</p>
+                <p><strong>References:</strong> proposal template, spec template.</p>
             </div>
             <div class="skill-card">
                 <h4>aiddk-diagram</h4>
                 <p>Visual architecture and flow documentation in Mermaid.</p>
-                <p><strong>References:</strong> c4, sequence, state, flowchart, ERD, class, mindmap, user journey,
-                    advanced guide.</p>
+                <p><strong>References:</strong> c4, sequence, flowchart, ERD, user journey.</p>
             </div>
             <div class="skill-card">
                 <h4>aiddk-adr</h4>
@@ -1251,30 +1207,28 @@ Feature slug: my-first-feature</code></pre>
             </div>
             <div class="skill-card">
                 <h4>aiddk-plan</h4>
-                <p>Converts approved specs into design, plan, and task execution structure.</p>
-                <p><strong>References:</strong> design template, plan template, tasks template, definition-of-ready,
-                    audit templates.</p>
+                <p>Architectural <strong>Design</strong> and Atomic tasking.</p>
+                <p><strong>References:</strong> design, plan, and tasks templates.</p>
             </div>
             <div class="skill-card">
                 <h4>aiddk-implement</h4>
-                <p>Executes tasks with strict status tracking and validation requirements.</p>
+                <p>Executes tasks with strict status tracking and TDD requirements.</p>
                 <p><strong>References:</strong> design standards, tasks template.</p>
             </div>
             <div class="skill-card">
                 <h4>aiddk-verify</h4>
-                <p>Audits implementation against artifacts and emits review evidence.</p>
-                <p><strong>References:</strong> definition-of-done, testing-scenarios template.</p>
+                <p>Audits implementation with <strong>Drift Detection</strong> check.</p>
+                <p><strong>References:</strong> review template, testing scenarios.</p>
+            </div>
+            <div class="skill-card">
+                <h4>aiddk-cleanup</h4>
+                <p>Performs behavior-neutral <strong>Fallow Pass</strong> grooming.</p>
+                <p><strong>References:</strong> Campground rule guidelines.</p>
             </div>
             <div class="skill-card">
                 <h4>aiddk-handoff</h4>
-                <p>Packages current work state for next-session continuity.</p>
+                <p>Packages current work state for <strong>Zero Amnesia</strong> transitions.</p>
                 <p><strong>References:</strong> handoff template.</p>
-            </div>
-
-            <div class="skill-card">
-                <h4>aiddk-cleanup</h4>
-                <p>Performs behavior-neutral cleanup and debt removal.</p>
-                <p><strong>References:</strong> none required.</p>
             </div>
         </div>
         <div class="section-card">
@@ -1289,32 +1243,32 @@ Feature slug: my-first-feature</code></pre>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><code>/aiddk-memory</code></td>
-                            <td>"Run /aiddk-memory and update our repo rules for auth migrations."</td>
+                            <td><code>/aiddk-status</code></td>
+                            <td>"Run /aiddk-status to see active blockers across all features."</td>
                         </tr>
                         <tr>
-                            <td><code>/aiddk-research</code></td>
-                            <td>"Use /aiddk-research to find where users are created and capture risks."</td>
+                            <td><code>/aiddk-memory</code></td>
+                            <td>"Run /aiddk-memory and promote this auth middleware pattern into repo memory."</td>
                         </tr>
                         <tr>
                             <td><code>/aiddk-spec</code></td>
-                            <td>"Run /aiddk-spec for feature 'email-notifications' and ask 5 clarifying questions."</td>
+                            <td>"Run /aiddk-spec for 'auth-fix' and draft the alignment proposal."</td>
                         </tr>
                         <tr>
                             <td><code>/aiddk-plan</code></td>
-                            <td>"Run /aiddk-plan and turn the approved spec into atomic tasks."</td>
+                            <td>"Run /aiddk-plan and create the technical design for this feature."</td>
                         </tr>
                         <tr>
                             <td><code>/aiddk-implement</code></td>
-                            <td>"Run /aiddk-implement Task 2.1 and include proving validation."</td>
+                            <td>"Run /aiddk-implement Task 1.2 with RED proof first."</td>
                         </tr>
                         <tr>
                             <td><code>/aiddk-verify</code></td>
-                            <td>"Use /aiddk-verify to audit for missed acceptance criteria."</td>
+                            <td>"Use /aiddk-verify to check for spec drift in the latest PR."</td>
                         </tr>
                         <tr>
-                            <td><code>/aiddk-handoff</code></td>
-                            <td>"Run /aiddk-handoff for 'email-notifications' and give me the resume prompt."</td>
+                            <td><code>/aiddk-cleanup</code></td>
+                            <td>"Run /aiddk-cleanup and perform the Fallow Pass for this module."</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1354,7 +1308,8 @@ Feature slug: my-first-feature</code></pre>
                     <li><strong>Task Formatting:</strong> <code>- [ ] TASK-001 Status: Not Started</code>.</li>
                     <li><strong>Phases:</strong> Foundations, Core Implementation, Validation.</li>
                     <li><strong>Traceability:</strong> Link to REQs and ACs.</li>
-                    <li><strong>TDD Requirement:</strong> Identify RED (failing test) and GREEN (passing) for behavioral changes.</li>
+                    <li><strong>TDD Requirement:</strong> Identify RED (failing test) and GREEN (passing) for behavioral
+                        changes.</li>
                 </ul>
             </div>
             <div class="arch-card">
@@ -1571,7 +1526,8 @@ Feature slug: my-first-feature</code></pre>
                         <tr>
                             <td><strong>Task Status</strong></td>
                             <td><code>Not Started</code>, <code>In Progress</code>, <code>Blocked</code>,
-                                <code>Done</code></td>
+                                <code>Done</code>
+                            </td>
                         </tr>
                         <tr>
                             <td><strong>Review Verdicts</strong></td>
