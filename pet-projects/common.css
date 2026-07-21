@@ -1,10 +1,10 @@
 /**
  * ========================================
- * DESIGN_PRO.md IMPLEMENTATION
+ * DESIGN.md IMPLEMENTATION
  * ========================================
  *
  * Premium SaaS/Developer Tool Design System
- * Based on DESIGN_PRO.md specifications
+ * Based on DESIGN.md specifications
  *
  * Design Philosophy:
  * - Clarity first - every screen makes the next action obvious
@@ -25,22 +25,28 @@
 
     /* Light Theme Palette (Default) */
     --background: #FAFAF8;
+    --background-cool: #F7F8FA;
     --surface: #FFFFFF;
     --surface-muted: #F4F4F1;
     --surface-raised: #FFFFFF;
+    --surface-inset: #F1F1EE;
 
     --border: #E6E4DE;
     --border-strong: #D4D0C7;
+    --border-subtle: #EFEEE9;
 
     --text-primary: #111111;
     --text-secondary: #55524C;
     --text-muted: #8A867C;
+    --text-disabled: #AAA69C;
     --text-inverse: #FFFFFF;
 
     --primary: #111111;
     --primary-hover: #2A2A2A;
+    --primary-active: #000000;
 
     --accent: #635BFF;
+    --accent-hover: #574FE8;
     --accent-soft: #EFEEFF;
     --accent-strong: #4F46E5;
 
@@ -53,14 +59,31 @@
     --info: #0284C7;
     --info-soft: #E0F2FE;
 
+    --code-bg: #0B0D10;
+    --code-border: #24272E;
+    --code-text: #F7F7F5;
+
+    --ai-thinking: #D8C6FF;
+    --ai-searching: #BDEBFF;
+    --ai-reading: #C7E9D0;
+    --ai-running: #FFE3B0;
+    --ai-writing: #FFD0E1;
+    --ai-done: #DCFCE7;
+
     --gradient-primary: linear-gradient(135deg, #635BFF 0%, #8B5CF6 45%, #06B6D4 100%);
-    --gradient-subtle: radial-gradient(circle at 20% 10%, rgba(99, 91, 255, .14), transparent 34%),
-        radial-gradient(circle at 80% 0%, rgba(6, 182, 212, .12), transparent 30%);
+    --gradient-cool: linear-gradient(135deg, #06B6D4 0%, #635BFF 55%, #111827 100%);
+    --gradient-warm: linear-gradient(135deg, #FF7A59 0%, #F59E0B 50%, #FDE68A 100%);
+    --gradient-subtle-light: radial-gradient(circle at 20% 10%, rgba(99, 91, 255, .14), transparent 34%), radial-gradient(circle at 80% 0%, rgba(6, 182, 212, .12), transparent 30%);
+    --gradient-subtle-dark: radial-gradient(circle at 20% 10%, rgba(139, 124, 255, .22), transparent 34%), radial-gradient(circle at 80% 0%, rgba(6, 182, 212, .16), transparent 30%);
+    --gradient-mesh-soft: radial-gradient(circle at 10% 20%, rgba(99, 91, 255, .16), transparent 28%), radial-gradient(circle at 70% 0%, rgba(6, 182, 212, .14), transparent 32%), radial-gradient(circle at 90% 55%, rgba(245, 158, 11, .10), transparent 28%);
+
+    --gradient-subtle: var(--gradient-subtle-light);
 
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, .05);
     --shadow-sm: 0 4px 12px rgba(0, 0, 0, .06);
     --shadow-md: 0 12px 32px rgba(0, 0, 0, .10);
     --shadow-lg: 0 24px 80px rgba(0, 0, 0, .16);
+    --shadow-stack: 0 1px 1px rgba(0, 0, 0, .04), 0 8px 24px rgba(0, 0, 0, .08);
     --shadow-glow: 0 0 48px rgba(99, 91, 255, .24);
 
     /* Shared Tokens */
@@ -82,6 +105,7 @@
     --space-20: 80px;
     --space-24: 96px;
     --space-32: 128px;
+    --space-40: 160px;
 
     --radius-xs: 4px;
     --radius-sm: 6px;
@@ -99,33 +123,43 @@
     --ease-out: cubic-bezier(.16, 1, .3, 1);
     --ease-in-out: cubic-bezier(.65, 0, .35, 1);
 
+    --container-xs: 560px;
     --container-sm: 720px;
     --container-md: 960px;
     --container-lg: 1180px;
     --container-xl: 1320px;
+    --container-2xl: 1440px;
+    --container-full: 100%;
 }
 
 /* System Dark Mode & Explicit Dark Theme Override */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
         color-scheme: dark;
+
         --background: #08090A;
+        --background-cool: #090B0F;
         --surface: #111214;
         --surface-muted: #181A1D;
         --surface-raised: #1D1F23;
+        --surface-inset: #0D0F12;
 
         --border: #2A2D33;
         --border-strong: #3A3F47;
+        --border-subtle: #202329;
 
         --text-primary: #F7F7F5;
         --text-secondary: #B7B8BC;
         --text-muted: #7D828A;
+        --text-disabled: #5F656E;
         --text-inverse: #111111;
 
         --primary: #FFFFFF;
         --primary-hover: #EDEDED;
+        --primary-active: #DADADA;
 
         --accent: #8B7CFF;
+        --accent-hover: #A799FF;
         --accent-soft: #1D1A3D;
         --accent-strong: #A799FF;
 
@@ -138,36 +172,47 @@
         --info: #38BDF8;
         --info-soft: #082F49;
 
-        --gradient-subtle: radial-gradient(circle at 20% 10%, rgba(139, 124, 255, .22), transparent 34%),
-            radial-gradient(circle at 80% 0%, rgba(6, 182, 212, .16), transparent 30%);
+        --code-bg: #0B0D10;
+        --code-border: #24272E;
+        --code-text: #F7F7F5;
+
+        --gradient-subtle: var(--gradient-subtle-dark);
 
         --shadow-xs: 0 1px 2px rgba(0, 0, 0, .22);
         --shadow-sm: 0 4px 12px rgba(0, 0, 0, .28);
         --shadow-md: 0 12px 32px rgba(0, 0, 0, .36);
         --shadow-lg: 0 24px 80px rgba(0, 0, 0, .48);
+        --shadow-stack: 0 1px 1px rgba(0, 0, 0, .35), 0 8px 24px rgba(0, 0, 0, .42);
         --shadow-glow: 0 0 56px rgba(139, 124, 255, .30);
     }
 }
 
 [data-theme="dark"] {
     color-scheme: dark;
+
     --background: #08090A;
+    --background-cool: #090B0F;
     --surface: #111214;
     --surface-muted: #181A1D;
     --surface-raised: #1D1F23;
+    --surface-inset: #0D0F12;
 
     --border: #2A2D33;
     --border-strong: #3A3F47;
+    --border-subtle: #202329;
 
     --text-primary: #F7F7F5;
     --text-secondary: #B7B8BC;
     --text-muted: #7D828A;
+    --text-disabled: #5F656E;
     --text-inverse: #111111;
 
     --primary: #FFFFFF;
     --primary-hover: #EDEDED;
+    --primary-active: #DADADA;
 
     --accent: #8B7CFF;
+    --accent-hover: #A799FF;
     --accent-soft: #1D1A3D;
     --accent-strong: #A799FF;
 
@@ -180,13 +225,17 @@
     --info: #38BDF8;
     --info-soft: #082F49;
 
-    --gradient-subtle: radial-gradient(circle at 20% 10%, rgba(139, 124, 255, .22), transparent 34%),
-        radial-gradient(circle at 80% 0%, rgba(6, 182, 212, .16), transparent 30%);
+    --code-bg: #0B0D10;
+    --code-border: #24272E;
+    --code-text: #F7F7F5;
+
+    --gradient-subtle: var(--gradient-subtle-dark);
 
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, .22);
     --shadow-sm: 0 4px 12px rgba(0, 0, 0, .28);
     --shadow-md: 0 12px 32px rgba(0, 0, 0, .36);
     --shadow-lg: 0 24px 80px rgba(0, 0, 0, .48);
+    --shadow-stack: 0 1px 1px rgba(0, 0, 0, .35), 0 8px 24px rgba(0, 0, 0, .42);
     --shadow-glow: 0 0 56px rgba(139, 124, 255, .30);
 }
 
@@ -292,16 +341,16 @@ a:hover {
 code {
     font-family: var(--font-mono);
     font-size: 13px;
-    background: var(--surface-muted);
+    background: var(--surface-inset);
     padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-xs);
-    color: var(--accent-strong);
+    color: var(--text-primary);
 }
 
 pre {
-    background: var(--surface-muted);
-    color: var(--text-primary);
-    border: 1px solid var(--border);
+    background: var(--code-bg);
+    color: var(--code-text);
+    border: 1px solid var(--code-border);
     border-radius: var(--radius-lg);
     font-family: var(--font-mono);
     font-size: 13px;
