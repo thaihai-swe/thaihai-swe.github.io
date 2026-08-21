@@ -37,19 +37,6 @@ const projectsData = {
         tags: ['Python', 'OpenAI', 'Function Calling', 'LLM', 'yfinance', 'Pydantic', 'Technical Analysis', 'Yahoo Finance'],
         video: 'pet-projects/stock-ai-analysis/Stock BOT AI.mp4',
     },
-    'qa-engine': {
-        icon: 'RAG',
-        title: 'Advanced RAG Multi-Source QA System',
-        description: 'A multi-source QA pipeline built around reliability, evaluation, and observability instead of answer generation alone.',
-        features: [
-            'Combined semantic retrieval, keyword search, reranking, and diversity filtering to improve grounding across sources.',
-            'Added query expansion and multi-hop reasoning to handle broader technical questions with better recall.',
-            'Evaluated answer quality with RAGAS-style checks, grounding validation, and hallucination risk scoring.',
-            'Included safety and observability layers such as prompt-injection checks, PII redaction, and system reporting.',
-        ],
-        tags: ['RAG', 'BM25', 'ChromaDB', 'RAGAS', 'Guardrails', 'Query Expansion', 'Hallucination Detection'],
-        video: null,
-    },
     'ai-agents-dev-kits': {
         icon: 'AGT',
         title: 'AI Agents Dev Kits',
@@ -76,9 +63,25 @@ const projectsData = {
             'Designed a structured prompt system with 5 tone variations (Simple to Expert), 3 length presets (50–500 words), and 4 summarization modes (Summarize, Analyze, Explain, Debate) — all composable at runtime.',
             'Privacy-first by design: local providers (Ollama, LM Studio) send zero data to external servers, with auto-generated follow-up questions and persistent per-tab conversation history for deeper exploration.',
         ],
-
+        tags: ['Chrome Extension', 'Service Worker', 'Local-First AI', 'Gemini / OpenAI', 'Ollama / LM Studio', 'Streaming', 'Prompt Engineering'],
         video: null,
         githubUrl: 'https://github.com/thaihai-swe/AI-summarizer-extension',
+    },
+    'dictionary-extension': {
+        icon: 'DIC',
+        title: 'Dictionary Chrome Extension',
+        description: 'A Manifest V3 Chrome extension that keeps dictionary lookup, translation, pronunciation, and sentence-aware AI next to the text you are already reading.',
+        features: [
+            'Built an in-page overlay and toolbar popup so readers can look up words, idioms, and phrases without leaving the article.',
+            'Designed a two-phase lookup pipeline: a fast primary dictionary and translation path, then non-blocking enrichment from Wiktionary, Merriam-Webster, Wordnik, and WordsAPI.',
+            'Added smart lemmatization and phrasal canonicalization so inflected words and idioms still resolve to usable dictionary forms.',
+            'Layered optional AI on top of the definition: sense in context, grammar nuance, comparisons, and three rewrite styles when a glossary entry is not enough.',
+            'Kept the runtime dependency-free — plain JavaScript, CSS, and HTML with a service-worker orchestrator, provider fallbacks, and keys that stay in the user’s control.',
+        ],
+        tags: ['Chrome Extension', 'Manifest V3', 'Service Worker', 'Dictionary APIs', 'Neural Translation', 'Gemini / OpenAI', 'Speech Practice', 'Zero Dependencies'],
+        video: null,
+        githubUrl: 'https://github.com/thaihai-swe/dictionary-extension',
+        productUrl: 'https://thaihai-swe.github.io/dictionary-extension/',
     },
 };
 
@@ -543,7 +546,7 @@ function initCertificationModal() {
             certImage.alt = badge.textContent.trim();
             certImage.hidden = false;
             certModalTitle.textContent = badge.textContent.trim();
-            certModalIcon.textContent = '🏆';
+            certModalIcon.textContent = 'AWARD';
             certModalIssuer.textContent = 'Achievement';
             certVerifyLink.hidden = true;
 
@@ -556,7 +559,7 @@ function initCertificationModal() {
     document.querySelectorAll('.cert-card').forEach((card) => {
         const handleOpen = () => {
             const certName = card.getAttribute('data-cert-name') || 'Certificate';
-            const certIcon = card.getAttribute('data-cert-icon') || '🏆';
+            const certIcon = card.getAttribute('data-cert-icon') || 'CERT';
             const certIssuer = card.getAttribute('data-cert-issuer') || '';
             const certImageFile = card.getAttribute('data-cert-image');
             const verifyUrl = normalizeExternalUrl(card.getAttribute('data-cert-verify'));
@@ -735,7 +738,34 @@ function initProjectDetailsModal(openProjectDemo) {
     });
 }
 
+function initThemeToggle() {
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+    if (!themeToggleBtn || !sunIcon || !moonIcon) return;
+
+    const applyTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        const isDark = theme === 'dark';
+        sunIcon.toggleAttribute('hidden', !isDark);
+        moonIcon.toggleAttribute('hidden', isDark);
+        themeToggleBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#08090A' : '#FAFAF8');
+    };
+
+    const storedTheme = localStorage.getItem('theme');
+    const currentTheme = storedTheme || document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(currentTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        applyTheme(isDark ? 'light' : 'dark');
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    initThemeToggle();
     initFooterYear();
     initMotionSystem();
     initHeroQuoteTypewriter();
