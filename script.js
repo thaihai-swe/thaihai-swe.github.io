@@ -11,19 +11,6 @@ if (typeof reducedMotionQuery.addEventListener === 'function') {
 }
 
 const projectsData = {
-    'llm-telegram-bot': {
-        icon: 'LLM',
-        title: 'LLM Telegram Bot',
-        description: 'A local-first AI assistant that turns model capability into a daily-use Telegram workflow instead of a novelty chat surface.',
-        features: [
-            'Built a Telegram interface that feels lightweight and usable for everyday conversations instead of one-off prompting.',
-            'Added persona control, history management, thread reset tools, and export helpers to support longer-running sessions.',
-            'Implemented streaming responses and live typing flow for a smoother conversational experience.',
-            'Kept execution local through LM Studio so sensitive usage stays private and under direct control.',
-        ],
-        tags: ['Python', 'OpenAI', 'Telegram Bot API', 'LM Studio', 'LLM', 'Streaming', 'Prompt Engineering'],
-        video: 'pet-projects/llm-tegegram-bot/LLM Telegram bot.mp4',
-    },
     'stock-analysis': {
         icon: 'AI',
         title: 'Stock Analysis AI',
