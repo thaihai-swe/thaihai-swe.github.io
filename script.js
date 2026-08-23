@@ -11,19 +11,6 @@ if (typeof reducedMotionQuery.addEventListener === 'function') {
 }
 
 const projectsData = {
-    'llm-telegram-bot': {
-        icon: 'LLM',
-        title: 'LLM Telegram Bot',
-        description: 'A local-first AI assistant that turns model capability into a daily-use Telegram workflow instead of a novelty chat surface.',
-        features: [
-            'Built a Telegram interface that feels lightweight and usable for everyday conversations instead of one-off prompting.',
-            'Added persona control, history management, thread reset tools, and export helpers to support longer-running sessions.',
-            'Implemented streaming responses and live typing flow for a smoother conversational experience.',
-            'Kept execution local through LM Studio so sensitive usage stays private and under direct control.',
-        ],
-        tags: ['Python', 'OpenAI', 'Telegram Bot API', 'LM Studio', 'LLM', 'Streaming', 'Prompt Engineering'],
-        video: 'pet-projects/llm-tegegram-bot/LLM Telegram bot.mp4',
-    },
     'stock-analysis': {
         icon: 'AI',
         title: 'Stock Analysis AI',
@@ -37,33 +24,53 @@ const projectsData = {
         tags: ['Python', 'OpenAI', 'Function Calling', 'LLM', 'yfinance', 'Pydantic', 'Technical Analysis', 'Yahoo Finance'],
         video: 'pet-projects/stock-ai-analysis/Stock BOT AI.mp4',
     },
-    'qa-engine': {
-        icon: 'RAG',
-        title: 'Advanced RAG Multi-Source QA System',
-        description: 'A multi-source QA pipeline built around reliability, evaluation, and observability instead of answer generation alone.',
+    'corebase-specharness': {
+        icon: 'CBS',
+        title: 'CoreBase SpecHarness',
+        description: 'An embedded, skills-first spec-driven kit that turns conversational AI into inspectable delivery — bounded context per skill, durable feature artifacts, and mechanically protected closeout.',
         features: [
-            'Combined semantic retrieval, keyword search, reranking, and diversity filtering to improve grounding across sources.',
-            'Added query expansion and multi-hop reasoning to handle broader technical questions with better recall.',
-            'Evaluated answer quality with RAGAS-style checks, grounding validation, and hallucination risk scoring.',
-            'Included safety and observability layers such as prompt-injection checks, PII redaction, and system reporting.',
+            'Ships 11 peer-level skills covering research, requirements, architecture, task sequencing, TDD implementation, verification, memory curation, ADRs, and harness diagnostics.',
+            'Embeds a deterministic Python CLI in the repo — no daemon, no hosted engine, stdlib-only — so any coding agent can run the same lifecycle commands.',
+            'Compiles bounded context per skill with a 4,500-token active budget and session auto-delta that cuts repeated context injection by 49–80%.',
+            'Records git-trackable feature artifacts (spec, plan, tasks, review) and keeps ephemeral session state separate from durable repo memory.',
+            'Protects closeout with advisory-by-default verification gates (test, lint, typecheck) so “done” is evidence, not an inferred next step.',
         ],
-        tags: ['RAG', 'BM25', 'ChromaDB', 'RAGAS', 'Guardrails', 'Query Expansion', 'Hallucination Detection'],
+        tags: ['AI Agents', 'Skills-First', 'Spec-Driven Dev', 'Bounded Context', 'Python CLI', 'Session Auto-Delta', 'Verification Gates', 'Repo Memory'],
         video: null,
+        githubUrl: 'https://github.com/thaihai-swe/corebase-specharness',
+        productUrl: 'https://thaihai-swe.github.io/corebase-specharness/',
     },
-    'ai-agents-dev-kits': {
-        icon: 'AGT',
-        title: 'AI Agents Dev Kits',
-        description: 'A dev kit that solves AI agent context loss — preserving institutional knowledge across sessions so agents stop rediscovering the same gotchas and start building on what they already know.',
+    'ai-summarizer-extension': {
+        icon: 'EXT',
+        title: 'AI Summarizer Chrome Extension',
+        description: 'A privacy-first Chrome extension that summarizes YouTube videos, webpages, and online courses using pluggable AI providers — cloud or fully local.',
         features: [
-            'Identified the core problem: agents are stateless by default, so every new session on a legacy codebase starts blind — same gotchas hit, same 3–5 hour manual exploration repeats.',
-            'Built three autonomous discovery agents (discover-legacy-system, capture-architecture, promote-to-repo-memory) that map a codebase in 15–30 min and push findings into durable /memories/repo/ files.',
-            'Designed a three-tier memory architecture: user memory (personal preferences), session memory (temporary investigation notes), and repository memory (team-shared gotchas, architecture decisions, integration points).',
-            'Structured 13 workflow agents covering the full feature lifecycle — spec → review → plan → tasks → implement → quality gate — for both greenfield (new projects) and brownfield (existing systems).',
-            'Implemented REQ-* → AC-* → TASK-* traceability IDs so every requirement links end-to-end from spec through commit message to code comment, with quality gate checklists at each phase.',
+            'Built a unified provider registry abstracting Gemini, OpenAI, Ollama, and LM Studio behind a single interface — swapping providers requires zero changes to the summarization pipeline.',
+            'Architected a Background Service Worker as the central orchestrator: routes Chrome messages between the Content Script and Side Panel UI, manages streaming chunk delivery, and handles error fallbacks.',
+            'Supports four content types (YouTube transcripts via Transcript API, webpages via DOM parsing, selected text, and Udemy/Coursera courses via CSS selectors) with automatic content-type detection.',
+            'Designed a structured prompt system with 5 tone variations (Simple to Expert), 3 length presets (50–500 words), and 4 summarization modes (Summarize, Analyze, Explain, Debate) — all composable at runtime.',
+            'Privacy-first by design: local providers (Ollama, LM Studio) send zero data to external servers, with auto-generated follow-up questions and persistent per-tab conversation history for deeper exploration.',
         ],
-        tags: ['AI Agents', 'Three-Tier Memory', 'Brownfield Discovery', 'Spec-Driven Dev', 'REQ→AC→TASK Traceability', 'Quality Gates', 'Institutional Knowledge', 'Workflow Automation'],
+        tags: ['Chrome Extension', 'Service Worker', 'Local-First AI', 'Gemini / OpenAI', 'Ollama / LM Studio', 'Streaming', 'Prompt Engineering'],
         video: null,
-        githubUrl: 'https://github.com/thaihai-swe/AI-agents-dev-kits',
+        githubUrl: 'https://github.com/thaihai-swe/summarizer-extension',
+        productUrl: 'https://thaihai-swe.github.io/summarizer-extension/',
+    },
+    'dictionary-extension': {
+        icon: 'DIC',
+        title: 'Dictionary Chrome Extension',
+        description: 'A Manifest V3 Chrome extension that keeps dictionary lookup, translation, pronunciation, and sentence-aware AI next to the text you are already reading.',
+        features: [
+            'Built an in-page overlay and toolbar popup so readers can look up words, idioms, and phrases without leaving the article.',
+            'Designed a two-phase lookup pipeline: a fast primary dictionary and translation path, then non-blocking enrichment from Wiktionary, Merriam-Webster, Wordnik, and WordsAPI.',
+            'Added smart lemmatization and phrasal canonicalization so inflected words and idioms still resolve to usable dictionary forms.',
+            'Layered optional AI on top of the definition: sense in context, grammar nuance, comparisons, and three rewrite styles when a glossary entry is not enough.',
+            'Kept the runtime dependency-free — plain JavaScript, CSS, and HTML with a service-worker orchestrator, provider fallbacks, and keys that stay in the user’s control.',
+        ],
+        tags: ['Chrome Extension', 'Manifest V3', 'Service Worker', 'Dictionary APIs', 'Neural Translation', 'Gemini / OpenAI', 'Speech Practice', 'Zero Dependencies'],
+        video: null,
+        githubUrl: 'https://github.com/thaihai-swe/dictionary-extension',
+        productUrl: 'https://thaihai-swe.github.io/dictionary-extension/',
     },
 };
 
@@ -528,7 +535,7 @@ function initCertificationModal() {
             certImage.alt = badge.textContent.trim();
             certImage.hidden = false;
             certModalTitle.textContent = badge.textContent.trim();
-            certModalIcon.textContent = '🏆';
+            certModalIcon.textContent = 'AWARD';
             certModalIssuer.textContent = 'Achievement';
             certVerifyLink.hidden = true;
 
@@ -541,7 +548,7 @@ function initCertificationModal() {
     document.querySelectorAll('.cert-card').forEach((card) => {
         const handleOpen = () => {
             const certName = card.getAttribute('data-cert-name') || 'Certificate';
-            const certIcon = card.getAttribute('data-cert-icon') || '🏆';
+            const certIcon = card.getAttribute('data-cert-icon') || 'CERT';
             const certIssuer = card.getAttribute('data-cert-issuer') || '';
             const certImageFile = card.getAttribute('data-cert-image');
             const verifyUrl = normalizeExternalUrl(card.getAttribute('data-cert-verify'));
@@ -720,7 +727,34 @@ function initProjectDetailsModal(openProjectDemo) {
     });
 }
 
+function initThemeToggle() {
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+    if (!themeToggleBtn || !sunIcon || !moonIcon) return;
+
+    const applyTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        const isDark = theme === 'dark';
+        sunIcon.toggleAttribute('hidden', !isDark);
+        moonIcon.toggleAttribute('hidden', isDark);
+        themeToggleBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#08090A' : '#FAFAF8');
+    };
+
+    const storedTheme = localStorage.getItem('theme');
+    const currentTheme = storedTheme || document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(currentTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        applyTheme(isDark ? 'light' : 'dark');
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    initThemeToggle();
     initFooterYear();
     initMotionSystem();
     initHeroQuoteTypewriter();
