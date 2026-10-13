@@ -5,51 +5,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Hai Nguyen Thai — Senior software engineer building auditable distributed systems and practical AI workflows.">
-    <meta name="theme-color" content="#08090A">
+        content="Hai Nguyen Thai — Senior Software Engineer &amp; Distributed Systems Lead in Singapore. Architecting mission-critical backends, event-driven platforms at IRAS, and applied AI workflows.">
+    <meta name="keywords"
+        content="Hai Nguyen Thai, Senior Software Engineer, Distributed Systems, Event Sourcing, CQRS, DDD, Kafka, .NET Core, AWS, IRAS, Applied AI, Singapore">
+    <meta name="author" content="Hai Nguyen Thai">
+    <meta name="theme-color" content="#080C14">
     <meta name="color-scheme" content="dark light">
-    <title>Hai Nguyen Thai | SWE &amp; Applied AI Builder</title>
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thaihai-swe.github.io/">
+    <meta property="og:title" content="Hai Nguyen Thai | Senior Software Engineer &amp; Distributed Systems Lead">
+    <meta property="og:description"
+        content="Senior back-end engineer &amp; technical architect. Designing mission-critical financial platforms at IRAS, event sourcing systems, and developer-first AI tools.">
+
+    <title>Hai Nguyen Thai | Senior Software Engineer &amp; Distributed Systems Lead</title>
+
+    <!-- Google Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <a href="#main-content" class="skip-link">Skip to content</a>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="navbar" role="navigation" aria-label="Main">
+    <!-- Top Navigation -->
+    <header class="navbar" id="navbar" role="banner">
         <div class="nav-container">
-            <a href="#home" class="nav-logo" aria-label="Hai Nguyen Thai — Home">
-                <span class="logo-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="16 18 22 12 16 6"></polyline>
-                        <polyline points="8 6 2 12 8 18"></polyline>
-                    </svg>
-                </span>
-                <span class="logo-text">Hai Nguyen Thai</span>
+            <a href="#home" class="nav-brand" aria-label="Hai Nguyen Thai — Home">
+                <span class="brand-badge" aria-hidden="true">HN</span>
+                <div class="brand-text">
+                    <span class="brand-name">Hai Nguyen Thai</span>
+                    <span class="brand-role">Distributed Systems · AI</span>
+                </div>
             </a>
-            <button class="hamburger" id="hamburger" type="button" aria-label="Toggle navigation menu"
-                aria-expanded="false" aria-controls="navMenu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link">Work</a></li>
-                <li class="nav-item"><a href="#certifications" class="nav-link">Certs</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                <li class="nav-item">
-                    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light theme">
-                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            hidden>
+
+            <!-- Capsule Pill Navigation Menu -->
+            <ul class="nav-menu" id="navMenu" role="menubar" aria-label="Main Navigation">
+                <li class="nav-item" role="none"><a href="#home" class="nav-link is-active" role="menuitem">Home</a>
+                </li>
+                <li class="nav-item" role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+                <li class="nav-item" role="none"><a href="#experience" class="nav-link" role="menuitem">Experience</a>
+                </li>
+                <li class="nav-item" role="none"><a href="#projects" class="nav-link" role="menuitem">Work</a></li>
+                <li class="nav-item" role="none"><a href="#skills" class="nav-link" role="menuitem">Skills</a></li>
+                <li class="nav-item" role="none"><a href="#certifications" class="nav-link" role="menuitem">Certs</a>
+                </li>
+                <li class="nav-item" role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+                <li class="nav-item" role="none">
+                    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light theme"
+                        title="Toggle color theme">
+                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
                             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -60,68 +74,222 @@
                             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
-                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     </button>
                 </li>
             </ul>
+
+            <!-- Hamburger Button for Mobile -->
+            <button class="hamburger" id="hamburger" type="button" aria-label="Open mobile navigation"
+                aria-expanded="false" aria-controls="mobileDrawer">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
-    </nav>
+
+        <!-- Mobile Drawer -->
+        <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+            <nav class="mobile-nav" aria-label="Mobile Navigation">
+                <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#about" class="mobile-nav-link">About</a>
+                <a href="#experience" class="mobile-nav-link">Experience</a>
+                <a href="#projects" class="mobile-nav-link">Work</a>
+                <a href="#skills" class="mobile-nav-link">Skills</a>
+                <a href="#certifications" class="mobile-nav-link">Certs</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
 
     <main id="main-content">
-        <section id="home" class="hero">
-            <div class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container hero-container">
                 <div class="hero-content">
-                    <div class="hero-text">
-                        <p class="hero-eyebrow">
-                            <span class="pulse-dot" aria-hidden="true"></span>
-                            Backend platforms · Applied AI
-                        </p>
-                        <h1 class="hero-title">Engineering the Future with AI-Powered Intelligence.</h1>
-                        <p class="hero-subtitle">
-                            Software Engineer moving into AI engineering — designing resilient
-                            distributed backends and grounded AI workflows for real-world production.
-                        </p>
-                        <div class="hero-cta">
-                            <a href="#projects" class="btn btn-primary">
-                                View selected work
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                            <a href="#contact" class="btn btn-secondary">Start a conversation</a>
-                        </div>
+                    <p class="hero-kicker">
+                        <span class="live-dot" aria-hidden="true"></span>
+                        Backend Platforms &middot; Applied AI Systems
+                    </p>
+
+                    <h1 class="hero-title">
+                        Engineering the Future with <span class="gradient-text">AI-Powered Intelligence.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Senior Software Engineer moving deeply into <strong>AI engineering</strong> &mdash; designing
+                        resilient distributed backends and grounded AI workflows for real-world production. Leading
+                        core financial microservices at <strong>IRAS</strong> with <strong>100% auditability</strong>,
+                        tier-1 bank integrations (DBS, UOB), and zero data loss.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            Explore Selected Work
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="icon-right">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href="#experience" class="btn btn-secondary">
+                            View Experience
+                        </a>
+                        <a href="https://linkedin.com/in/haint97" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-ghost" aria-label="Hai Nguyen Thai on LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                            LinkedIn
+                        </a>
                     </div>
-                    <div class="hero-visual">
-                        <div class="terminal-card" aria-hidden="true">
-                            <div class="terminal-header">
-                                <div class="terminal-dots">
-                                    <span class="terminal-dot dot-red"></span>
-                                    <span class="terminal-dot dot-yellow"></span>
-                                    <span class="terminal-dot dot-green"></span>
-                                </div>
-                                <span class="terminal-title">daily-loop.ts</span>
+                </div>
+
+                <!-- Hero Visual: Interactive System Architecture Card -->
+                <div class="hero-visual">
+                    <div class="system-panel" aria-label="System Architecture Visualizer">
+                        <div class="panel-header">
+                            <div class="panel-dots" aria-hidden="true">
+                                <span class="panel-dot dot-red"></span>
+                                <span class="panel-dot dot-yellow"></span>
+                                <span class="panel-dot dot-green"></span>
                             </div>
-                            <div class="terminal-body">
+                            <span class="panel-title">financial-pipeline.eventstream</span>
+                            <span class="panel-status-tag">
+                                <span class="live-dot" aria-hidden="true"></span>
+                                PRODUCTION &middot; ZERO LOSS
+                            </span>
+                        </div>
+
+                        <!-- Tab Triggers -->
+                        <div class="panel-tabs" role="tablist" aria-label="System Architecture View Options">
+                            <button class="panel-tab is-active" id="tabArchitectureBtn" role="tab" aria-selected="true"
+                                aria-controls="tabArchitecture" type="button">
+                                Architecture Flow
+                            </button>
+                            <button class="panel-tab" id="tabLedgerBtn" role="tab" aria-selected="false"
+                                aria-controls="tabLedger" type="button">
+                                Event Ledger
+                            </button>
+                            <button class="panel-tab" id="tabMetricsBtn" role="tab" aria-selected="false"
+                                aria-controls="tabMetrics" type="button">
+                                Live Telemetry
+                            </button>
+                            <button class="panel-tab" id="tabDailyLoopBtn" role="tab" aria-selected="false"
+                                aria-controls="tabDailyLoop" type="button">
+                                daily-loop.
+                            </button>
+                        </div>
+
+                        <!-- Tab 1: Architecture Pipeline -->
+                        <div class="panel-body tab-content is-active" id="tabArchitecture" role="tabpanel"
+                            aria-labelledby="tabArchitectureBtn">
+                            <div class="pipeline-flow">
+                                <div class="pipeline-node node-bank">
+                                    <div class="node-tag">INBOUND</div>
+                                    <div class="node-name">Bank Ingestion</div>
+                                    <div class="node-meta">DBS &middot; UOB &middot; AXS</div>
+                                </div>
+                                <div class="pipeline-connector">
+                                    <span class="connector-line"></span>
+                                    <span class="pulse-packet" aria-hidden="true"></span>
+                                </div>
+                                <div class="pipeline-node node-engine">
+                                    <div class="node-tag">VALIDATION</div>
+                                    <div class="node-name">Idempotency Engine</div>
+                                    <div class="node-meta">Deduplication &middot; Hash Check</div>
+                                </div>
+                                <div class="pipeline-connector">
+                                    <span class="connector-line"></span>
+                                    <span class="pulse-packet" aria-hidden="true"></span>
+                                </div>
+                                <div class="pipeline-node node-events">
+                                    <div class="node-tag">STREAMING</div>
+                                    <div class="node-name">Kafka Event Sourcing</div>
+                                    <div class="node-meta">Replay Log &middot; Audit Trail</div>
+                                </div>
+                                <div class="pipeline-connector">
+                                    <span class="connector-line"></span>
+                                    <span class="pulse-packet" aria-hidden="true"></span>
+                                </div>
+                                <div class="pipeline-node node-reconcile">
+                                    <div class="node-tag">TARGET</div>
+                                    <div class="node-name">100% Tax Ledger</div>
+                                    <div class="node-meta">Zero Data Loss &middot; Compliant</div>
+                                </div>
+                            </div>
+                            <div class="pipeline-footnote">
+                                <span class="footnote-key">Guaranteed semantics:</span> Exactly-once processing via
+                                Outbox Pattern &amp; Idempotent Consumers.
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: Event Ledger Preview -->
+                        <div class="panel-body tab-content" id="tabLedger" role="tabpanel"
+                            aria-labelledby="tabLedgerBtn">
+                            <pre class="code-preview"><code><span class="c-comment">// Immutable Event Sourcing Log Stream</span>
+{
+  <span class="c-key">"eventId"</span>: <span class="c-str">"evt_iras_884920419"</span>,
+  <span class="c-key">"type"</span>: <span class="c-str">"TaxCollectionBatchProcessedEvent"</span>,
+  <span class="c-key">"partner"</span>: <span class="c-str">"DBS_BANK_SG"</span>,
+  <span class="c-key">"records"</span>: <span class="c-num">2450000</span>,
+  <span class="c-key">"status"</span>: <span class="c-str">"RECONCILED"</span>,
+  <span class="c-key">"auditIntegrity"</span>: <span class="c-bool">true</span>,
+  <span class="c-key">"reconciledAt"</span>: <span class="c-str">"2026-10-13T12:00:00Z"</span>,
+  <span class="c-key">"dataLossRatio"</span>: <span class="c-num">0.0000</span>
+}</code></pre>
+                        </div>
+
+                        <!-- Tab 3: Live Telemetry -->
+                        <div class="panel-body tab-content" id="tabMetrics" role="tabpanel"
+                            aria-labelledby="tabMetricsBtn">
+                            <div class="telemetry-grid">
+                                <div class="telemetry-card">
+                                    <span class="telemetry-val">100%</span>
+                                    <span class="telemetry-lbl">Auditability Score</span>
+                                </div>
+                                <div class="telemetry-card">
+                                    <span class="telemetry-val">0.00%</span>
+                                    <span class="telemetry-lbl">Data Loss Ratio</span>
+                                </div>
+                                <div class="telemetry-card">
+                                    <span class="telemetry-val">+40%</span>
+                                    <span class="telemetry-lbl">Batch Speedup</span>
+                                </div>
+                                <div class="telemetry-card">
+                                    <span class="telemetry-val">&lt; 25ms</span>
+                                    <span class="telemetry-lbl">Partition Latency</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: Engineer Routine & Mindset -->
+                        <div class="panel-body tab-content" id="tabDailyLoop" role="tabpanel"
+                            aria-labelledby="tabDailyLoopBtn">
+                            <div class="daily-loop-content">
                                 <code class="hero-quote-code">
-                                    <span class="hero-quote-line" data-text="brewCoffee();">brewCoffee();</span>
-                                    <span class="hero-quote-line" data-text="reading();">reading();</span>
-                                    <span class="hero-quote-line" data-text="makeThings();">makeThings();</span>
-                                    <span class="hero-quote-line" data-text="vibeCode();">vibeCode();</span>
-                                    <span class="hero-quote-line" data-text="sleep();">sleep();</span>
-                                    <span class="hero-quote-line" data-text="stayCurious();">stayCurious();</span>
-                                    <span class="hero-quote-line" data-text="keepGrowing();">keepGrowing();</span>
-                                    <span class="hero-quote-line" data-text="beMoreThanCode();">beMoreThanCode();</span>
-                                    <span class="hero-quote-line" data-text="makeItMeaningful();">makeItMeaningful();</span>
-                                    <span class="hero-quote-line" data-text="becomeUnforgettable();">becomeUnforgettable();</span>
+                                    <span class="hero-quote-line">brewCoffee();</span>
+                                    <span class="hero-quote-line">reading();</span>
+                                    <span class="hero-quote-line">makeThings();</span>
+                                    <span class="hero-quote-line">vibeCode();</span>
+                                    <span class="hero-quote-line">sleep();</span>
+                                    <span class="hero-quote-line">stayCurious();</span>
+                                    <span class="hero-quote-line">keepGrowing();</span>
+                                    <span class="hero-quote-line">beMoreThanCode();</span>
+                                    <span class="hero-quote-line">makeItMeaningful();</span>
+                                    <span class="hero-quote-line">becomeUnforgettable();</span>
                                 </code>
-                                <div class="terminal-status">
-                                    <span class="terminal-status-tag">production-ready</span>
-                                    <span>event-sourced · observable</span>
+                                <div class="terminal-status-strip">
+                                    <span class="terminal-tag-pill">production-ready</span>
+                                    <span class="terminal-tag-sub">event-sourced &middot; observable</span>
                                 </div>
                             </div>
                         </div>
@@ -130,40 +298,55 @@
             </div>
         </section>
 
-        <div class="proof-strip">
+        <!-- Proof Strip / Metrics Bar -->
+        <section class="proof-section" aria-label="Key Career Statistics">
             <div class="container">
                 <div class="proof-grid">
-                    <article class="proof-item">
-                        <div class="proof-metric">6<span class="accent">+</span></div>
-                        <div class="proof-label">Years shipping backends</div>
-                        <p class="proof-desc">From education platforms to national-scale tax systems.</p>
+                    <article class="proof-card">
+                        <div class="proof-number">
+                            <span class="counter-val" data-target="6">6</span><span class="accent-mark">+</span>
+                        </div>
+                        <div class="proof-label">Years Shipping Systems</div>
+                        <p class="proof-text">From high-velocity edtech to national-scale financial infrastructure.</p>
                     </article>
-                    <article class="proof-item">
-                        <div class="proof-metric">M<span class="accent">+</span></div>
-                        <div class="proof-label">Users in batch windows</div>
-                        <p class="proof-desc">Financial microservices for Singapore’s tax authority.</p>
+                    <article class="proof-card">
+                        <div class="proof-number">
+                            <span class="counter-val" data-target="10">10</span><span class="accent-mark">M+</span>
+                        </div>
+                        <div class="proof-label">Records Per Batch Window</div>
+                        <p class="proof-text">Mission-critical financial microservices for Singapore's tax authority
+                            (IRAS).</p>
                     </article>
-                    <article class="proof-item">
-                        <div class="proof-metric">100<span class="accent">%</span></div>
-                        <div class="proof-label">Auditability</div>
-                        <p class="proof-desc">Event sourcing with replayable records and zero data loss.</p>
+                    <article class="proof-card">
+                        <div class="proof-number">
+                            <span class="counter-val" data-target="100">100</span><span class="accent-mark">%</span>
+                        </div>
+                        <div class="proof-label">Auditability &amp; Zero Loss</div>
+                        <p class="proof-text">Event Sourcing with replayable records and strict banking reconciliation.
+                        </p>
                     </article>
-                    <article class="proof-item">
-                        <div class="proof-metric">AWS</div>
-                        <div class="proof-label">Solutions Architect</div>
-                        <p class="proof-desc">SAA-C03, plus SQL, data structures, and generative AI.</p>
+                    <article class="proof-card">
+                        <div class="proof-number">
+                            <span class="counter-val" data-target="30">30</span><span class="accent-mark">+</span>
+                        </div>
+                        <div class="proof-label">Engineers Led Across 5 Teams</div>
+                        <p class="proof-text">Managed technical architecture and delivery with 100% on-time completion.
+                        </p>
                     </article>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <section id="about" class="about">
+        <!-- About & Architectural Philosophy -->
+        <section id="about" class="section about-section">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-kicker">Profile</p>
-                    <h2 class="section-title">About <span class="accent-text">me</span></h2>
+                <div class="section-header text-center">
+                    <p class="section-kicker">PROFILE</p>
+                    <h2 class="section-title">About <span class="gradient-text">me</span></h2>
                 </div>
+
                 <div class="about-layout">
+                    <!-- Lead Card: Who I Am -->
                     <div class="about-lead">
                         <p class="about-lead-kicker">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
@@ -171,7 +354,7 @@
                                 <circle cx="12" cy="8" r="3"></circle>
                                 <path d="M6.5 18a5.5 5.5 0 0 1 11 0"></path>
                             </svg>
-                            Who I am
+                            WHO I AM
                         </p>
                         <div class="about-copy">
                             <p>
@@ -181,21 +364,20 @@
                                 into systems people can actually reason about in production.
                             </p>
                             <p>
-                                At <strong>NCS (IRAS)</strong>, I lead financial microservices for Singapore’s national
-                                tax authority, designing <span class="highlight">event-driven services</span> that
-                                process <span class="highlight">multi-million-user batches</span> with full
-                                auditability,
-                                replayability, and compliance.
+                                At <strong>NCS (IRAS)</strong>, I lead financial microservices for Singapore's national
+                                tax authority, designing <strong>event-driven services</strong> that process
+                                <strong>multi-million-user batches</strong> with full auditability, replayability, and
+                                compliance.
                             </p>
                             <p>
-                                My sweet spot is the space between <span class="highlight">architecture and
-                                    execution</span>:
+                                My sweet spot is the space between <strong>architecture and execution</strong>:
                                 event-sourced systems, pragmatic domain modeling, and AI workflows that are useful
-                                because
-                                they are grounded, observable, and built for real teams.
+                                because they are grounded, observable, and built for real teams.
                             </p>
                         </div>
                     </div>
+
+                    <!-- 6 Highlights Cards Grid -->
                     <div class="about-highlights">
                         <article class="about-card">
                             <div class="about-card-header">
@@ -212,6 +394,7 @@
                             <p>Distributed backend platforms, financial workflows, and internal tools that need clear
                                 ownership, replayability, and scale.</p>
                         </article>
+
                         <article class="about-card">
                             <div class="about-card-header">
                                 <span class="about-card-icon" aria-hidden="true">
@@ -225,9 +408,10 @@
                                 </span>
                                 <h3>CS foundation</h3>
                             </div>
-                            <p>I rely on <span class="highlight">data structures, algorithms, OOP, and design
-                                    patterns</span> to keep systems efficient and maintainable.</p>
+                            <p>I rely on <strong>data structures, algorithms, OOP, and design patterns</strong> to keep
+                                systems efficient and maintainable.</p>
                         </article>
+
                         <article class="about-card">
                             <div class="about-card-header">
                                 <span class="about-card-icon" aria-hidden="true">
@@ -242,6 +426,7 @@
                             <p>I stay hands-on with architecture and delivery, turning messy requirements into technical
                                 direction teams can execute with confidence.</p>
                         </article>
+
                         <article class="about-card">
                             <div class="about-card-header">
                                 <span class="about-card-icon" aria-hidden="true">
@@ -257,8 +442,9 @@
                                 <h3>Solution-driven</h3>
                             </div>
                             <p>I adapt quickly to emerging technologies, explore practical approaches, and stay focused
-                                on <span class="highlight">solving the real bottleneck</span>.</p>
+                                on <strong>solving the real bottleneck</strong>.</p>
                         </article>
+
                         <article class="about-card">
                             <div class="about-card-header">
                                 <span class="about-card-icon" aria-hidden="true">
@@ -271,9 +457,10 @@
                                 </span>
                                 <h3>Stakeholder translation</h3>
                             </div>
-                            <p>I turn <span class="highlight">complex requirements</span> into actionable plans, align
-                                stakeholders early, and keep delivery moving.</p>
+                            <p>I turn <strong>complex requirements</strong> into actionable plans, align stakeholders
+                                early, and keep delivery moving.</p>
                         </article>
+
                         <article class="about-card">
                             <div class="about-card-header">
                                 <span class="about-card-icon" aria-hidden="true">
@@ -284,28 +471,549 @@
                                         <path d="M6 19h12"></path>
                                     </svg>
                                 </span>
-                                <h3>Where I’m heading</h3>
+                                <h3>Where I'm heading</h3>
                             </div>
-                            <p>I’m extending that backend foundation into AI tooling, agent workflows, and
+                            <p>I'm extending that backend foundation into AI tooling, agent workflows, and
                                 evaluation-minded product experiences that still respect production reality.</p>
                         </article>
+                    </div>
+
+                    <!-- 3. Core Architectural Pillars (Preserved Enterprise Content) -->
+                    <div class="about-pillars-subgroup">
+                        <div class="pillars-subgroup-header">
+                            <span class="subgroup-kicker">PRODUCTION PILLARS</span>
+                            <h3 class="subgroup-title">Architectural Foundation in Mission-Critical Systems</h3>
+                        </div>
+
+                        <div class="pillars-grid">
+                            <article class="pillar-card">
+                                <div class="pillar-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2v20"></path>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="pillar-title">National-Scale Financial Systems</h4>
+                                <p class="pillar-desc">
+                                    Leading financial microservices at <strong>NCS for IRAS</strong>, processing
+                                    multi-million
+                                    user collection batches while integrating major banks like <strong>DBS and
+                                        UOB</strong> with
+                                    strict end-to-end data integrity.
+                                </p>
+                            </article>
+
+                            <article class="pillar-card">
+                                <div class="pillar-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                </div>
+                                <h4 class="pillar-title">Event Sourcing &amp; Zero Data Loss</h4>
+                                <p class="pillar-desc">
+                                    Deep expertise applying <strong>Event Sourcing, CQRS, and Domain-Driven Design
+                                        (DDD)</strong>.
+                                    Every transaction is an immutable event, providing replayable audit trails and
+                                    meeting
+                                    rigorous regulatory standards.
+                                </p>
+                            </article>
+
+                            <article class="pillar-card">
+                                <div class="pillar-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="pillar-title">Proven Technical Leadership</h4>
+                                <p class="pillar-desc">
+                                    Proven experience directing a <strong>30-engineer unit across 5 microservices
+                                        teams</strong>
+                                    at FPT Software, achieving <strong>100% on-time delivery</strong>, 98% CSAT, and
+                                    earning
+                                    Top Performer (top 10 of 400).
+                                </p>
+                            </article>
+
+                            <article class="pillar-card">
+                                <div class="pillar-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                </div>
+                                <h4 class="pillar-title">Practical Applied AI &amp; Tooling</h4>
+                                <p class="pillar-desc">
+                                    Extending enterprise reliability into AI workflows: creating deterministic CLI
+                                    harnesses
+                                    with bounded context budgets, privacy-first local LLM registries, and tool-augmented
+                                    agents.
+                                </p>
+                            </article>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="skills">
+        <!-- Experience Section -->
+        <section id="experience" class="section experience-section">
             <div class="container">
                 <div class="section-header">
-                    <p class="section-kicker">Stack</p>
-                    <h2 class="section-title">Capability <span class="accent-text">map</span></h2>
-                    <p class="section-intro">The architecture patterns, platform tooling, and implementation languages I
-                        use to move from system design into production delivery.</p>
+                    <span class="section-kicker">Career Track</span>
+                    <h2 class="section-title">Leadership &amp; Engineering Experience</h2>
+                    <p class="section-subtitle">
+                        Proven history of architecting, delivering, and scaling distributed platforms from inception to
+                        national scale.
+                    </p>
                 </div>
+
+                <div class="timeline">
+                    <!-- NCS (IRAS) -->
+                    <article class="timeline-item is-featured">
+                        <div class="timeline-marker" aria-hidden="true"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <div class="timeline-role-group">
+                                    <h3 class="timeline-role">Back-end Leader / Senior Software Engineer</h3>
+                                    <div class="timeline-org">
+                                        <span class="company-name">NCS (IRAS)</span>
+                                        <span class="location-badge">Singapore</span>
+                                    </div>
+                                </div>
+                                <span class="timeline-period">Jun 2022 &mdash; Present</span>
+                            </div>
+
+                            <p class="timeline-summary">
+                                <em>IRAS (Inland Revenue Authority of Singapore)</em> is Singapore's national tax
+                                authority. Leads the back-end design and engineering of mission-critical financial
+                                microservices, processing multi-million record batches and connecting with DBS, UOB,
+                                and ABS payment channels.
+                            </p>
+
+                            <ul class="timeline-points">
+                                <li>
+                                    <strong>100% Auditability &amp; Zero Data Loss:</strong> Applied Event Sourcing and
+                                    Kafka Event Streaming so that every financial record is captured and replayable in
+                                    full compliance with regulatory standards.
+                                </li>
+                                <li>
+                                    <strong>Multi-Million Batch Ingestion:</strong> Built secure bank data-ingestion
+                                    flows (DBS, UOB, AXS) with idempotent validation, duplicate checks, and end-to-end
+                                    reconciliation before processing.
+                                </li>
+                                <li>
+                                    <strong>Performance &amp; Scale Tuning:</strong> Improved large-dataset batch
+                                    processing efficiency by <strong>40%</strong> and boosted system performance by
+                                    <strong>25%</strong> through parallel execution, query optimization, and efficient
+                                    partitioning.
+                                </li>
+                                <li>
+                                    <strong>Security &amp; Compliance:</strong> Enforced security-by-design:
+                                    least-privilege access, data protection in transit and at rest, and keeping
+                                    sensitive
+                                    financial data strictly out of logs.
+                                </li>
+                                <li>
+                                    <strong>Reusable Architecture:</strong> Cut maintenance overhead by
+                                    <strong>20%</strong> and accelerated project timelines by <strong>30%</strong> by
+                                    building shared platform component libraries adopted across projects.
+                                </li>
+                            </ul>
+
+                            <div class="timeline-badges">
+                                <button class="award-btn" type="button"
+                                    data-cert="NCS_Cert_BestQualityAward.optimized.jpg"
+                                    data-cert-title="Best Quality Award — NCS" data-cert-issuer="NCS (IRAS) Singapore"
+                                    aria-label="View Best Quality Award certificate">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <circle cx="12" cy="8" r="6"></circle>
+                                        <path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"></path>
+                                    </svg>
+                                    Best Quality Award (NCS)
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- FPT Software -->
+                    <article class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <div class="timeline-role-group">
+                                    <h3 class="timeline-role">Technical Architect / Senior Software Engineer</h3>
+                                    <div class="timeline-org">
+                                        <span class="company-name">FPT Software</span>
+                                        <span class="location-badge">Vietnam</span>
+                                    </div>
+                                </div>
+                                <span class="timeline-period">Mar 2020 &mdash; May 2022</span>
+                            </div>
+
+                            <ul class="timeline-points">
+                                <li>
+                                    <strong>30-Engineer Unit Leadership:</strong> Managed a cross-functional unit
+                                    across 5 microservices teams, delivering complex enterprise features under
+                                    aggressive
+                                    deadlines with <strong>100% on-time delivery</strong> and <strong>98% CSAT</strong>.
+                                </li>
+                                <li>
+                                    <strong>Architecture &amp; Proof of Concept:</strong> Led software architecture
+                                    design and ran proofs of concept for emerging technologies, aligning solutions with
+                                    strategic business requirements.
+                                </li>
+                                <li>
+                                    <strong>Database Optimization:</strong> Improved application responsiveness by
+                                    <strong>20%</strong> via materialized views, partitioning, indexing, and
+                                    execution-plan
+                                    tuning.
+                                </li>
+                                <li>
+                                    <strong>DevOps &amp; CI/CD:</strong> Reduced release cycle times by
+                                    <strong>50%</strong> through automated CI/CD pipelines in Azure DevOps.
+                                </li>
+                            </ul>
+
+                            <div class="timeline-badges">
+                                <button class="award-btn" type="button" data-cert="cert_fpt_best_perfrormance.jpg"
+                                    data-cert-title="Top Performer Award — FPT Software"
+                                    data-cert-issuer="FPT Software (Top 10 of 400 Engineers)"
+                                    aria-label="View Top Performer certificate">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <polygon
+                                            points="12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 9 8.5 12 2">
+                                        </polygon>
+                                    </svg>
+                                    Top 10 of 400 Engineers
+                                </button>
+                                <button class="award-btn" type="button" data-cert="cert_platinum.optimized.jpg"
+                                    data-cert-title="Platinum Member — FPT Software"
+                                    data-cert-issuer="FPT Software (Top 3% of Engineers)"
+                                    aria-label="View Platinum Member certificate">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M6 3h12l3 7-9 11L3 10l3-7Z"></path>
+                                    </svg>
+                                    Platinum Member (Top 3%)
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Rikkeisoft -->
+                    <article class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <div class="timeline-role-group">
+                                    <h3 class="timeline-role">Software Engineer</h3>
+                                    <div class="timeline-org">
+                                        <span class="company-name">Rikkeisoft</span>
+                                        <span class="location-badge">Vietnam</span>
+                                    </div>
+                                </div>
+                                <span class="timeline-period">May 2019 &mdash; Oct 2019</span>
+                            </div>
+
+                            <ul class="timeline-points">
+                                <li>
+                                    Built a multi-platform advertising integration engine for Google and Facebook Ads,
+                                    boosting client campaign ROI by <strong>30%</strong> with real-time analytics.
+                                </li>
+                                <li>
+                                    Developed an industrial computer vision solution using OpenCV and Python to detect
+                                    inactive conveyor rollers in manufacturing facilities, reducing equipment downtime.
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Vinh Danh Education -->
+                    <article class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <div class="timeline-role-group">
+                                    <h3 class="timeline-role">Software Engineer</h3>
+                                    <div class="timeline-org">
+                                        <span class="company-name">Vinh Danh Education (Riolish)</span>
+                                        <span class="location-badge">Vietnam</span>
+                                    </div>
+                                </div>
+                                <span class="timeline-period">Jan 2018 &mdash; Apr 2019</span>
+                            </div>
+
+                            <ul class="timeline-points">
+                                <li>
+                                    Engineered core web application services on .NET stack with robust data models.
+                                </li>
+                                <li>
+                                    Improved sprint delivery predictability by <strong>20%</strong> through systematic
+                                    technical feasibility studies and structured agile task decomposition.
+                                </li>
+                                <li>
+                                    Translated complex business requirements into technical roadmaps, ensuring 100%
+                                    alignment between architecture and core
+                                    business objectives.
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Work & Applied AI Projects -->
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-kicker">Portfolio &amp; AI Builds</span>
+                    <h2 class="section-title">Selected Work &amp; Applied AI</h2>
+                    <p class="section-subtitle">
+                        Systems and developer tools showcasing grounded architectures, clean boundaries, and reliable
+                        mechanics.
+                    </p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: CoreBase SpecHarness -->
+                    <article class="project-card">
+                        <div class="project-top">
+                            <div class="project-icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                    <polyline points="2 17 12 22 22 17"></polyline>
+                                    <polyline points="2 12 12 17 22 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="project-meta">
+                                <span class="badge badge-accent">Skills-First AI</span>
+                                <span class="badge">Open Source</span>
+                            </div>
+                        </div>
+
+                        <h3 class="project-title">CoreBase SpecHarness</h3>
+                        <p class="project-summary">
+                            An embedded, skills-first spec-driven kit that turns conversational AI into inspectable
+                            delivery: bounded context per skill, durable feature artifacts, and mechanically protected
+                            closeout gates.
+                        </p>
+
+                        <div class="project-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-label">Architecture:</span>
+                                <span>11 peer skills &middot; stdlib Python CLI (zero daemon)</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-label">Efficiency:</span>
+                                <span>Session auto-delta cuts repeated context by <strong>49&ndash;80%</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="tech-tags">
+                            <span class="tech-tag">AI Agents</span>
+                            <span class="tech-tag">Spec-Driven Dev</span>
+                            <span class="tech-tag">Bounded Context</span>
+                            <span class="tech-tag">Python CLI</span>
+                            <span class="tech-tag">Verification Gates</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="https://thaihai-swe.github.io/corebase-specharness/" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Product Page
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                                    class="icon-right">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/thaihai-swe/corebase-specharness" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-sm btn-secondary"
+                                aria-label="View CoreBase SpecHarness on GitHub">
+                                GitHub
+                            </a>
+                            <button class="btn btn-sm btn-ghost btn-details" type="button"
+                                data-project="corebase-specharness"
+                                aria-label="View CoreBase SpecHarness technical specifications">
+                                Specs
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Dictionary Chrome Extension -->
+                    <article class="project-card">
+                        <div class="project-top">
+                            <div class="project-icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    <path d="M8 7h8"></path>
+                                    <path d="M8 11h6"></path>
+                                </svg>
+                            </div>
+                            <div class="project-meta">
+                                <span class="badge badge-accent">Manifest V3</span>
+                                <span class="badge">Zero Dependencies</span>
+                            </div>
+                        </div>
+
+                        <h3 class="project-title">Dictionary Chrome Extension</h3>
+                        <p class="project-summary">
+                            In-page overlay that brings progressive dictionary lookup, translation, speech practice,
+                            and sentence-aware contextual AI right where you are reading without leaving the browser
+                            tab.
+                        </p>
+
+                        <div class="project-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-label">Pipeline:</span>
+                                <span>Two-phase lookups: instant definition + non-blocking multi-API enrichment</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-label">Intelligence:</span>
+                                <span>Contextual lemmatization &amp; sentence grammar AI</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-tags">
+                            <span class="tech-tag">Chrome Extension</span>
+                            <span class="tech-tag">Manifest V3</span>
+                            <span class="tech-tag">Service Worker</span>
+                            <span class="tech-tag">Contextual AI</span>
+                            <span class="tech-tag">Zero Dependencies</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="https://thaihai-swe.github.io/dictionary-extension/" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Product Page
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                                    class="icon-right">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/thaihai-swe/dictionary-extension" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-sm btn-secondary"
+                                aria-label="View Dictionary Extension on GitHub">
+                                GitHub
+                            </a>
+                            <button class="btn btn-sm btn-ghost btn-details" type="button"
+                                data-project="dictionary-extension"
+                                aria-label="View Dictionary Extension technical specifications">
+                                Specs
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: AI Summarizer Extension -->
+                    <article class="project-card">
+                        <div class="project-top">
+                            <div class="project-icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="project-meta">
+                                <span class="badge badge-accent">Local-First AI</span>
+                                <span class="badge">Streaming</span>
+                            </div>
+                        </div>
+
+                        <h3 class="project-title">AI Summarizer Extension</h3>
+                        <p class="project-summary">
+                            Privacy-first Chrome extension featuring a unified provider registry (Gemini, OpenAI,
+                            Ollama, LM Studio) that streams structured summaries of videos, articles, and courses
+                            directly
+                            into a side panel.
+                        </p>
+
+                        <div class="project-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-label">Provider Registry:</span>
+                                <span>Zero-config swap between cloud APIs and local Ollama</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-label">Orchestration:</span>
+                                <span>Background Service Worker routing chunked streams</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-tags">
+                            <span class="tech-tag">Chrome Extension</span>
+                            <span class="tech-tag">Service Worker</span>
+                            <span class="tech-tag">Local LLMs</span>
+                            <span class="tech-tag">Ollama / LM Studio</span>
+                            <span class="tech-tag">Streaming</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="https://thaihai-swe.github.io/summarizer-extension/" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Product Page
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                                    class="icon-right">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/thaihai-swe/summarizer-extension" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-sm btn-secondary"
+                                aria-label="View AI Summarizer on GitHub">
+                                GitHub
+                            </a>
+                            <button class="btn btn-sm btn-ghost btn-details" type="button"
+                                data-project="ai-summarizer-extension"
+                                aria-label="View AI Summarizer technical specifications">
+                                Specs
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills / Capability Matrix -->
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-kicker">Technical Arsenal</span>
+                    <h2 class="section-title">Capability Matrix</h2>
+                    <p class="section-subtitle">
+                        Architectural patterns, engineering frameworks, and platform infrastructure I leverage in
+                        production.
+                    </p>
+                </div>
+
                 <div class="skills-grid">
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <span class="skill-category-icon" aria-hidden="true">
+                    <!-- Category 1 -->
+                    <div class="skill-group-card">
+                        <div class="skill-group-header">
+                            <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                     stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="6" cy="6" r="2"></circle>
@@ -315,564 +1023,282 @@
                                     <path d="M7.5 7.5 10.5 16"></path>
                                     <path d="M16.5 7.5 13.5 16"></path>
                                 </svg>
-                            </span>
-                            <h3>Distributed systems</h3>
+                            </div>
+                            <h3 class="skill-group-title">Architecture &amp; System Design</h3>
                         </div>
                         <div class="skill-tags">
                             <span class="skill-tag">Event-Driven Architecture</span>
                             <span class="skill-tag">Event Sourcing</span>
-                            <span class="skill-tag">Domain-Driven Design</span>
+                            <span class="skill-tag">Domain-Driven Design (DDD)</span>
                             <span class="skill-tag">CQRS</span>
                             <span class="skill-tag">Microservices</span>
+                            <span class="skill-tag">Saga &amp; Outbox Patterns</span>
+                            <span class="skill-tag">Idempotency &amp; Consistency</span>
+                            <span class="skill-tag">Clean Architecture</span>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <span class="skill-category-icon" aria-hidden="true">
+
+                    <!-- Category 2 -->
+                    <div class="skill-group-card">
+                        <div class="skill-group-header">
+                            <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                     stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 6 4 12l5 6"></path>
-                                    <path d="m15 6 5 6-5 6"></path>
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
                                 </svg>
-                            </span>
-                            <h3>Languages</h3>
+                            </div>
+                            <h3 class="skill-group-title">Languages &amp; Frameworks</h3>
                         </div>
                         <div class="skill-tags">
-                            <span class="skill-tag">C# / .NET Core</span>
-                            <span class="skill-tag">JavaScript / Node.js</span>
-                            <span class="skill-tag">Angular</span>
+                            <span class="skill-tag">C# (.NET Core, ASP.NET Core)</span>
+                            <span class="skill-tag">LINQ</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">TypeScript</span>
                             <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Entity Framework Core</span>
+                            <span class="skill-tag">Dapper</span>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <span class="skill-category-icon" aria-hidden="true">
+
+                    <!-- Category 3 -->
+                    <div class="skill-group-card">
+                        <div class="skill-group-header">
+                            <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                     stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="4" y="5" width="16" height="5" rx="1.5"></rect>
-                                    <rect x="4" y="14" width="16" height="5" rx="1.5"></rect>
-                                    <path d="M8 8h.01"></path>
-                                    <path d="M8 17h.01"></path>
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
                                 </svg>
-                            </span>
-                            <h3>Backend &amp; messaging</h3>
+                            </div>
+                            <h3 class="skill-group-title">Messaging &amp; Integration</h3>
                         </div>
                         <div class="skill-tags">
-                            <span class="skill-tag">Entity Framework</span>
-                            <span class="skill-tag">Dapper</span>
-                            <span class="skill-tag">Kafka</span>
-                            <span class="skill-tag">Serverless</span>
-                            <span class="skill-tag">REST APIs</span>
+                            <span class="skill-tag">Apache Kafka (Event Streaming)</span>
+                            <span class="skill-tag">AWS SQS &amp; SNS</span>
+                            <span class="skill-tag">RabbitMQ</span>
                             <span class="skill-tag">gRPC</span>
-                            <span class="skill-tag">WebSocket</span>
+                            <span class="skill-tag">RESTful Web APIs</span>
+                            <span class="skill-tag">WebSocket &amp; SignalR</span>
+                            <span class="skill-tag">Bank &amp; Payment Gateways</span>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <span class="skill-category-icon" aria-hidden="true">
+
+                    <!-- Category 4 -->
+                    <div class="skill-group-card">
+                        <div class="skill-group-header">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                </svg>
+                            </div>
+                            <h3 class="skill-group-title">Databases &amp; Performance</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MS SQL Server</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Redis (Distributed Cache)</span>
+                            <span class="skill-tag">DynamoDB</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Query Optimization &amp; Indexing</span>
+                            <span class="skill-tag">Materialized Views &amp; Partitioning</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 5 -->
+                    <div class="skill-group-card">
+                        <div class="skill-group-header">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="skill-group-title">Cloud, Serverless &amp; DevOps</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">AWS (Lambda, S3, CloudWatch, API Gateway)</span>
+                            <span class="skill-tag">AWS EventBridge &amp; IAM</span>
+                            <span class="skill-tag">Azure DevOps Pipelines</span>
+                            <span class="skill-tag">GitHub Actions CI/CD</span>
+                            <span class="skill-tag">Docker Containers</span>
+                            <span class="skill-tag">Release Management</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 6 -->
+                    <div class="skill-group-card">
+                        <div class="skill-group-header">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="skill-group-title">Security &amp; Verification</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Encryption in Transit &amp; at Rest</span>
+                            <span class="skill-tag">Least-Privilege Access Control</span>
+                            <span class="skill-tag">Sensitive Data Protection</span>
+                            <span class="skill-tag">OWASP Top 10 Compliance</span>
+                            <span class="skill-tag">xUnit &amp; Moq</span>
+                            <span class="skill-tag">SonarQube &amp; Fortify</span>
+                            <span class="skill-tag">Integration Testing &amp; TDD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications & Credentials -->
+        <section id="certifications" class="section certs-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-kicker">Verified Credentials</span>
+                    <h2 class="section-title">Certifications &amp; Accreditations</h2>
+                    <p class="section-subtitle">
+                        Industry-recognized certifications in cloud architecture, data engineering, algorithms, and AI.
+                    </p>
+                </div>
+
+                <div class="certs-grid">
+                    <!-- AWS SAA -->
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-icon-wrap" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                     stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M7.5 18h9a3.5 3.5 0 0 0 .4-7A5 5 0 0 0 7.5 9.5 3.5 3.5 0 0 0 7.5 18Z">
                                     </path>
                                 </svg>
-                            </span>
-                            <h3>Cloud &amp; platform</h3>
+                            </div>
+                            <span class="cert-issuer">Amazon Web Services</span>
                         </div>
-                        <div class="skill-tags">
-                            <span class="skill-tag">AWS</span>
-                            <span class="skill-tag">Azure</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">CloudWatch</span>
-                            <span class="skill-tag">Azure Pipelines</span>
+                        <h3 class="cert-name">AWS Certified Solutions Architect &ndash; Associate</h3>
+                        <p class="cert-sub">Validation SAA-C03 &middot; Cloud Architecture</p>
+                        <div class="cert-actions">
+                            <a href="https://www.credly.com/badges/34b9ed42-8404-4f80-ae94-08d3966c9b9d" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Verify on Credly
+                            </a>
+                            <button class="btn btn-sm btn-ghost btn-view-cert" type="button"
+                                data-cert-image="AWS Certified Solutions Architect.optimized.jpg"
+                                data-cert-title="AWS Certified Solutions Architect"
+                                data-cert-issuer="Amazon Web Services"
+                                data-cert-verify="https://www.credly.com/badges/34b9ed42-8404-4f80-ae94-08d3966c9b9d">
+                                View
+                            </button>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <span class="skill-category-icon" aria-hidden="true">
+
+                    <!-- SQL Nanodegree -->
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-icon-wrap" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                     stroke-linecap="round" stroke-linejoin="round">
                                     <ellipse cx="12" cy="6.5" rx="6.5" ry="2.5"></ellipse>
                                     <path d="M5.5 6.5v10c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-10"></path>
                                     <path d="M5.5 11.5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5"></path>
                                 </svg>
-                            </span>
-                            <h3>Data &amp; storage</h3>
+                            </div>
+                            <span class="cert-issuer">Udacity</span>
                         </div>
-                        <div class="skill-tags">
-                            <span class="skill-tag">MS SQL Server</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">DynamoDB</span>
-                            <span class="skill-tag">Redis</span>
+                        <h3 class="cert-name">SQL Nanodegree Program</h3>
+                        <p class="cert-sub">Complex querying, normalization &amp; schema design</p>
+                        <div class="cert-actions">
+                            <a href="https://www.udacity.com/certificate/TFQLFKGX" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Verify on Udacity
+                            </a>
+                            <button class="btn btn-sm btn-ghost btn-view-cert" type="button"
+                                data-cert-image="SQL Nanodegree Program.png" data-cert-title="SQL Nanodegree Program"
+                                data-cert-issuer="Udacity"
+                                data-cert-verify="https://www.udacity.com/certificate/TFQLFKGX">
+                                View
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- UCSD Data Structures -->
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-icon-wrap" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                                    <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                                    <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                                    <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                                </svg>
+                            </div>
+                            <span class="cert-issuer">UC San Diego (Coursera)</span>
+                        </div>
+                        <h3 class="cert-name">Data Structures</h3>
+                        <p class="cert-sub">Advanced algorithmic foundation &amp; trees/graphs</p>
+                        <div class="cert-actions">
+                            <a href="https://coursera.org/verify/9PRRDWUH63JC" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-sm btn-primary">
+                                Verify on Coursera
+                            </a>
+                            <button class="btn btn-sm btn-ghost btn-view-cert" type="button"
+                                data-cert-image="data-structure.optimized.jpg" data-cert-title="Data Structures"
+                                data-cert-issuer="University of California San Diego"
+                                data-cert-verify="https://coursera.org/verify/9PRRDWUH63JC">
+                                View
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- IBM Generative AI -->
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-icon-wrap" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 3v3"></path>
+                                    <path d="M12 18v3"></path>
+                                    <path d="M3 12h3"></path>
+                                    <path d="M18 12h3"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                </svg>
+                            </div>
+                            <span class="cert-issuer">IBM (Coursera)</span>
+                        </div>
+                        <h3 class="cert-name">Generative AI for Software Developers</h3>
+                        <p class="cert-sub">LLM application patterns &amp; generative engineering</p>
+                        <div class="cert-actions">
+                            <a href="https://coursera.org/verify/specialization/7T7FP3FT5DB6" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                Verify on Coursera
+                            </a>
+                            <button class="btn btn-sm btn-ghost btn-view-cert" type="button"
+                                data-cert-image="Generative AI for Software Developers.optimized.jpg"
+                                data-cert-title="Generative AI for Software Developers" data-cert-issuer="IBM"
+                                data-cert-verify="https://coursera.org/verify/specialization/7T7FP3FT5DB6">
+                                View
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="experience">
+        <!-- Education Section -->
+        <section id="education" class="section education-section">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-kicker">Career</p>
-                    <h2 class="section-title">Leadership &amp; <span class="accent-text">delivery</span></h2>
-                    <p class="section-intro">The work that best shows how I lead backend systems from architecture
-                        through production.</p>
+                <div class="section-header text-center">
+                    <p class="section-kicker">ACADEMIC BACKGROUND</p>
+                    <h2 class="section-title">Formal <span class="gradient-text">Education</span></h2>
                 </div>
-                <div class="experience-timeline">
-                    <article class="experience-item experience-item-primary">
-                        <div class="exp-header">
-                            <div class="exp-title-group">
-                                <h3 class="exp-title">Senior Software Engineer / Back-end Lead</h3>
-                                <p class="exp-company">NCS (IRAS) <span class="location">Singapore</span></p>
-                            </div>
-                            <span class="exp-date">Jun 2022 — Present</span>
-                        </div>
-                        <ul class="exp-list">
-                            <li>Led design and development of a financial microservice that processed <span
-                                    class="highlight">multi-million user batches</span> for national tax collections by
-                                integrating ABS and multiple payment channels into a <span class="highlight">resilient
-                                    distributed system</span>.</li>
-                            <li>Applied <span class="highlight">Event Sourcing</span> and <span class="highlight">Event
-                                    Streaming</span> to satisfy <span class="highlight">100% auditability</span> with
-                                replayable financial records and <span class="highlight">zero data loss</span>.</li>
-                            <li>Boosted system performance by <span class="highlight">25%</span> and reduced processing
-                                latency by identifying bottlenecks and implementing parallel execution, query
-                                optimization, and efficient partitioning.</li>
-                            <li>Improved batch processing of large datasets, increasing <span class="highlight">data
-                                    handling efficiency by 40%</span> for million-record financial transactions.</li>
-                            <li>Reduced maintenance overhead by <span class="highlight">20%</span> and accelerated
-                                project timelines by <span class="highlight">30%</span> through reusable platform
-                                components and clearer architectural patterns.</li>
-                            <li>Led system architecture reviews, technical design sessions, and monitoring improvements
-                                that reduced incident resolution time.</li>
-                        </ul>
-                        <div class="achievements">
-                            <button class="achievement-badge" type="button"
-                                aria-label="Best Quality Award — view certificate"
-                                data-cert="NCS_Cert_BestQualityAward.optimized.jpg">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <circle cx="12" cy="8" r="6"></circle>
-                                    <path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"></path>
-                                </svg>
-                                Best Quality Award
-                            </button>
-                        </div>
-                    </article>
 
-                    <article class="experience-item experience-item-primary">
-                        <div class="exp-header">
-                            <div class="exp-title-group">
-                                <h3 class="exp-title">Senior Software Engineer / Technical Architect</h3>
-                                <p class="exp-company">FPT Software <span class="location">Vietnam</span></p>
-                            </div>
-                            <span class="exp-date">Mar 2020 — May 2022</span>
-                        </div>
-                        <ul class="exp-list">
-                            <li>Improved application responsiveness by <span class="highlight">20%</span> through
-                                database optimization: materialized views, partitioning, indexing, execution-plan
-                                tuning, and caching.</li>
-                            <li>Led software architecture design and proofs of concept for new technologies, aligning
-                                delivery with business goals across projects.</li>
-                            <li>Managed a <span class="highlight">30-engineer cross-functional unit</span> across five
-                                microservices teams, delivering <span class="highlight">100% on-time</span> with a <span
-                                    class="highlight">98% CSAT</span>.</li>
-                            <li>Increased team operational efficiency by <span class="highlight">30%</span> by improving
-                                technical requirement workflows and delivery coordination.</li>
-                            <li>Reduced release cycle times by <span class="highlight">50%</span> through automated
-                                CI/CD pipelines in Azure DevOps.</li>
-                        </ul>
-                        <div class="achievements">
-                            <button class="achievement-badge" type="button"
-                                aria-label="Top 10 out of 400 engineers — view certificate"
-                                data-cert="cert_fpt_best_perfrormance.jpg">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <polygon
-                                        points="12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 9 8.5 12 2">
-                                    </polygon>
-                                </svg>
-                                Top 10 of 400 engineers
-                            </button>
-                            <button class="achievement-badge" type="button"
-                                aria-label="Platinum Member, top 3 percent — view certificate"
-                                data-cert="cert_platinum.optimized.jpg">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M6 3h12l3 7-9 11L3 10l3-7Z"></path>
-                                    <path d="M3 10h18"></path>
-                                </svg>
-                                Platinum Member (Top 3%)
-                            </button>
-                        </div>
-                    </article>
-
-                    <article class="experience-item experience-item-primary">
-                        <div class="exp-header">
-                            <div class="exp-title-group">
-                                <h3 class="exp-title">Software Engineer</h3>
-                                <p class="exp-company">Rikkeisoft <span class="location">Vietnam</span></p>
-                            </div>
-                            <span class="exp-date">May 2019 — Oct 2019</span>
-                        </div>
-                        <ul class="exp-list">
-                            <li>Improved digital advertising ROI by <span class="highlight">30%</span> by architecting a
-                                multi-platform integration engine for Google and Facebook Ads with real-time performance
-                                data.</li>
-                            <li>Developed a real-time industrial monitoring solution using OpenCV and Python to detect
-                                inactive conveyor rollers, identifying mechanical failures and reducing downtime.</li>
-                        </ul>
-                    </article>
-
-                    <article class="experience-item experience-item-primary">
-                        <div class="exp-header">
-                            <div class="exp-title-group">
-                                <h3 class="exp-title">Software Engineer</h3>
-                                <p class="exp-company">Vinh Danh Education (Riolish) <span
-                                        class="location">Vietnam</span></p>
-                            </div>
-                            <span class="exp-date">Jan 2018 — Apr 2019</span>
-                        </div>
-                        <ul class="exp-list">
-                            <li>Designed, developed, and implemented web applications based on .NET technologies.</li>
-                            <li>Improved sprint predictability by <span class="highlight">20%</span> by leading
-                                technical feasibility studies and providing data-driven estimations.</li>
-                            <li>Translated complex business requirements into technical roadmaps, ensuring 100%
-                                alignment between architecture and core business objectives.</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="projects">
-            <div class="container">
-                <div class="section-header">
-                    <p class="section-kicker">Portfolio</p>
-                    <h2 class="section-title">Selected <span class="accent-text">work</span></h2>
-                    <p class="section-intro projects-intro">Practical systems and AI builds that show how I think:
-                        grounded workflows, reliable behavior, and product decisions that hold up beyond the demo.</p>
-                </div>
-                <div class="projects-grid">
-                    <article class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">DIC</div>
-                            <div class="project-title-group">
-                                <h3 class="project-title">Dictionary Chrome Extension</h3>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            <span class="project-line"><strong>Problem:</strong> Looking up a word usually means leaving
-                                the page — and a definition still does not tell you which sense applies in this
-                                sentence.</span>
-                            <span class="project-line"><strong>Approach:</strong> A Manifest V3 Chrome extension with
-                                in-page lookup, progressive multi-provider dictionary fallback, pronunciation and speech
-                                practice, and sentence-aware AI for grammar, comparison, and rewrites.</span>
-                            <span class="project-line"><strong>Why it matters:</strong> Zero runtime dependencies and
-                                two-phase lookups that stay fast. AI stays optional until the definition is not
-                                enough.</span>
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Chrome Extension</span>
-                            <span class="tech-tag">Manifest V3</span>
-                            <span class="tech-tag">Service Worker</span>
-                            <span class="tech-tag">Contextual AI</span>
-                        </div>
-                        <div class="project-actions">
-                            <a class="btn-project-github" href="https://thaihai-swe.github.io/dictionary-extension/"
-                                target="_blank" rel="noopener noreferrer" aria-label="Open Dictionary product page">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                Product page
-                            </a>
-                            <a class="btn-project-github" href="https://github.com/thaihai-swe/dictionary-extension"
-                                target="_blank" rel="noopener noreferrer"
-                                aria-label="View Dictionary Chrome Extension on GitHub">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path
-                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                    </path>
-                                </svg>
-                                View on GitHub
-                            </a>
-                            <button class="btn-project-details" type="button" data-project="dictionary-extension"
-                                aria-label="View Dictionary Chrome Extension details">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M8 6h13"></path>
-                                    <path d="M8 12h13"></path>
-                                    <path d="M8 18h13"></path>
-                                    <path d="M3 6h.01"></path>
-                                    <path d="M3 12h.01"></path>
-                                    <path d="M3 18h.01"></path>
-                                </svg>
-                                Details
-                            </button>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">CBS</div>
-                            <div class="project-title-group">
-                                <h3 class="project-title">CoreBase SpecHarness</h3>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            <span class="project-line"><strong>What:</strong> An embedded, skills-first spec-driven kit
-                                that turns conversational AI into inspectable delivery — bounded context, durable
-                                artifacts, and mechanical verification.</span>
-                            <span class="project-line"><strong>Approach:</strong> 11 peer skills plus a stdlib Python CLI
-                                that compiles context per skill, records git-trackable feature artifacts, and enforces a
-                                6-phase lifecycle with advisory-by-default gates.</span>
-                            <span class="project-line"><strong>Why it matters:</strong> No daemon, no hosted engine.
-                                Session auto-delta cuts repeated context injection 49–80%, and closeout is protected by
-                                evidence rather than an inferred next step.</span>
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Skills-First</span>
-                            <span class="tech-tag">Spec-Driven Dev</span>
-                            <span class="tech-tag">Bounded Context</span>
-                            <span class="tech-tag">Verification Gates</span>
-                        </div>
-                        <div class="project-actions">
-                            <a class="btn-project-github" href="https://thaihai-swe.github.io/corebase-specharness/"
-                                target="_blank" rel="noopener noreferrer"
-                                aria-label="Open CoreBase SpecHarness product page">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                Product page
-                            </a>
-                            <a class="btn-project-github" href="https://github.com/thaihai-swe/corebase-specharness"
-                                target="_blank" rel="noopener noreferrer"
-                                aria-label="View CoreBase SpecHarness on GitHub">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path
-                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                    </path>
-                                </svg>
-                                View on GitHub
-                            </a>
-                            <button class="btn-project-details" type="button" data-project="corebase-specharness"
-                                aria-label="View CoreBase SpecHarness details">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M8 6h13"></path>
-                                    <path d="M8 12h13"></path>
-                                    <path d="M8 18h13"></path>
-                                    <path d="M3 6h.01"></path>
-                                    <path d="M3 12h.01"></path>
-                                    <path d="M3 18h.01"></path>
-                                </svg>
-                                Details
-                            </button>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">EXT</div>
-                            <div class="project-title-group">
-                                <h3 class="project-title">AI Summarizer Extension</h3>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            <span class="project-line"><strong>Problem:</strong> Long videos, articles, and courses take
-                                hours. Existing tools are cloud-only, provider-locked, or dump a wall of text.</span>
-                            <span class="project-line"><strong>Approach:</strong> A privacy-first Chrome extension with
-                                a unified provider registry — Gemini, OpenAI, Ollama, and LM Studio — streaming into a
-                                side panel with follow-up questions.</span>
-                            <span class="project-line"><strong>Why it matters:</strong> Cloud and local models are
-                                interchangeable. Users get control (5 tones × 3 lengths × 4 modes) without
-                                complexity.</span>
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Chrome Extension</span>
-                            <span class="tech-tag">Service Worker</span>
-                            <span class="tech-tag">Local-First AI</span>
-                            <span class="tech-tag">Streaming</span>
-                        </div>
-                        <div class="project-actions">
-                            <a class="btn-project-github" href="https://thaihai-swe.github.io/summarizer-extension/"
-                                target="_blank" rel="noopener noreferrer"
-                                aria-label="Open AI Summarizer Extension product page">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                Product page
-                            </a>
-                            <a class="btn-project-github" href="https://github.com/thaihai-swe/summarizer-extension"
-                                target="_blank" rel="noopener noreferrer"
-                                aria-label="View AI Summarizer Extension on GitHub">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path
-                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                    </path>
-                                </svg>
-                                View on GitHub
-                            </a>
-                            <button class="btn-project-details" type="button" data-project="ai-summarizer-extension"
-                                aria-label="View AI Summarizer Extension details">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M8 6h13"></path>
-                                    <path d="M8 12h13"></path>
-                                    <path d="M8 18h13"></path>
-                                    <path d="M3 6h.01"></path>
-                                    <path d="M3 12h.01"></path>
-                                    <path d="M3 18h.01"></path>
-                                </svg>
-                                Details
-                            </button>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">AI</div>
-                            <div class="project-title-group">
-                                <h3 class="project-title">Stock Analysis AI</h3>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            <span class="project-line"><strong>Problem:</strong> Market analysis breaks down when symbol
-                                lookup, pricing, and reasoning live in separate tools.</span>
-                            <span class="project-line"><strong>Approach:</strong> Built a tool-using assistant with
-                                function calling, ticker discovery, and technical signals over live market data.</span>
-                            <span class="project-line"><strong>Why it matters:</strong> Natural language leads to
-                                verifiable analysis instead of guesswork.</span>
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Tool-Using AI</span>
-                            <span class="tech-tag">OpenAI</span>
-                            <span class="tech-tag">yfinance</span>
-                            <span class="tech-tag">Pydantic</span>
-                        </div>
-                        <div class="project-actions">
-                            <button class="btn-project-demo" type="button" data-demo="stock-analysis"
-                                data-video="pet-projects/stock-ai-analysis/Stock BOT AI.mp4"
-                                data-poster="pet-projects/stock-ai-analysis/demo-poster.svg"
-                                aria-label="View Stock Analysis demo">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                                </svg>
-                                View demo
-                            </button>
-                            <button class="btn-project-details" type="button" data-project="stock-analysis"
-                                aria-label="View Stock Analysis details">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M8 6h13"></path>
-                                    <path d="M8 12h13"></path>
-                                    <path d="M8 18h13"></path>
-                                    <path d="M3 6h.01"></path>
-                                    <path d="M3 12h.01"></path>
-                                    <path d="M3 18h.01"></path>
-                                </svg>
-                                Details
-                            </button>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="certifications" class="certifications">
-            <div class="container">
-                <div class="section-header">
-                    <p class="section-kicker">Credentials</p>
-                    <h2 class="section-title">Certifications &amp; <span class="accent-text">achievements</span></h2>
-                </div>
-                <div class="certs-grid">
-                    <button class="cert-card" type="button"
-                        aria-label="AWS Certified Solutions Architect — view and verify"
-                        data-cert-name="AWS Certified Solutions Architect" data-cert-icon="AWS" data-cert-issuer="AWS"
-                        data-cert-verify="https://www.credly.com/badges/34b9ed42-8404-4f80-ae94-08d3966c9b9d"
-                        data-cert-image="AWS Certified Solutions Architect.optimized.jpg">
-                        <div class="cert-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M7.5 18h9a3.5 3.5 0 0 0 .4-7A5 5 0 0 0 7.5 9.5 3.5 3.5 0 0 0 7.5 18Z"></path>
-                            </svg>
-                        </div>
-                        <h3>AWS Certified Solutions Architect</h3>
-                        <p>SAA-C03</p>
-                    </button>
-                    <button class="cert-card" type="button" aria-label="SQL Nanodegree Program — view and verify"
-                        data-cert-name="SQL Nanodegree Program" data-cert-icon="SQL" data-cert-issuer="Udacity"
-                        data-cert-verify="https://www.udacity.com/certificate/TFQLFKGX"
-                        data-cert-image="SQL Nanodegree Program.png">
-                        <div class="cert-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <ellipse cx="12" cy="6.5" rx="6.5" ry="2.5"></ellipse>
-                                <path d="M5.5 6.5v10c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-10"></path>
-                                <path d="M5.5 11.5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5"></path>
-                            </svg>
-                        </div>
-                        <h3>SQL Nanodegree Program</h3>
-                        <p>Udacity</p>
-                    </button>
-                    <button class="cert-card" type="button" aria-label="Data Structures — view and verify"
-                        data-cert-name="Data Structures" data-cert-icon="DS" data-cert-issuer="UC San Diego (Coursera)"
-                        data-cert-verify="https://coursera.org/verify/9PRRDWUH63JC"
-                        data-cert-image="data-structure.optimized.jpg">
-                        <div class="cert-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="7" height="7" rx="1"></rect>
-                                <rect x="14" y="3" width="7" height="7" rx="1"></rect>
-                                <rect x="3" y="14" width="7" height="7" rx="1"></rect>
-                                <rect x="14" y="14" width="7" height="7" rx="1"></rect>
-                            </svg>
-                        </div>
-                        <h3>Data Structures</h3>
-                        <p>UC San Diego</p>
-                    </button>
-                    <button class="cert-card" type="button"
-                        aria-label="Generative AI for Software Developers — view and verify"
-                        data-cert-name="Generative AI for Software Developers" data-cert-icon="AI"
-                        data-cert-issuer="IBM (Coursera)"
-                        data-cert-verify="https://coursera.org/verify/specialization/7T7FP3FT5DB6"
-                        data-cert-image="Generative AI for Software Developers.optimized.jpg">
-                        <div class="cert-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 3v3"></path>
-                                <path d="M12 18v3"></path>
-                                <path d="M3 12h3"></path>
-                                <path d="M18 12h3"></path>
-                                <circle cx="12" cy="12" r="4"></circle>
-                            </svg>
-                        </div>
-                        <h3>Generative AI for Software Developers</h3>
-                        <p>IBM</p>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section id="education" class="education">
-            <div class="container">
-                <div class="section-header">
-                    <p class="section-kicker">Background</p>
-                    <h2 class="section-title">Education</h2>
-                </div>
                 <div class="education-card">
                     <div class="edu-icon-wrapper" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
@@ -884,57 +1310,83 @@
                         </svg>
                     </div>
                     <div class="edu-content">
-                        <h3>Bachelor of Engineering in Information Systems</h3>
-                        <p class="edu-university">Posts and Telecommunications Institute of Technology, Vietnam</p>
+                        <div class="edu-title-row">
+                            <h3 class="edu-degree">Bachelor of Engineering in Information Systems</h3>
+                            <span class="edu-period">Sep 2015 &mdash; Feb 2020</span>
+                        </div>
+                        <p class="edu-university">Posts and Telecommunications Institute of Technology (PTIT), Vietnam
+                        </p>
                         <div class="edu-meta">
-                            <span>Sep 2015 — Feb 2020</span>
-                            <span>Classification: Good</span>
+                            <span class="badge badge-accent">Degree Classification: Good</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
             <div class="container">
-                <div class="contact-content">
-                    <p class="contact-kicker">Get in touch</p>
-                    <h2 class="section-title contact-heading">Looking for backend platform leadership with a practical
-                        AI edge?</h2>
-                    <p class="contact-intro">
-                        I’m most energized by backend platform work, regulated systems, and AI-enabled internal tools.
-                        If you’re building something that needs to stay fast, auditable, and calm in production, I’d
-                        love to hear where you’re heading.
-                    </p>
-                    <div class="contact-focus">
-                        <span class="contact-pill">Backend platform leadership</span>
-                        <span class="contact-pill">Distributed systems</span>
-                        <span class="contact-pill">Applied AI workflows</span>
+                <div class="contact-box">
+                    <div class="contact-header text-center">
+                        <span class="section-kicker">GET IN TOUCH</span>
+                        <h2 class="contact-title">Looking for backend platform leadership with a practical <span
+                                class="gradient-text">AI edge</span>?</h2>
+                        <p class="contact-subtitle">
+                            I’m most energized by backend platform work, regulated systems, and AI-enabled internal
+                            tools.
+                            If you’re building something that needs to stay fast, auditable, and calm in production,
+                            I’d love to hear where you’re heading.
+                        </p>
+                        <div class="contact-pills" aria-label="Key conversation areas">
+                            <span class="contact-pill">Backend platform leadership</span>
+                            <span class="contact-pill">Distributed systems</span>
+                            <span class="contact-pill">Applied AI workflows</span>
+                        </div>
+                        <div class="contact-actions-row">
+                            <a href="mailto:nguyenthaihai00@gmail.com" class="btn btn-primary">Start a conversation</a>
+                            <a href="resume.pdf" class="btn btn-secondary" target="_blank"
+                                rel="noopener noreferrer">View resume</a>
+                        </div>
                     </div>
-                    <div class="contact-actions">
-                        <a href="mailto:nguyenthaihai00@gmail.com" class="btn btn-primary">Start a conversation</a>
-                        <a href="resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View
-                            resume</a>
-                    </div>
-                    <div class="contact-methods">
-                        <a href="mailto:nguyenthaihai00@gmail.com" class="contact-link">
-                            <div class="contact-icon-wrapper" aria-hidden="true">
+
+                    <div class="contact-grid">
+                        <!-- Email Card with Copy Button -->
+                        <div class="contact-card">
+                            <div class="contact-card-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                     stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                                    <path d="m3 7 9 6 9-6"></path>
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
                                 </svg>
                             </div>
-                            <div class="contact-text">
-                                <p class="contact-label">Email</p>
-                                <p class="contact-value">nguyenthaihai00@gmail.com</p>
-                                <p class="contact-meta">Best for opportunities, partnerships, and direct conversations.
-                                </p>
+                            <div class="contact-card-body">
+                                <span class="contact-card-label">Direct Email</span>
+                                <a href="mailto:nguyenthaihai00@gmail.com" class="contact-card-val">
+                                    nguyenthaihai00@gmail.com
+                                </a>
                             </div>
-                        </a>
-                        <a href="https://linkedin.com/in/haint97" class="contact-link" target="_blank"
-                            rel="noopener noreferrer">
-                            <div class="contact-icon-wrapper" aria-hidden="true">
+                            <div class="contact-card-actions">
+                                <button class="btn btn-sm btn-secondary btn-copy-email" type="button"
+                                    data-email="nguyenthaihai00@gmail.com">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                    <span>Copy</span>
+                                </button>
+                                <a href="mailto:nguyenthaihai00@gmail.com" class="btn btn-sm btn-primary">
+                                    Send Email
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- LinkedIn Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                     stroke-linecap="round" stroke-linejoin="round">
                                     <path
@@ -944,120 +1396,178 @@
                                     <circle cx="4" cy="4" r="2"></circle>
                                 </svg>
                             </div>
-                            <div class="contact-text">
-                                <p class="contact-label">LinkedIn</p>
-                                <p class="contact-value">linkedin.com/in/haint97</p>
-                                <p class="contact-meta">Best for introductions, team context, and professional
-                                    background.</p>
+                            <div class="contact-card-body">
+                                <span class="contact-card-label">Professional Network</span>
+                                <a href="https://linkedin.com/in/haint97" target="_blank" rel="noopener noreferrer"
+                                    class="contact-card-val">
+                                    linkedin.com/in/haint97
+                                </a>
                             </div>
-                        </a>
+                            <div class="contact-card-actions">
+                                <a href="https://linkedin.com/in/haint97" target="_blank" rel="noopener noreferrer"
+                                    class="btn btn-sm btn-secondary">
+                                    Open Profile
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- GitHub Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="contact-card-body">
+                                <span class="contact-card-label">Open Source &amp; Code</span>
+                                <a href="https://github.com/thaihai-swe" target="_blank" rel="noopener noreferrer"
+                                    class="contact-card-val">
+                                    github.com/thaihai-swe
+                                </a>
+                            </div>
+                            <div class="contact-card-actions">
+                                <a href="https://github.com/thaihai-swe" target="_blank" rel="noopener noreferrer"
+                                    class="btn btn-sm btn-secondary">
+                                    View GitHub
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="footer" role="contentinfo">
-        <div class="container">
-            <p>&copy; <span id="copyright-year">2026</span> Hai Nguyen Thai.<br>
-                <span class="footer-note">Designed and built with care, code, and a little AI assistance.</span>
-            </p>
+        <div class="container footer-container">
+            <div class="footer-left">
+                <span class="footer-logo">Hai Nguyen Thai</span>
+                <p class="footer-tagline">
+                    Senior Software Engineer &amp; Distributed Systems Lead &middot; Singapore
+                </p>
+            </div>
+            <div class="footer-right">
+                <p class="footer-copy">
+                    &copy; <span id="currentYear">2026</span> Hai Nguyen Thai. Designed and built with care, code, and
+                    a little AI assistance.
+                </p>
+            </div>
         </div>
     </footer>
 
-    <div id="certModal" class="cert-modal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle"
-        aria-describedby="certModalIssuer" aria-hidden="true">
-        <div class="cert-modal-content" tabindex="-1">
-            <button class="cert-modal-close" type="button" aria-label="Close certificate modal" id="certModalClose">
+    <!-- MODAL 1: Certificate Preview Modal -->
+    <div id="certModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle"
+        aria-hidden="true">
+        <div class="modal-overlay" tabindex="-1"></div>
+        <div class="modal-box modal-box-image">
+            <button class="modal-close-btn" type="button" aria-label="Close modal" id="certModalClose">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" aria-hidden="true">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
-            <div class="cert-modal-header">
-                <span class="cert-modal-icon" id="certModalIcon">AWS</span>
+            <div class="modal-header">
                 <div>
-                    <h2 id="certModalTitle">Certificate</h2>
-                    <p id="certModalIssuer" class="cert-modal-issuer">Issuer</p>
+                    <h3 id="certModalTitle" class="modal-title">Certificate</h3>
+                    <p id="certModalIssuer" class="modal-subtitle">Issuer</p>
                 </div>
             </div>
-            <div class="cert-modal-body">
-                <img id="certImage" alt="Certificate" class="cert-image" decoding="async" hidden>
+            <div class="modal-body cert-modal-body">
+                <img id="certModalImg" alt="Certificate Preview" class="cert-modal-image">
             </div>
-            <div class="cert-modal-footer">
-                <a id="certVerifyLink" target="_blank" rel="noopener noreferrer" class="btn btn-primary" hidden>Verify
-                    certificate</a>
+            <div class="modal-footer">
+                <a id="certModalVerifyBtn" target="_blank" rel="noopener noreferrer" class="btn btn-primary" hidden>
+                    Verify Credential Online
+                </a>
+                <button type="button" class="btn btn-secondary modal-cancel-btn">Close</button>
             </div>
         </div>
     </div>
 
-    <div id="projectDemoModal" class="cert-modal" role="dialog" aria-modal="true" aria-labelledby="projectDemoTitle"
-        aria-describedby="projectDemoHelp" aria-hidden="true">
-        <div class="cert-modal-content" tabindex="-1">
-            <button class="cert-modal-close" type="button" aria-label="Close project demo" id="projectDemoClose">
+    <!-- MODAL 2: Project Details Modal -->
+    <div id="projectDetailsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="projectDetailsTitle"
+        aria-hidden="true">
+        <div class="modal-overlay" tabindex="-1"></div>
+        <div class="modal-box modal-box-large">
+            <button class="modal-close-btn" type="button" aria-label="Close modal" id="projectDetailsClose">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" aria-hidden="true">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
-            <div class="cert-modal-header">
-                <span class="cert-modal-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
-                </span>
+            <div class="modal-header">
+                <div class="modal-header-icon-wrap" id="projectDetailsIcon"></div>
                 <div>
-                    <h2 id="projectDemoTitle">Project demo</h2>
-                    <p id="projectDemoHelp" class="modal-helper">Press Escape to close the demo and return to the page.
-                    </p>
+                    <h3 id="projectDetailsTitle" class="modal-title">Project Title</h3>
+                    <p id="projectDetailsSummary" class="modal-subtitle">Project summary goes here.</p>
                 </div>
             </div>
-            <div class="cert-modal-body">
-                <video id="projectDemoVideo" controls preload="none" playsinline class="cert-image project-demo-video">
-                    Your browser does not support the video tag.
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h4 class="modal-section-heading">Key Architecture &amp; Features</h4>
+                    <ul id="projectDetailsFeatures" class="features-list"></ul>
+                </div>
+                <div class="modal-section">
+                    <h4 class="modal-section-heading">Technologies &amp; Patterns</h4>
+                    <div id="projectDetailsTags" class="tech-tags"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a id="projectDetailsProductLink" target="_blank" rel="noopener noreferrer" class="btn btn-primary"
+                    hidden>
+                    Product Page
+                </a>
+                <a id="projectDetailsGithubLink" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"
+                    hidden>
+                    View on GitHub
+                </a>
+                <button id="projectDetailsDemoBtn" type="button" class="btn btn-accent" hidden>
+                    Watch Demo Video
+                </button>
+                <button type="button" class="btn btn-ghost modal-cancel-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Video Demo Modal -->
+    <div id="videoDemoModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="videoDemoTitle"
+        aria-hidden="true">
+        <div class="modal-overlay" tabindex="-1"></div>
+        <div class="modal-box modal-box-video">
+            <button class="modal-close-btn" type="button" aria-label="Close modal" id="videoDemoClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-header">
+                <div>
+                    <h3 id="videoDemoTitle" class="modal-title">Project Demonstration</h3>
+                    <p class="modal-subtitle">Press Escape or click outside to exit preview.</p>
+                </div>
+            </div>
+            <div class="modal-body video-modal-body">
+                <video id="demoVideoPlayer" controls playsinline preload="none" class="demo-video-element">
+                    Your browser does not support HTML5 video.
                 </video>
             </div>
-        </div>
-    </div>
-
-    <div id="projectDetailsModal" class="project-details-modal" role="dialog" aria-modal="true"
-        aria-labelledby="projectDetailsTitle" aria-describedby="projectDetailsSummary" aria-hidden="true">
-        <div class="project-details-content" tabindex="-1">
-            <button class="project-details-close" type="button" aria-label="Close project details"
-                id="projectDetailsClose">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" aria-hidden="true">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            <div class="project-details-header">
-                <span class="project-details-icon" id="projectDetailsIcon"></span>
-                <div>
-                    <h2 id="projectDetailsTitle"></h2>
-                    <p id="projectDetailsSummary" class="project-details-summary"></p>
-                </div>
-            </div>
-            <div class="project-details-body">
-                <div class="project-details-section">
-                    <h3>What I built</h3>
-                    <ul id="projectDetailsFeatures" class="project-details-features"></ul>
-                </div>
-                <div class="project-details-section">
-                    <h3>Stack &amp; skills</h3>
-                    <div id="projectDetailsTags" class="project-details-tags"></div>
-                </div>
-            </div>
-            <div class="project-details-footer">
-                <button id="projectDetailsWatchDemo" class="btn btn-primary" type="button" hidden>Watch demo</button>
-                <button class="btn btn-secondary" type="button" id="projectDetailsCloseBtn">Close</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-cancel-btn">Close Preview</button>
             </div>
         </div>
     </div>
 
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 

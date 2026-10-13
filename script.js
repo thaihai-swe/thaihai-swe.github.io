@@ -1,767 +1,564 @@
-document.documentElement.classList.add('js');
+/**
+ * Hai Nguyen Thai — Portfolio Application Script
+ * Clean Vanilla ES6+, accessible modal manager, theme toggle, and telemetry tabs.
+ */
 
-const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-let prefersReducedMotion = reducedMotionQuery.matches;
-let resizeObserverTimeout = null;
+document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    initNavigation();
+    initHeroTabs();
+    initStatCounters();
+    initProjectsModal();
+    initCertModal();
+    initVideoDemoModal();
+    initCopyEmail();
+    initDynamicYear();
+});
 
-if (typeof reducedMotionQuery.addEventListener === 'function') {
-    reducedMotionQuery.addEventListener('change', (event) => {
-        prefersReducedMotion = event.matches;
+/* --------------------------------------------------------------------------
+   1. Theme Management (Dark / Light)
+   -------------------------------------------------------------------------- */
+function initTheme() {
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    const storageKey = 'hai-theme-preference';
+
+    // Retrieve saved theme or default to 'dark'
+    const savedTheme = localStorage.getItem(storageKey);
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'dark'); // Default dark
+
+    applyTheme(initialTheme);
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(nextTheme);
+            localStorage.setItem(storageKey, nextTheme);
+        });
+    }
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (metaThemeColor) {
+            metaThemeColor.setAttribute('content', theme === 'dark' ? '#080C14' : '#F8FAFC');
+        }
+        if (themeToggleBtn) {
+            themeToggleBtn.setAttribute(
+                'aria-label',
+                theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
+            );
+        }
+    }
+}
+
+/* --------------------------------------------------------------------------
+   2. Navigation & Mobile Drawer
+   -------------------------------------------------------------------------- */
+function initNavigation() {
+    const hamburger = document.getElementById('hamburger');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    // Hamburger toggle
+    if (hamburger && mobileDrawer) {
+        hamburger.addEventListener('click', () => {
+            const isOpen = mobileDrawer.classList.toggle('is-open');
+            hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            mobileDrawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        });
+
+        // Close drawer on click outside
+        document.addEventListener('click', (e) => {
+            if (
+                mobileDrawer.classList.contains('is-open') &&
+                !mobileDrawer.contains(e.target) &&
+                !hamburger.contains(e.target)
+            ) {
+                mobileDrawer.classList.remove('is-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileDrawer.setAttribute('aria-hidden', 'true');
+            }
+        });
+    }
+
+    // Smooth scroll and auto-close mobile drawer
+    navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            if (mobileDrawer && mobileDrawer.classList.contains('is-open')) {
+                mobileDrawer.classList.remove('is-open');
+                if (hamburger) {
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    mobileDrawer.setAttribute('aria-hidden', 'true');
+                }
+            }
+        });
+    });
+
+    // Active Section Tracking via IntersectionObserver
+    if ('IntersectionObserver' in window && sections.length > 0) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: 0
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && window.scrollY >= 100) {
+                    const id = entry.target.getAttribute('id');
+                    highlightNavLink(id);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach((section) => sectionObserver.observe(section));
+    }
+
+    // Top-of-page check to ensure Home is active when at the top
+    window.addEventListener('scroll', () => {
+        if (window.scrollY < 100) {
+            highlightNavLink('home');
+        }
+    }, { passive: true });
+
+    function highlightNavLink(sectionId) {
+        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach((link) => {
+            const href = link.getAttribute('href');
+            if (href === `#${sectionId}`) {
+                link.classList.add('is-active');
+                link.classList.add('active');
+            } else {
+                link.classList.remove('is-active');
+                link.classList.remove('active');
+            }
+        });
+    }
+}
+
+/* --------------------------------------------------------------------------
+   3. Hero Architecture Tabs
+   -------------------------------------------------------------------------- */
+function initHeroTabs() {
+    const tabs = document.querySelectorAll('.panel-tab');
+    const tabPanels = document.querySelectorAll('.tab-content');
+
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            const targetId = tab.getAttribute('aria-controls');
+
+            // Deactivate all
+            tabs.forEach((t) => {
+                t.classList.remove('is-active');
+                t.setAttribute('aria-selected', 'false');
+            });
+            tabPanels.forEach((p) => p.classList.remove('is-active'));
+
+            // Activate current
+            tab.classList.add('is-active');
+            tab.setAttribute('aria-selected', 'true');
+
+            const targetPanel = document.getElementById(targetId);
+            if (targetPanel) {
+                targetPanel.classList.add('is-active');
+            }
+        });
     });
 }
 
+/* --------------------------------------------------------------------------
+   4. Universal Modal Controller (Focus Trap + A11y)
+   -------------------------------------------------------------------------- */
+class ModalController {
+    constructor(modalId) {
+        this.modal = document.getElementById(modalId);
+        if (!this.modal) return;
+
+        this.overlay = this.modal.querySelector('.modal-overlay');
+        this.closeButtons = this.modal.querySelectorAll('.modal-close-btn, .modal-cancel-btn');
+        this.lastFocusedElement = null;
+
+        this.initEvents();
+    }
+
+    initEvents() {
+        if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close());
+        }
+
+        this.closeButtons.forEach((btn) => {
+            btn.addEventListener('click', () => this.close());
+        });
+
+        this.modal.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.close();
+            }
+        });
+    }
+
+    open(triggerElement = null) {
+        if (!this.modal) return;
+        this.lastFocusedElement = triggerElement || document.activeElement;
+
+        this.modal.classList.add('is-active');
+        this.modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // Focus first close button
+        const firstClose = this.modal.querySelector('.modal-close-btn');
+        if (firstClose) {
+            setTimeout(() => firstClose.focus(), 50);
+        }
+    }
+
+    close() {
+        if (!this.modal) return;
+        this.modal.classList.remove('is-active');
+        this.modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+
+        if (this.lastFocusedElement && typeof this.lastFocusedElement.focus === 'function') {
+            this.lastFocusedElement.focus();
+        }
+    }
+}
+
+/* --------------------------------------------------------------------------
+   5. Project Specifications Modal
+   -------------------------------------------------------------------------- */
 const projectsData = {
-    'stock-analysis': {
-        icon: 'AI',
-        title: 'Stock Analysis AI',
-        description: 'A tool-using AI workflow that combines live market data with structured reasoning instead of prompt-only analysis.',
-        features: [
-            'Resolved ticker discovery by company name and market so users can start from natural language instead of memorized symbols.',
-            'Pulled live pricing, volume, and supporting market context before any analysis step runs.',
-            'Generated technical signals around momentum, volatility, moving averages, and support-resistance levels.',
-            'Used function calling to turn natural language prompts into grounded analysis with traceable tool outputs.',
-        ],
-        tags: ['Python', 'OpenAI', 'Function Calling', 'LLM', 'yfinance', 'Pydantic', 'Technical Analysis', 'Yahoo Finance'],
-        video: 'pet-projects/stock-ai-analysis/Stock BOT AI.mp4',
-    },
     'corebase-specharness': {
         icon: 'CBS',
         title: 'CoreBase SpecHarness',
-        description: 'An embedded, skills-first spec-driven kit that turns conversational AI into inspectable delivery — bounded context per skill, durable feature artifacts, and mechanically protected closeout.',
+        summary: 'An embedded, skills-first spec-driven kit that turns conversational AI into inspectable delivery — bounded context per skill, durable feature artifacts, and mechanically protected closeout.',
         features: [
-            'Ships 11 peer-level skills covering research, requirements, architecture, task sequencing, TDD implementation, verification, memory curation, ADRs, and harness diagnostics.',
-            'Embeds a deterministic Python CLI in the repo — no daemon, no hosted engine, stdlib-only — so any coding agent can run the same lifecycle commands.',
+            '11 peer-level skills covering research, requirements, architecture, task sequencing, TDD implementation, verification, memory curation, ADRs, and harness diagnostics.',
+            'Deterministic stdlib Python CLI embedded in repository — zero daemon, zero hosted engine — enabling any coding agent to run lifecycle commands consistently.',
             'Compiles bounded context per skill with a 4,500-token active budget and session auto-delta that cuts repeated context injection by 49–80%.',
-            'Records git-trackable feature artifacts (spec, plan, tasks, review) and keeps ephemeral session state separate from durable repo memory.',
-            'Protects closeout with advisory-by-default verification gates (test, lint, typecheck) so “done” is evidence, not an inferred next step.',
+            'Records git-trackable feature artifacts (spec, plan, tasks, review) keeping ephemeral session state strictly separate from durable repo memory.',
+            'Protects delivery closeout with advisory-by-default verification gates (test, lint, typecheck) so "done" is backed by mechanical evidence.'
         ],
-        tags: ['AI Agents', 'Skills-First', 'Spec-Driven Dev', 'Bounded Context', 'Python CLI', 'Session Auto-Delta', 'Verification Gates', 'Repo Memory'],
-        video: null,
-        githubUrl: 'https://github.com/thaihai-swe/corebase-specharness',
+        tags: ['AI Agents', 'Spec-Driven Dev', 'Bounded Context', 'Python CLI', 'Session Auto-Delta', 'Verification Gates', 'Repo Memory'],
         productUrl: 'https://thaihai-swe.github.io/corebase-specharness/',
-    },
-    'ai-summarizer-extension': {
-        icon: 'EXT',
-        title: 'AI Summarizer Chrome Extension',
-        description: 'A privacy-first Chrome extension that summarizes YouTube videos, webpages, and online courses using pluggable AI providers — cloud or fully local.',
-        features: [
-            'Built a unified provider registry abstracting Gemini, OpenAI, Ollama, and LM Studio behind a single interface — swapping providers requires zero changes to the summarization pipeline.',
-            'Architected a Background Service Worker as the central orchestrator: routes Chrome messages between the Content Script and Side Panel UI, manages streaming chunk delivery, and handles error fallbacks.',
-            'Supports four content types (YouTube transcripts via Transcript API, webpages via DOM parsing, selected text, and Udemy/Coursera courses via CSS selectors) with automatic content-type detection.',
-            'Designed a structured prompt system with 5 tone variations (Simple to Expert), 3 length presets (50–500 words), and 4 summarization modes (Summarize, Analyze, Explain, Debate) — all composable at runtime.',
-            'Privacy-first by design: local providers (Ollama, LM Studio) send zero data to external servers, with auto-generated follow-up questions and persistent per-tab conversation history for deeper exploration.',
-        ],
-        tags: ['Chrome Extension', 'Service Worker', 'Local-First AI', 'Gemini / OpenAI', 'Ollama / LM Studio', 'Streaming', 'Prompt Engineering'],
-        video: null,
-        githubUrl: 'https://github.com/thaihai-swe/summarizer-extension',
-        productUrl: 'https://thaihai-swe.github.io/summarizer-extension/',
+        githubUrl: 'https://github.com/thaihai-swe/corebase-specharness',
+        demoVideo: null
     },
     'dictionary-extension': {
         icon: 'DIC',
         title: 'Dictionary Chrome Extension',
-        description: 'A Manifest V3 Chrome extension that keeps dictionary lookup, translation, pronunciation, and sentence-aware AI next to the text you are already reading.',
+        summary: 'A Manifest V3 Chrome extension that keeps in-page dictionary lookup, translation, pronunciation, and sentence-aware contextual AI next to the text you are reading.',
         features: [
-            'Built an in-page overlay and toolbar popup so readers can look up words, idioms, and phrases without leaving the article.',
-            'Designed a two-phase lookup pipeline: a fast primary dictionary and translation path, then non-blocking enrichment from Wiktionary, Merriam-Webster, Wordnik, and WordsAPI.',
-            'Added smart lemmatization and phrasal canonicalization so inflected words and idioms still resolve to usable dictionary forms.',
-            'Layered optional AI on top of the definition: sense in context, grammar nuance, comparisons, and three rewrite styles when a glossary entry is not enough.',
-            'Kept the runtime dependency-free — plain JavaScript, CSS, and HTML with a service-worker orchestrator, provider fallbacks, and keys that stay in the user’s control.',
+            'In-page overlay and toolbar popup so readers can look up words, idioms, and phrases without switching tabs or losing context.',
+            'Two-phase lookup pipeline: an immediate primary dictionary and translation path, followed by non-blocking enrichment from Wiktionary, Merriam-Webster, Wordnik, and WordsAPI.',
+            'Smart lemmatization and phrasal canonicalization ensuring inflected words and idioms resolve cleanly to usable dictionary forms.',
+            'Sentence-aware contextual AI: determines word sense in context, grammar nuances, comparative meanings, and provides rewrites when static glossary definitions are insufficient.',
+            'Strictly dependency-free: plain JavaScript, CSS, and HTML with a service-worker orchestrator and user-controlled API keys.'
         ],
-        tags: ['Chrome Extension', 'Manifest V3', 'Service Worker', 'Dictionary APIs', 'Neural Translation', 'Gemini / OpenAI', 'Speech Practice', 'Zero Dependencies'],
-        video: null,
-        githubUrl: 'https://github.com/thaihai-swe/dictionary-extension',
+        tags: ['Chrome Extension', 'Manifest V3', 'Service Worker', 'Dictionary APIs', 'Neural Translation', 'Contextual AI', 'Zero Dependencies'],
         productUrl: 'https://thaihai-swe.github.io/dictionary-extension/',
+        githubUrl: 'https://github.com/thaihai-swe/dictionary-extension',
+        demoVideo: null
     },
+    'ai-summarizer-extension': {
+        icon: 'EXT',
+        title: 'AI Summarizer Chrome Extension',
+        summary: 'A privacy-first Chrome extension that summarizes YouTube videos, long-form articles, and online courses using a pluggable provider registry — supporting cloud and local models.',
+        features: [
+            'Unified provider registry abstracting Gemini, OpenAI, Ollama, and LM Studio behind a single interface — swapping providers requires zero changes to summarization logic.',
+            'Background Service Worker orchestrator routes Chrome messages between Content Script and Side Panel UI, streaming chunks directly as they are generated.',
+            'Supports YouTube transcripts via API, webpages via DOM cleaning, selected text, and online courses with automatic content-type detection.',
+            'Structured prompt system with 5 tone variations (Simple to Expert), 3 length presets (50–500 words), and 4 modes (Summarize, Analyze, Explain, Debate).',
+            'Privacy-first design: local providers (Ollama, LM Studio) transmit zero data externally, with auto-generated follow-up questions and per-tab conversation memory.'
+        ],
+        tags: ['Chrome Extension', 'Service Worker', 'Local-First AI', 'Gemini / OpenAI', 'Ollama / LM Studio', 'Streaming', 'Prompt Architecture'],
+        productUrl: 'https://thaihai-swe.github.io/summarizer-extension/',
+        githubUrl: 'https://github.com/thaihai-swe/summarizer-extension',
+        demoVideo: null
+    }
 };
 
-const focusableSelector = [
-    'a[href]',
-    'button:not([disabled])',
-    'textarea:not([disabled])',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    '[tabindex]:not([tabindex="-1"])'
-].join(', ');
+function initProjectsModal() {
+    const modalCtrl = new ModalController('projectDetailsModal');
+    const detailButtons = document.querySelectorAll('.btn-details');
 
-let activeModal = null;
-let lastModalTrigger = null;
-let sectionLinkObserver = null;
+    const iconEl = document.getElementById('projectDetailsIcon');
+    const titleEl = document.getElementById('projectDetailsTitle');
+    const summaryEl = document.getElementById('projectDetailsSummary');
+    const featuresEl = document.getElementById('projectDetailsFeatures');
+    const tagsEl = document.getElementById('projectDetailsTags');
+    const productLink = document.getElementById('projectDetailsProductLink');
+    const githubLink = document.getElementById('projectDetailsGithubLink');
+    const demoBtn = document.getElementById('projectDetailsDemoBtn');
 
-function getFocusableElements(container) {
-    return Array.from(container.querySelectorAll(focusableSelector))
-        .filter((element) => !element.hasAttribute('disabled') && element.getAttribute('aria-hidden') !== 'true');
-}
+    detailButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const projectKey = btn.getAttribute('data-project');
+            const data = projectsData[projectKey];
+            if (!data) return;
 
-function normalizeExternalUrl(url) {
-    if (!url || url === '#') return null;
-    return /^https?:\/\//i.test(url) ? url : `https://${url}`;
-}
+            if (iconEl) iconEl.textContent = data.icon;
+            if (titleEl) titleEl.textContent = data.title;
+            if (summaryEl) summaryEl.textContent = data.summary;
 
-function openModalDialog(modal, triggerEl, focusEl) {
-    if (!modal) return;
-
-    lastModalTrigger = triggerEl instanceof HTMLElement ? triggerEl : document.activeElement;
-    activeModal = modal;
-    modal.classList.add('show');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-
-    const nextFocus = focusEl || getFocusableElements(modal)[0] || modal;
-    requestAnimationFrame(() => {
-        if (nextFocus && typeof nextFocus.focus === 'function') {
-            nextFocus.focus();
-        }
-    });
-}
-
-function closeModalDialog(modal, options = {}) {
-    if (!modal) return;
-
-    const { returnFocus = true } = options;
-
-    modal.classList.remove('show');
-    modal.setAttribute('aria-hidden', 'true');
-
-    if (activeModal === modal) {
-        activeModal = null;
-    }
-
-    document.body.style.overflow = '';
-
-    if (returnFocus && lastModalTrigger instanceof HTMLElement && document.contains(lastModalTrigger)) {
-        requestAnimationFrame(() => lastModalTrigger.focus());
-    }
-
-    if (returnFocus) {
-        lastModalTrigger = null;
-    }
-}
-
-function getNavHeight() {
-    const navbar = document.querySelector('.navbar');
-    return navbar ? navbar.offsetHeight : 0;
-}
-
-function closeMobileMenu() {
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
-
-    if (!hamburger || !navMenu) return;
-
-    hamburger.classList.remove('active');
-    hamburger.setAttribute('aria-expanded', 'false');
-    navMenu.classList.remove('active');
-    document.body.classList.remove('menu-open');
-}
-
-function setActiveNav(targetId) {
-    document.querySelectorAll('.nav-link').forEach((link) => {
-        const href = link.getAttribute('href');
-        link.classList.toggle('active', href === `#${targetId}`);
-    });
-}
-
-function refreshNavbarState() {
-    const navbar = document.querySelector('.navbar');
-    if (!navbar) return;
-
-    navbar.classList.toggle('scrolled', window.scrollY > 12);
-}
-
-function syncEdgeSectionNav() {
-    const scrollTop = window.scrollY;
-    const viewportBottom = scrollTop + window.innerHeight;
-    const documentHeight = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight
-    );
-    const bottomThreshold = getNavHeight() + 8;
-
-    if (scrollTop <= 8) {
-        setActiveNav('home');
-        return true;
-    }
-
-    if (viewportBottom >= documentHeight - bottomThreshold) {
-        setActiveNav('contact');
-        return true;
-    }
-
-    return false;
-}
-
-function initSectionLinkObserver() {
-    const sections = document.querySelectorAll('main section[id]');
-    if (!sections.length || !('IntersectionObserver' in window)) return;
-
-    if (sectionLinkObserver) {
-        sectionLinkObserver.disconnect();
-    }
-
-    const visibleSections = new Map();
-
-    sectionLinkObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            const sectionId = entry.target.getAttribute('id');
-            if (!sectionId) return;
-
-            if (entry.isIntersecting) {
-                visibleSections.set(sectionId, {
-                    ratio: entry.intersectionRatio,
-                    top: Math.abs(entry.boundingClientRect.top)
+            // Features list
+            if (featuresEl) {
+                featuresEl.innerHTML = '';
+                data.features.forEach((feat) => {
+                    const li = document.createElement('li');
+                    li.textContent = feat;
+                    featuresEl.appendChild(li);
                 });
-            } else {
-                visibleSections.delete(sectionId);
             }
+
+            // Tags
+            if (tagsEl) {
+                tagsEl.innerHTML = '';
+                data.tags.forEach((tag) => {
+                    const span = document.createElement('span');
+                    span.className = 'tech-tag';
+                    span.textContent = tag;
+                    tagsEl.appendChild(span);
+                });
+            }
+
+            // Links
+            if (productLink) {
+                if (data.productUrl) {
+                    productLink.href = data.productUrl;
+                    productLink.hidden = false;
+                } else {
+                    productLink.hidden = true;
+                }
+            }
+
+            if (githubLink) {
+                if (data.githubUrl) {
+                    githubLink.href = data.githubUrl;
+                    githubLink.hidden = false;
+                } else {
+                    githubLink.hidden = true;
+                }
+            }
+
+            if (demoBtn) {
+                if (data.demoVideo) {
+                    demoBtn.hidden = false;
+                    demoBtn.onclick = () => {
+                        modalCtrl.close();
+                        const videoCtrl = new ModalController('videoDemoModal');
+                        const videoPlayer = document.getElementById('demoVideoPlayer');
+                        if (videoPlayer) {
+                            videoPlayer.src = data.demoVideo;
+                            videoPlayer.play().catch(() => {});
+                        }
+                        videoCtrl.open();
+                    };
+                } else {
+                    demoBtn.hidden = true;
+                }
+            }
+
+            modalCtrl.open(btn);
         });
-
-        if (syncEdgeSectionNav()) return;
-        if (!visibleSections.size) return;
-
-        const [activeSectionId] = Array.from(visibleSections.entries()).sort(([, a], [, b]) => {
-            if (b.ratio !== a.ratio) {
-                return b.ratio - a.ratio;
-            }
-
-            return a.top - b.top;
-        })[0];
-
-        setActiveNav(activeSectionId);
-    }, {
-        rootMargin: `-${getNavHeight() + 24}px 0px -48% 0px`,
-        threshold: [0.12, 0.3, 0.55, 0.78]
-    });
-
-    sections.forEach((section) => {
-        sectionLinkObserver.observe(section);
     });
 }
 
-function initNavigation() {
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
-    const navLinks = document.querySelectorAll('.nav-link');
+/* --------------------------------------------------------------------------
+   6. Certificate Preview Modal
+   -------------------------------------------------------------------------- */
+function initCertModal() {
+    const certModalCtrl = new ModalController('certModal');
+    const certButtons = document.querySelectorAll('.btn-view-cert, .award-btn');
 
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-            const expanded = hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active', expanded);
-            hamburger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-            document.body.classList.toggle('menu-open', expanded);
+    const titleEl = document.getElementById('certModalTitle');
+    const issuerEl = document.getElementById('certModalIssuer');
+    const imgEl = document.getElementById('certModalImg');
+    const verifyBtn = document.getElementById('certModalVerifyBtn');
+
+    certButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const imageSrc = btn.getAttribute('data-cert-image') || btn.getAttribute('data-cert');
+            const certTitle = btn.getAttribute('data-cert-title') || 'Certificate of Achievement';
+            const certIssuer = btn.getAttribute('data-cert-issuer') || 'Accredited Authority';
+            const verifyUrl = btn.getAttribute('data-cert-verify');
+
+            if (titleEl) titleEl.textContent = certTitle;
+            if (issuerEl) issuerEl.textContent = certIssuer;
+
+            if (imgEl && imageSrc) {
+                // Ensure proper path
+                const resolvedPath = imageSrc.startsWith('certs/') ? imageSrc : `certs/${imageSrc}`;
+                imgEl.src = resolvedPath;
+                imgEl.alt = certTitle;
+            }
+
+            if (verifyBtn) {
+                if (verifyUrl) {
+                    verifyBtn.href = verifyUrl;
+                    verifyBtn.hidden = false;
+                } else {
+                    verifyBtn.hidden = true;
+                }
+            }
+
+            certModalCtrl.open(btn);
         });
+    });
+}
+
+/* --------------------------------------------------------------------------
+   7. Video Demo Modal
+   -------------------------------------------------------------------------- */
+function initVideoDemoModal() {
+    const videoCtrl = new ModalController('videoDemoModal');
+    const demoButtons = document.querySelectorAll('.btn-demo');
+    const videoPlayer = document.getElementById('demoVideoPlayer');
+
+    demoButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const videoSrc = btn.getAttribute('data-video');
+            const posterSrc = btn.getAttribute('data-poster');
+
+            if (videoPlayer && videoSrc) {
+                videoPlayer.src = videoSrc;
+                if (posterSrc) videoPlayer.poster = posterSrc;
+                videoPlayer.play().catch(() => {});
+            }
+
+            videoCtrl.open(btn);
+        });
+    });
+
+    // Pause video when modal closes
+    const videoModal = document.getElementById('videoDemoModal');
+    if (videoModal && videoPlayer) {
+        const observer = new MutationObserver(() => {
+            if (!videoModal.classList.contains('is-active')) {
+                videoPlayer.pause();
+                videoPlayer.currentTime = 0;
+            }
+        });
+        observer.observe(videoModal, { attributes: true, attributeFilter: ['class'] });
+    }
+}
+
+/* --------------------------------------------------------------------------
+   8. Copy Email Helper & Toast System
+   -------------------------------------------------------------------------- */
+function initCopyEmail() {
+    const copyButtons = document.querySelectorAll('.btn-copy-email');
+
+    copyButtons.forEach((btn) => {
+        btn.addEventListener('click', async () => {
+            const email = btn.getAttribute('data-email') || 'nguyenthaihai00@gmail.com';
+            try {
+                await navigator.clipboard.writeText(email);
+                showToast(`Copied ${email} to clipboard!`);
+            } catch (err) {
+                showToast(`Could not copy email automatically. Address: ${email}`);
+            }
+        });
+    });
+}
+
+function showToast(message, duration = 3000) {
+    const container = document.getElementById('toastContainer');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = 'toast toast-success';
+    toast.innerHTML = `
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--success); flex-shrink: 0;">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>${message}</span>
+    `;
+
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 200ms ease';
+        setTimeout(() => toast.remove(), 200);
+    }, duration);
+}
+
+/* --------------------------------------------------------------------------
+   9. Dynamic Year
+   -------------------------------------------------------------------------- */
+function initDynamicYear() {
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+}
+
+/* --------------------------------------------------------------------------
+   10. Scroll-Driven Stat Counter Animation
+   -------------------------------------------------------------------------- */
+function initStatCounters() {
+    const proofSection = document.querySelector('.proof-section');
+    const counters = document.querySelectorAll('.counter-val[data-target]');
+    if (!proofSection || counters.length === 0) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+        counters.forEach(counter => {
+            counter.textContent = counter.getAttribute('data-target');
+        });
+        return;
     }
 
-    navLinks.forEach((link) => {
-        link.addEventListener('click', (event) => {
-            const targetSelector = link.getAttribute('href');
-            if (!targetSelector || !targetSelector.startsWith('#')) return;
+    let hasAnimated = false;
 
-            const target = document.querySelector(targetSelector);
-            if (!target) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasAnimated) {
+                hasAnimated = true;
+                observer.unobserve(proofSection);
+                runCountUp();
+            }
+        });
+    }, { threshold: 0.25 });
 
-            event.preventDefault();
+    observer.observe(proofSection);
 
-            window.scrollTo({
-                top: target.offsetTop - getNavHeight(),
-                behavior: prefersReducedMotion ? 'auto' : 'smooth'
+    function runCountUp() {
+        const duration = 1400; // ms
+        const startTime = performance.now();
+
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease-out cubic
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const isDecimal = String(target).includes('.');
+                const currentVal = isDecimal 
+                    ? (target * easeProgress).toFixed(1) 
+                    : Math.round(target * easeProgress);
+
+                counter.textContent = currentVal;
             });
 
-            closeMobileMenu();
-        });
-    });
-
-    document.addEventListener('click', (event) => {
-        if (!navMenu || !navMenu.classList.contains('active')) return;
-        if (event.target.closest('.navbar')) return;
-        closeMobileMenu();
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && navMenu?.classList.contains('active')) {
-            closeMobileMenu();
-        }
-    });
-
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 860) {
-            closeMobileMenu();
-        }
-
-        window.clearTimeout(resizeObserverTimeout);
-        resizeObserverTimeout = window.setTimeout(() => {
-            initSectionLinkObserver();
-            syncEdgeSectionNav();
-        }, 120);
-    });
-
-    window.addEventListener('scroll', () => {
-        refreshNavbarState();
-        syncEdgeSectionNav();
-    }, { passive: true });
-
-    refreshNavbarState();
-    if (!syncEdgeSectionNav()) {
-        setActiveNav('home');
-    }
-    initSectionLinkObserver();
-}
-
-function initFooterYear() {
-    const yearElement = document.getElementById('copyright-year');
-    if (yearElement) {
-        yearElement.textContent = String(new Date().getFullYear());
-    }
-}
-
-function assignRevealTargets() {
-    const revealGroups = [
-        { selector: '.section-title', variant: 'soft' },
-        { selector: '.section-intro, .projects-intro', variant: 'soft', baseDelay: 70 },
-        { selector: '.about-lead', variant: 'soft' },
-        { selector: '.about-card', variant: 'soft', stagger: 65 },
-        { selector: '.skill-category', variant: 'soft', stagger: 55 },
-        { selector: '.experience-item-primary', variant: 'soft', stagger: 60 },
-        { selector: '.experience-item-secondary', variant: 'soft', baseDelay: 80, stagger: 45 },
-        { selector: '.project-card', variant: 'scale', stagger: 70 },
-        { selector: '.cert-card', variant: 'soft', stagger: 50 },
-        { selector: '.education-card', variant: 'soft' },
-        { selector: '.contact-content', variant: 'soft' },
-        { selector: '.footer', variant: 'soft' }
-    ];
-
-    revealGroups.forEach(({ selector, variant = 'soft', baseDelay = 0, stagger = 0 }) => {
-        document.querySelectorAll(selector).forEach((element, index) => {
-            element.classList.add('reveal');
-            element.dataset.reveal = variant;
-            element.style.setProperty('--reveal-delay', `${baseDelay + (index * stagger)}ms`);
-        });
-    });
-}
-
-function initMotionSystem() {
-    const root = document.documentElement;
-
-    assignRevealTargets();
-
-    const revealElements = document.querySelectorAll('.reveal');
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-        revealElements.forEach((element) => element.classList.add('is-visible'));
-        root.classList.add('page-ready');
-        return;
-    }
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-        });
-    }, {
-        rootMargin: '0px 0px -12% 0px',
-        threshold: 0.14
-    });
-
-    revealElements.forEach((element) => revealObserver.observe(element));
-
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            root.classList.add('page-ready');
-        });
-    });
-}
-
-function initHeroQuoteTypewriter() {
-    const quoteCode = document.querySelector('.hero-quote-code');
-    const lines = Array.from(document.querySelectorAll('.hero-quote-line'));
-    if (!quoteCode || !lines.length) {
-        return;
-    }
-
-    const lineTexts = lines.map((line) => line.getAttribute('data-text') || line.textContent || '');
-
-    if (prefersReducedMotion) {
-        quoteCode.classList.add('is-typewriter-active');
-        lines.forEach((line, index) => {
-            line.textContent = lineTexts[index];
-            line.classList.remove('is-typing');
-        });
-        return;
-    }
-
-    quoteCode.classList.add('is-typewriter-active');
-    lines.forEach((line) => {
-        line.textContent = '';
-        line.classList.remove('is-typing');
-    });
-
-    let currentLineIndex = 0;
-    let currentCharIndex = 0;
-    let timeoutId = null;
-
-    const initialDelay = 900;
-    const typeDelay = 52;
-    const spaceDelay = 20;
-    const linePause = 180;
-    const cyclePause = 1500;
-
-    const queueNextStep = (delay) => {
-        timeoutId = window.setTimeout(step, delay);
-    };
-
-    const clearTypingState = () => {
-        lines.forEach((line) => line.classList.remove('is-typing'));
-    };
-
-    const resetLines = () => {
-        clearTypingState();
-        lines.forEach((line) => {
-            line.textContent = '';
-        });
-        currentLineIndex = 0;
-        currentCharIndex = 0;
-    };
-
-    const step = () => {
-        if (prefersReducedMotion) {
-            clearTypingState();
-            lines.forEach((line, index) => {
-                line.textContent = lineTexts[index];
-            });
-            return;
-        }
-
-        if (currentLineIndex >= lines.length) {
-            queueNextStep(cyclePause);
-            currentLineIndex = -1;
-            return;
-        }
-
-        if (currentLineIndex === -1) {
-            resetLines();
-            queueNextStep(240);
-            return;
-        }
-
-        const line = lines[currentLineIndex];
-        const lineText = lineTexts[currentLineIndex];
-
-        clearTypingState();
-        line.classList.add('is-typing');
-
-        if (currentCharIndex < lineText.length) {
-            currentCharIndex += 1;
-            line.textContent = lineText.slice(0, currentCharIndex);
-            const typedCharacter = lineText[currentCharIndex - 1];
-            queueNextStep(typedCharacter === ' ' ? spaceDelay : typeDelay);
-            return;
-        }
-
-        line.classList.remove('is-typing');
-        currentLineIndex += 1;
-        currentCharIndex = 0;
-        queueNextStep(linePause);
-    };
-
-    queueNextStep(initialDelay);
-}
-
-function initGlobalModalKeyboardHandling() {
-    document.addEventListener('keydown', (event) => {
-        if (!activeModal) return;
-
-        if (event.key === 'Escape') {
-            const closeButton = activeModal.querySelector('[data-modal-close], .cert-modal-close, .project-details-close');
-            if (closeButton instanceof HTMLElement) {
-                closeButton.click();
-            }
-        }
-
-        if (event.key !== 'Tab') return;
-
-        const focusableElements = getFocusableElements(activeModal);
-        if (!focusableElements.length) {
-            event.preventDefault();
-            return;
-        }
-
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-
-        if (!activeModal.contains(document.activeElement)) {
-            event.preventDefault();
-            firstElement.focus();
-            return;
-        }
-
-        if (event.shiftKey && document.activeElement === firstElement) {
-            event.preventDefault();
-            lastElement.focus();
-        } else if (!event.shiftKey && document.activeElement === lastElement) {
-            event.preventDefault();
-            firstElement.focus();
-        }
-    });
-}
-
-function initCertificationModal() {
-    const certModal = document.getElementById('certModal');
-    const certModalClose = document.getElementById('certModalClose');
-    const certImage = document.getElementById('certImage');
-    const certVerifyLink = document.getElementById('certVerifyLink');
-    const certModalIcon = document.getElementById('certModalIcon');
-    const certModalIssuer = document.getElementById('certModalIssuer');
-    const certModalTitle = document.getElementById('certModalTitle');
-
-    if (!certModal || !certModalClose || !certImage || !certVerifyLink || !certModalIcon || !certModalIssuer || !certModalTitle) {
-        return;
-    }
-
-    function closeCertModal() {
-        certImage.removeAttribute('src');
-        certImage.alt = 'Certificate';
-        certImage.hidden = true;
-        certVerifyLink.removeAttribute('href');
-        certVerifyLink.hidden = true;
-        closeModalDialog(certModal);
-    }
-
-    document.querySelectorAll('.achievement-badge[data-cert]').forEach((badge) => {
-        const handleOpen = () => {
-            const certFile = badge.getAttribute('data-cert');
-            if (!certFile) return;
-
-            certImage.src = `certs/${certFile}`;
-            certImage.alt = badge.textContent.trim();
-            certImage.hidden = false;
-            certModalTitle.textContent = badge.textContent.trim();
-            certModalIcon.textContent = 'AWARD';
-            certModalIssuer.textContent = 'Achievement';
-            certVerifyLink.hidden = true;
-
-            openModalDialog(certModal, badge, certModalClose);
-        };
-
-        badge.addEventListener('click', handleOpen);
-    });
-
-    document.querySelectorAll('.cert-card').forEach((card) => {
-        const handleOpen = () => {
-            const certName = card.getAttribute('data-cert-name') || 'Certificate';
-            const certIcon = card.getAttribute('data-cert-icon') || 'CERT';
-            const certIssuer = card.getAttribute('data-cert-issuer') || '';
-            const certImageFile = card.getAttribute('data-cert-image');
-            const verifyUrl = normalizeExternalUrl(card.getAttribute('data-cert-verify'));
-
-            certModalTitle.textContent = certName;
-            certModalIcon.textContent = certIcon;
-            certModalIssuer.textContent = certIssuer;
-
-            if (certImageFile) {
-                certImage.src = `certs/${certImageFile}`;
-                certImage.alt = certName;
-                certImage.hidden = false;
+            if (progress < 1) {
+                requestAnimationFrame(update);
             } else {
-                certImage.removeAttribute('src');
-                certImage.alt = 'Certificate';
-                certImage.hidden = true;
+                counters.forEach(counter => {
+                    counter.textContent = counter.getAttribute('data-target');
+                });
             }
-
-            if (verifyUrl) {
-                certVerifyLink.href = verifyUrl;
-                certVerifyLink.hidden = false;
-            } else {
-                certVerifyLink.removeAttribute('href');
-                certVerifyLink.hidden = true;
-            }
-
-            openModalDialog(certModal, card, certModalClose);
-        };
-
-        card.addEventListener('click', handleOpen);
-    });
-
-    certModalClose.setAttribute('data-modal-close', 'true');
-    certModalClose.addEventListener('click', closeCertModal);
-    certModal.addEventListener('click', (event) => {
-        if (event.target === certModal) {
-            closeCertModal();
         }
-    });
+
+        requestAnimationFrame(update);
+    }
 }
 
-function initProjectCards() {
-    document.querySelectorAll('.project-card').forEach((card) => {
-        const demoButton = card.querySelector('.btn-project-demo');
-        const actions = card.querySelector('.project-actions');
 
-        if (demoButton && !demoButton.getAttribute('data-video')) {
-            demoButton.hidden = true;
-        }
 
-        if (actions) {
-            const visibleActions = Array.from(actions.children).filter((child) => !child.hidden);
-            actions.classList.toggle('project-actions-single', visibleActions.length === 1);
-        }
-    });
-}
-
-function initProjectDemoModal() {
-    const projectDemoModal = document.getElementById('projectDemoModal');
-    const projectDemoClose = document.getElementById('projectDemoClose');
-    const projectDemoVideo = document.getElementById('projectDemoVideo');
-    const projectDemoTitle = document.getElementById('projectDemoTitle');
-
-    if (!projectDemoModal || !projectDemoClose || !projectDemoVideo || !projectDemoTitle) {
-        return { openProjectDemo: () => {} };
-    }
-
-    projectDemoVideo.playsInline = true;
-    projectDemoVideo.preload = 'none';
-
-    function closeProjectDemo() {
-        projectDemoVideo.pause();
-        projectDemoVideo.removeAttribute('src');
-        projectDemoVideo.removeAttribute('poster');
-        projectDemoVideo.load();
-        closeModalDialog(projectDemoModal);
-    }
-
-    function openProjectDemo(triggerButton) {
-        if (!(triggerButton instanceof HTMLElement)) return;
-
-        const videoPath = triggerButton.getAttribute('data-video');
-        if (!videoPath) return;
-        const posterPath = triggerButton.getAttribute('data-poster');
-
-        const titleElement = triggerButton.closest('.project-card')?.querySelector('.project-title');
-        projectDemoTitle.textContent = titleElement ? titleElement.textContent : 'Project Demo';
-        if (posterPath) {
-            projectDemoVideo.poster = posterPath;
-        } else {
-            projectDemoVideo.removeAttribute('poster');
-        }
-        projectDemoVideo.src = videoPath;
-        projectDemoVideo.currentTime = 0;
-
-        openModalDialog(projectDemoModal, triggerButton, projectDemoClose);
-
-        const playAttempt = projectDemoVideo.play();
-        if (playAttempt && typeof playAttempt.catch === 'function') {
-            playAttempt.catch(() => {});
-        }
-    }
-
-    projectDemoClose.setAttribute('data-modal-close', 'true');
-    projectDemoClose.addEventListener('click', closeProjectDemo);
-    projectDemoModal.addEventListener('click', (event) => {
-        if (event.target === projectDemoModal) {
-            closeProjectDemo();
-        }
-    });
-
-    document.querySelectorAll('.btn-project-demo').forEach((button) => {
-        button.addEventListener('click', () => openProjectDemo(button));
-    });
-
-    return { openProjectDemo };
-}
-
-function initProjectDetailsModal(openProjectDemo) {
-    const projectDetailsModal = document.getElementById('projectDetailsModal');
-    const projectDetailsClose = document.getElementById('projectDetailsClose');
-    const projectDetailsCloseBtn = document.getElementById('projectDetailsCloseBtn');
-    const projectDetailsIcon = document.getElementById('projectDetailsIcon');
-    const projectDetailsTitle = document.getElementById('projectDetailsTitle');
-    const projectDetailsSummary = document.getElementById('projectDetailsSummary');
-    const projectDetailsFeatures = document.getElementById('projectDetailsFeatures');
-    const projectDetailsTags = document.getElementById('projectDetailsTags');
-    const projectDetailsWatchDemo = document.getElementById('projectDetailsWatchDemo');
-
-    if (!projectDetailsModal || !projectDetailsClose || !projectDetailsCloseBtn || !projectDetailsIcon || !projectDetailsTitle || !projectDetailsSummary || !projectDetailsFeatures || !projectDetailsTags || !projectDetailsWatchDemo) {
-        return;
-    }
-
-    function closeProjectDetails(options = {}) {
-        closeModalDialog(projectDetailsModal, options);
-    }
-
-    projectDetailsClose.setAttribute('data-modal-close', 'true');
-    projectDetailsClose.addEventListener('click', () => closeProjectDetails());
-    projectDetailsCloseBtn.addEventListener('click', () => closeProjectDetails());
-
-    projectDetailsModal.addEventListener('click', (event) => {
-        if (event.target === projectDetailsModal) {
-            closeProjectDetails();
-        }
-    });
-
-    document.querySelectorAll('.btn-project-details').forEach((button) => {
-        button.addEventListener('click', () => {
-            const projectKey = button.getAttribute('data-project');
-            const project = projectKey ? projectsData[projectKey] : null;
-            if (!project) return;
-
-            projectDetailsIcon.textContent = project.icon;
-            projectDetailsTitle.textContent = project.title;
-            projectDetailsSummary.textContent = project.description;
-            projectDetailsFeatures.innerHTML = project.features.map((feature) => `<li>${feature}</li>`).join('');
-            projectDetailsTags.innerHTML = project.tags.map((tag) => `<span class="tech-tag">${tag}</span>`).join('');
-
-            if (project.video) {
-                projectDetailsWatchDemo.hidden = false;
-                projectDetailsWatchDemo.onclick = () => {
-                    closeProjectDetails({ returnFocus: false });
-                    const demoButton = document.querySelector(`.btn-project-demo[data-demo="${projectKey}"]`);
-                    if (demoButton) {
-                        openProjectDemo(demoButton);
-                    }
-                };
-            } else {
-                projectDetailsWatchDemo.hidden = true;
-                projectDetailsWatchDemo.onclick = null;
-            }
-
-            openModalDialog(projectDetailsModal, button, projectDetailsClose);
-        });
-    });
-}
-
-function initThemeToggle() {
-    const themeToggleBtn = document.getElementById('themeToggle');
-    const sunIcon = document.querySelector('.sun-icon');
-    const moonIcon = document.querySelector('.moon-icon');
-    if (!themeToggleBtn || !sunIcon || !moonIcon) return;
-
-    const applyTheme = (theme) => {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        const isDark = theme === 'dark';
-        sunIcon.toggleAttribute('hidden', !isDark);
-        moonIcon.toggleAttribute('hidden', isDark);
-        themeToggleBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#08090A' : '#FAFAF8');
-    };
-
-    const storedTheme = localStorage.getItem('theme');
-    const currentTheme = storedTheme || document.documentElement.getAttribute('data-theme') || 'dark';
-    applyTheme(currentTheme);
-
-    themeToggleBtn.addEventListener('click', () => {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        applyTheme(isDark ? 'light' : 'dark');
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    initThemeToggle();
-    initFooterYear();
-    initMotionSystem();
-    initHeroQuoteTypewriter();
-    initNavigation();
-    initGlobalModalKeyboardHandling();
-    initCertificationModal();
-    initProjectCards();
-    const { openProjectDemo } = initProjectDemoModal();
-    initProjectDetailsModal(openProjectDemo);
-});
