@@ -1895,6 +1895,9 @@ body {
 }
 
 .skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-size: 13px;
   font-weight: 500;
   padding: 5px 12px;
@@ -1905,6 +1908,26 @@ body {
   transition: all var(--transition-fast);
   cursor: pointer;
   user-select: none;
+}
+
+.skill-tag-icon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: var(--accent);
+  opacity: 0.85;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.skill-tag:hover .skill-tag-icon,
+.skill-tag:focus-visible .skill-tag-icon {
+  color: var(--primary);
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+[data-theme="light"] .skill-tag-icon {
+  color: var(--primary);
 }
 
 .skill-tag:hover,
