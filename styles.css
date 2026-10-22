@@ -183,10 +183,9 @@ body,
 .project-card,
 .skill-group-card,
 .cert-card,
-.edu-card,
+.education-card,
 .contact-card,
 .modal-box,
-.status-pill,
 .badge,
 .btn,
 .tech-tag {
@@ -392,31 +391,6 @@ code, pre {
   background: var(--accent-soft);
   color: var(--accent);
   border-color: var(--accent-border);
-}
-
-/* Status Pill in Hero */
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-secondary);
-  box-shadow: var(--shadow-xs);
-  margin-bottom: var(--space-4);
-}
-
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--success);
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-  animation: pulseAnimation 2s infinite;
 }
 
 @keyframes pulseAnimation {
@@ -685,11 +659,6 @@ code, pre {
   color: var(--accent);
 }
 
-.mobile-cta {
-  margin-top: var(--space-3);
-  width: 100%;
-}
-
 /* --------------------------------------------------------------------------
    5. Hero Section
    -------------------------------------------------------------------------- */
@@ -822,6 +791,9 @@ code, pre {
   height: 6px;
   border-radius: 50%;
   background: var(--success);
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseAnimation 2s infinite;
+  flex-shrink: 0;
 }
 
 /* Tabs */
@@ -1572,27 +1544,6 @@ code, pre {
   flex-grow: 1;
 }
 
-.project-story {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  margin-bottom: var(--space-5);
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  flex-grow: 1;
-}
-
-.story-row {
-  margin: 0;
-}
-
-.story-tag {
-  color: var(--text-primary);
-  font-weight: 700;
-  margin-right: 4px;
-}
-
 .project-highlights {
   display: flex;
   flex-direction: column;
@@ -1640,11 +1591,6 @@ code, pre {
   align-items: center;
   gap: var(--space-2);
   margin-top: auto;
-}
-
-.btn-demo svg {
-  width: 14px;
-  height: 14px;
 }
 
 /* --------------------------------------------------------------------------
@@ -2111,10 +2057,6 @@ code, pre {
   max-width: 760px;
 }
 
-.modal-box-video {
-  max-width: 840px;
-}
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -2245,17 +2187,6 @@ code, pre {
   max-width: 100%;
   max-height: 65vh;
   object-fit: contain;
-}
-
-.video-modal-body {
-  padding: 0;
-  background: #000000;
-}
-
-.demo-video-element {
-  width: 100%;
-  max-height: 70vh;
-  display: block;
 }
 
 .modal-footer {
@@ -2450,7 +2381,7 @@ code, pre {
     scroll-behavior: auto !important;
   }
 
-  .pulse-dot,
+  .live-dot,
   .pulse-packet {
     animation: none !important;
   }

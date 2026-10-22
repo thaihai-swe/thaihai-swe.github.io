@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initStatCounters();
     initProjectsModal();
     initCertModal();
-    initVideoDemoModal();
     initCopyEmail();
     initDynamicYear();
 });
@@ -129,10 +128,8 @@ function initNavigation() {
             const href = link.getAttribute('href');
             if (href === `#${sectionId}`) {
                 link.classList.add('is-active');
-                link.classList.add('active');
             } else {
                 link.classList.remove('is-active');
-                link.classList.remove('active');
             }
         });
     }
@@ -243,8 +240,7 @@ const projectsData = {
         ],
         tags: ['AI Agents', 'Spec-Driven Dev', 'Bounded Context', 'Python CLI', 'Session Auto-Delta', 'Verification Gates', 'Repo Memory'],
         productUrl: 'https://thaihai-swe.github.io/corebase-specharness/',
-        githubUrl: 'https://github.com/thaihai-swe/corebase-specharness',
-        demoVideo: null
+        githubUrl: 'https://github.com/thaihai-swe/corebase-specharness'
     },
     'dictionary-extension': {
         icon: 'DIC',
@@ -259,8 +255,7 @@ const projectsData = {
         ],
         tags: ['Chrome Extension', 'Manifest V3', 'Service Worker', 'Dictionary APIs', 'Neural Translation', 'Contextual AI', 'Zero Dependencies'],
         productUrl: 'https://thaihai-swe.github.io/dictionary-extension/',
-        githubUrl: 'https://github.com/thaihai-swe/dictionary-extension',
-        demoVideo: null
+        githubUrl: 'https://github.com/thaihai-swe/dictionary-extension'
     },
     'ai-summarizer-extension': {
         icon: 'EXT',
@@ -275,8 +270,7 @@ const projectsData = {
         ],
         tags: ['Chrome Extension', 'Service Worker', 'Local-First AI', 'Gemini / OpenAI', 'Ollama / LM Studio', 'Streaming', 'Prompt Architecture'],
         productUrl: 'https://thaihai-swe.github.io/summarizer-extension/',
-        githubUrl: 'https://github.com/thaihai-swe/summarizer-extension',
-        demoVideo: null
+        githubUrl: 'https://github.com/thaihai-swe/summarizer-extension'
     }
 };
 
@@ -291,7 +285,6 @@ function initProjectsModal() {
     const tagsEl = document.getElementById('projectDetailsTags');
     const productLink = document.getElementById('projectDetailsProductLink');
     const githubLink = document.getElementById('projectDetailsGithubLink');
-    const demoBtn = document.getElementById('projectDetailsDemoBtn');
 
     detailButtons.forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -340,24 +333,6 @@ function initProjectsModal() {
                     githubLink.hidden = false;
                 } else {
                     githubLink.hidden = true;
-                }
-            }
-
-            if (demoBtn) {
-                if (data.demoVideo) {
-                    demoBtn.hidden = false;
-                    demoBtn.onclick = () => {
-                        modalCtrl.close();
-                        const videoCtrl = new ModalController('videoDemoModal');
-                        const videoPlayer = document.getElementById('demoVideoPlayer');
-                        if (videoPlayer) {
-                            videoPlayer.src = data.demoVideo;
-                            videoPlayer.play().catch(() => {});
-                        }
-                        videoCtrl.open();
-                    };
-                } else {
-                    demoBtn.hidden = true;
                 }
             }
 
@@ -410,43 +385,7 @@ function initCertModal() {
 }
 
 /* --------------------------------------------------------------------------
-   7. Video Demo Modal
-   -------------------------------------------------------------------------- */
-function initVideoDemoModal() {
-    const videoCtrl = new ModalController('videoDemoModal');
-    const demoButtons = document.querySelectorAll('.btn-demo');
-    const videoPlayer = document.getElementById('demoVideoPlayer');
-
-    demoButtons.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const videoSrc = btn.getAttribute('data-video');
-            const posterSrc = btn.getAttribute('data-poster');
-
-            if (videoPlayer && videoSrc) {
-                videoPlayer.src = videoSrc;
-                if (posterSrc) videoPlayer.poster = posterSrc;
-                videoPlayer.play().catch(() => {});
-            }
-
-            videoCtrl.open(btn);
-        });
-    });
-
-    // Pause video when modal closes
-    const videoModal = document.getElementById('videoDemoModal');
-    if (videoModal && videoPlayer) {
-        const observer = new MutationObserver(() => {
-            if (!videoModal.classList.contains('is-active')) {
-                videoPlayer.pause();
-                videoPlayer.currentTime = 0;
-            }
-        });
-        observer.observe(videoModal, { attributes: true, attributeFilter: ['class'] });
-    }
-}
-
-/* --------------------------------------------------------------------------
-   8. Copy Email Helper & Toast System
+   7. Copy Email Helper & Toast System
    -------------------------------------------------------------------------- */
 function initCopyEmail() {
     const copyButtons = document.querySelectorAll('.btn-copy-email');
@@ -487,7 +426,7 @@ function showToast(message, duration = 3000) {
 }
 
 /* --------------------------------------------------------------------------
-   9. Dynamic Year
+   8. Dynamic Year
    -------------------------------------------------------------------------- */
 function initDynamicYear() {
     const yearEl = document.getElementById('currentYear');
@@ -497,7 +436,7 @@ function initDynamicYear() {
 }
 
 /* --------------------------------------------------------------------------
-   10. Scroll-Driven Stat Counter Animation
+   9. Scroll-Driven Stat Counter Animation
    -------------------------------------------------------------------------- */
 function initStatCounters() {
     const proofSection = document.querySelector('.proof-section');

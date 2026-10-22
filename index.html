@@ -19,6 +19,17 @@
     <meta property="og:description"
         content="Senior back-end engineer &amp; technical architect. Designing mission-critical financial platforms at IRAS, event sourcing systems, and developer-first AI tools.">
 
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://thaihai-swe.github.io/">
+    <meta name="twitter:title" content="Hai Nguyen Thai | Senior Software Engineer &amp; Distributed Systems Lead">
+    <meta name="twitter:description"
+        content="Senior back-end engineer &amp; technical architect. Designing mission-critical financial platforms at IRAS, event sourcing systems, and developer-first AI tools.">
+
+    <!-- Canonical & Favicon -->
+    <link rel="canonical" href="https://thaihai-swe.github.io/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
     <title>Hai Nguyen Thai | Senior Software Engineer &amp; Distributed Systems Lead</title>
 
     <!-- Google Fonts: Inter & JetBrains Mono -->
@@ -27,6 +38,21 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Prevent Theme Flashing (FOUC) -->
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('hai-theme-preference');
+                var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark');
+                document.documentElement.setAttribute('data-theme', theme);
+                var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+                if (metaThemeColor) {
+                    metaThemeColor.setAttribute('content', theme === 'dark' ? '#080C14' : '#F8FAFC');
+                }
+            } catch (e) { }
+        })();
+    </script>
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -383,7 +409,7 @@
                             <div class="about-card-header">
                                 <span class="about-card-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <rect x="5" y="6" width="14" height="12" rx="2"></rect>
                                         <path d="M9 10h6"></path>
                                         <path d="M9 14h3"></path>
@@ -399,7 +425,7 @@
                             <div class="about-card-header">
                                 <span class="about-card-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <path d="M4.5 8 12 4l7.5 4-7.5 4-7.5-4Z"></path>
                                         <path d="M7.5 10.5V15"></path>
                                         <path d="M16.5 10.5V15"></path>
@@ -416,7 +442,7 @@
                             <div class="about-card-header">
                                 <span class="about-card-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <path d="M12 5v7l4 2"></path>
                                         <circle cx="12" cy="12" r="7"></circle>
                                     </svg>
@@ -431,7 +457,7 @@
                             <div class="about-card-header">
                                 <span class="about-card-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <path d="M9 18h6"></path>
                                         <path d="M10 14h4"></path>
                                         <path
@@ -449,7 +475,7 @@
                             <div class="about-card-header">
                                 <span class="about-card-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <path d="M6 7h12v8H9l-3 3V7Z"></path>
                                         <path d="M9 10h6"></path>
                                         <path d="M9 13h4"></path>
@@ -465,7 +491,7 @@
                             <div class="about-card-header">
                                 <span class="about-card-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <path d="M6 16 16 6"></path>
                                         <path d="M9 6h7v7"></path>
                                         <path d="M6 19h12"></path>
@@ -489,7 +515,7 @@
                             <article class="pillar-card">
                                 <div class="pillar-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <path d="M12 2v20"></path>
                                         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                                     </svg>
@@ -507,7 +533,7 @@
                             <article class="pillar-card">
                                 <div class="pillar-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <circle cx="12" cy="12" r="10"></circle>
                                         <polyline points="12 6 12 12 16 14"></polyline>
                                     </svg>
@@ -525,7 +551,7 @@
                             <article class="pillar-card">
                                 <div class="pillar-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                         <circle cx="9" cy="7" r="4"></circle>
                                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -545,7 +571,7 @@
                             <article class="pillar-card">
                                 <div class="pillar-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                                     </svg>
                                 </div>
@@ -791,7 +817,7 @@
                         <div class="project-top">
                             <div class="project-icon-badge" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                                     <polyline points="2 17 12 22 22 17"></polyline>
                                     <polyline points="2 12 12 17 22 12"></polyline>
@@ -859,7 +885,7 @@
                         <div class="project-top">
                             <div class="project-icon-badge" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                                     <path d="M8 7h8"></path>
@@ -928,7 +954,7 @@
                         <div class="project-top">
                             <div class="project-icon-badge" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                     <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -1015,7 +1041,7 @@
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <circle cx="6" cy="6" r="2"></circle>
                                     <circle cx="18" cy="6" r="2"></circle>
                                     <circle cx="12" cy="18" r="2"></circle>
@@ -1043,7 +1069,7 @@
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <polyline points="16 18 22 12 16 6"></polyline>
                                     <polyline points="8 6 2 12 8 18"></polyline>
                                 </svg>
@@ -1066,7 +1092,7 @@
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path
                                         d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
                                     </path>
@@ -1091,7 +1117,7 @@
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                                     <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
                                     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
@@ -1115,7 +1141,7 @@
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
                                 </svg>
                             </div>
@@ -1136,7 +1162,7 @@
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                                     <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                                 </svg>
@@ -1174,7 +1200,7 @@
                         <div class="cert-header">
                             <div class="cert-icon-wrap" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path d="M7.5 18h9a3.5 3.5 0 0 0 .4-7A5 5 0 0 0 7.5 9.5 3.5 3.5 0 0 0 7.5 18Z">
                                     </path>
                                 </svg>
@@ -1203,7 +1229,7 @@
                         <div class="cert-header">
                             <div class="cert-icon-wrap" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <ellipse cx="12" cy="6.5" rx="6.5" ry="2.5"></ellipse>
                                     <path d="M5.5 6.5v10c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-10"></path>
                                     <path d="M5.5 11.5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5"></path>
@@ -1232,7 +1258,7 @@
                         <div class="cert-header">
                             <div class="cert-icon-wrap" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <rect x="3" y="3" width="7" height="7" rx="1"></rect>
                                     <rect x="14" y="3" width="7" height="7" rx="1"></rect>
                                     <rect x="3" y="14" width="7" height="7" rx="1"></rect>
@@ -1262,7 +1288,7 @@
                         <div class="cert-header">
                             <div class="cert-icon-wrap" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path d="M12 3v3"></path>
                                     <path d="M12 18v3"></path>
                                     <path d="M3 12h3"></path>
@@ -1302,7 +1328,7 @@
                 <div class="education-card">
                     <div class="edu-icon-wrapper" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                            stroke-linecap="round" stroke-linejoin="round">
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M4.5 8 12 4l7.5 4-7.5 4-7.5-4Z"></path>
                             <path d="M7.5 10.5V15"></path>
                             <path d="M16.5 10.5V15"></path>
@@ -1355,7 +1381,7 @@
                         <div class="contact-card">
                             <div class="contact-card-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path
                                         d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
                                     </path>
@@ -1388,7 +1414,7 @@
                         <div class="contact-card">
                             <div class="contact-card-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path
                                         d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
                                     </path>
@@ -1415,7 +1441,7 @@
                         <div class="contact-card">
                             <div class="contact-card-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path
                                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
                                     </path>
@@ -1478,7 +1504,7 @@
                 </div>
             </div>
             <div class="modal-body cert-modal-body">
-                <img id="certModalImg" alt="Certificate Preview" class="cert-modal-image">
+                <img id="certModalImg" alt="Certificate Preview" class="cert-modal-image" loading="lazy" decoding="async">
             </div>
             <div class="modal-footer">
                 <a id="certModalVerifyBtn" target="_blank" rel="noopener noreferrer" class="btn btn-primary" hidden>
@@ -1527,39 +1553,7 @@
                     hidden>
                     View on GitHub
                 </a>
-                <button id="projectDetailsDemoBtn" type="button" class="btn btn-accent" hidden>
-                    Watch Demo Video
-                </button>
                 <button type="button" class="btn btn-ghost modal-cancel-btn">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL 3: Video Demo Modal -->
-    <div id="videoDemoModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="videoDemoTitle"
-        aria-hidden="true">
-        <div class="modal-overlay" tabindex="-1"></div>
-        <div class="modal-box modal-box-video">
-            <button class="modal-close-btn" type="button" aria-label="Close modal" id="videoDemoClose">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" aria-hidden="true">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            <div class="modal-header">
-                <div>
-                    <h3 id="videoDemoTitle" class="modal-title">Project Demonstration</h3>
-                    <p class="modal-subtitle">Press Escape or click outside to exit preview.</p>
-                </div>
-            </div>
-            <div class="modal-body video-modal-body">
-                <video id="demoVideoPlayer" controls playsinline preload="none" class="demo-video-element">
-                    Your browser does not support HTML5 video.
-                </video>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary modal-cancel-btn">Close Preview</button>
             </div>
         </div>
     </div>
