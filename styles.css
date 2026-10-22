@@ -2018,13 +2018,6 @@ body {
   outline: none;
 }
 
-.skill-tag.is-primary {
-  background: var(--badge-bg);
-  border-color: var(--badge-border);
-  color: var(--badge-text);
-  font-weight: 600;
-}
-
 /* --------------------------------------------------------------------------
    11. Certifications & Accreditations
    -------------------------------------------------------------------------- */
