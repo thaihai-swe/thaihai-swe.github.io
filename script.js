@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initHeroVisualizer();
     initStatCounters();
-    initProjectFilters();
     initProjectsModal();
     initCertModal();
     initCommandPalette();
@@ -147,7 +146,6 @@ function initNavigation() {
 function initHeroVisualizer() {
     const tabs = document.querySelectorAll('.panel-tab');
     const tabPanels = document.querySelectorAll('.tab-content');
-    const copyPayloadBtn = document.getElementById('copyEventPayloadBtn');
     const pipelineNodes = document.querySelectorAll('.pipeline-node');
 
     // Tab switching
@@ -170,28 +168,6 @@ function initHeroVisualizer() {
             }
         });
     });
-
-    // Copy Event Payload button
-    if (copyPayloadBtn) {
-        copyPayloadBtn.addEventListener('click', async () => {
-            const payload = `{
-  "eventId": "evt_iras_884920419",
-  "type": "TaxCollectionBatchProcessedEvent",
-  "partner": "DBS_BANK_SG",
-  "records": 2450000,
-  "status": "RECONCILED",
-  "auditIntegrity": true,
-  "reconciledAt": "2026-10-22T21:00:00Z",
-  "dataLossRatio": 0.0000
-}`;
-            try {
-                await navigator.clipboard.writeText(payload);
-                showToast('Event payload copied to clipboard!');
-            } catch (err) {
-                showToast('Failed to copy payload automatically.');
-            }
-        });
-    }
 
     // Pipeline node click feedback
     pipelineNodes.forEach((node) => {
@@ -266,40 +242,8 @@ function initStatCounters() {
     }
 }
 
-
-
 /* --------------------------------------------------------------------------
-   5. Project Category Filtering
-   -------------------------------------------------------------------------- */
-function initProjectFilters() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const filter = btn.getAttribute('data-filter');
-
-            filterBtns.forEach((b) => {
-                b.classList.remove('is-active');
-                b.setAttribute('aria-selected', 'false');
-            });
-            btn.classList.add('is-active');
-            btn.setAttribute('aria-selected', 'true');
-
-            projectCards.forEach((card) => {
-                const category = card.getAttribute('data-category');
-                if (filter === 'all' || category === filter) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-}
-
-/* --------------------------------------------------------------------------
-   6. Universal Modal Controller
+   5. Universal Modal Controller
    -------------------------------------------------------------------------- */
 class ModalController {
     constructor(modalId) {
@@ -675,6 +619,18 @@ function initCopyEmail() {
             try {
                 await navigator.clipboard.writeText(email);
                 showToast(`Copied ${email} to clipboard!`);
+                const origHTML = btn.innerHTML;
+                btn.classList.add('is-copied');
+                btn.innerHTML = `
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Copied!</span>
+                `;
+                setTimeout(() => {
+                    btn.classList.remove('is-copied');
+                    btn.innerHTML = origHTML;
+                }, 1800);
             } catch (err) {
                 showToast(`Could not copy email automatically. Address: ${email}`);
             }

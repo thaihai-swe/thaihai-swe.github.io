@@ -305,23 +305,18 @@
 
                         <!-- Tab Triggers -->
                         <div class="panel-tabs" role="tablist" aria-label="System Architecture Visualizer Tabs">
-                            <button class="panel-tab" id="tabDailyLoopBtn" role="tab" aria-selected="false"
-                                aria-controls="tabDailyLoop" type="button">
-                                Daily Loop
-                            </button>
                             <button class="panel-tab is-active" id="tabArchitectureBtn" role="tab" aria-selected="true"
                                 aria-controls="tabArchitecture" type="button">
                                 Architecture Flow
-                            </button>
-                            <button class="panel-tab" id="tabLedgerBtn" role="tab" aria-selected="false"
-                                aria-controls="tabLedger" type="button">
-                                Event Ledger
                             </button>
                             <button class="panel-tab" id="tabMetricsBtn" role="tab" aria-selected="false"
                                 aria-controls="tabMetrics" type="button">
                                 Live Telemetry
                             </button>
-
+                            <button class="panel-tab" id="tabDailyLoopBtn" role="tab" aria-selected="false"
+                                aria-controls="tabDailyLoop" type="button">
+                                Daily Loop
+                            </button>
                         </div>
 
                         <!-- Tab 1: Architecture Pipeline -->
@@ -381,30 +376,7 @@
                             </div>
                         </div>
 
-                        <!-- Tab 2: Event Ledger Preview -->
-                        <div class="panel-body tab-content" id="tabLedger" role="tabpanel"
-                            aria-labelledby="tabLedgerBtn">
-                            <div class="code-preview-wrapper">
-                                <div class="code-toolbar">
-                                    <span class="code-lang">JSON &middot; IMMUTABLE EVENT</span>
-                                    <button class="btn-copy-code" type="button" aria-label="Copy event payload"
-                                        id="copyEventPayloadBtn">Copy</button>
-                                </div>
-                                <pre class="code-preview"><code><span class="c-comment">// Immutable Event Sourcing Log Stream</span>
-{
-  <span class="c-key">"eventId"</span>: <span class="c-str">"evt_iras_884920419"</span>,
-  <span class="c-key">"type"</span>: <span class="c-str">"TaxCollectionBatchProcessedEvent"</span>,
-  <span class="c-key">"partner"</span>: <span class="c-str">"DBS_BANK_SG"</span>,
-  <span class="c-key">"records"</span>: <span class="c-num">2450000</span>,
-  <span class="c-key">"status"</span>: <span class="c-str">"RECONCILED"</span>,
-  <span class="c-key">"auditIntegrity"</span>: <span class="c-bool">true</span>,
-  <span class="c-key">"reconciledAt"</span>: <span class="c-str">"2026-10-22T21:00:00Z"</span>,
-  <span class="c-key">"dataLossRatio"</span>: <span class="c-num">0.0000</span>
-}</code></pre>
-                            </div>
-                        </div>
-
-                        <!-- Tab 3: Live Telemetry -->
+                        <!-- Tab 2: Live Telemetry -->
                         <div class="panel-body tab-content" id="tabMetrics" role="tabpanel"
                             aria-labelledby="tabMetricsBtn">
                             <div class="telemetry-grid">
@@ -936,19 +908,9 @@
                     </p>
                 </div>
 
-                <!-- Category Filter Pills -->
-                <div class="project-filters" role="tablist" aria-label="Filter Projects">
-                    <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true"
-                        type="button">All Work (3)</button>
-                    <button class="filter-btn" data-filter="ai-agents" role="tab" aria-selected="false"
-                        type="button">Applied AI &amp; Agents</button>
-                    <button class="filter-btn" data-filter="extensions" role="tab" aria-selected="false"
-                        type="button">Chrome Extensions &amp; Tools</button>
-                </div>
-
                 <div class="projects-grid" id="projectsGrid">
                     <!-- Project 1: CoreBase SpecHarness -->
-                    <article class="project-card" data-category="ai-agents">
+                    <article class="project-card">
                         <div class="project-top">
                             <div class="project-icon-badge" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
@@ -957,10 +919,6 @@
                                     <polyline points="2 17 12 22 22 17"></polyline>
                                     <polyline points="2 12 12 17 22 12"></polyline>
                                 </svg>
-                            </div>
-                            <div class="project-meta">
-                                <span class="badge badge-accent">Skills-First AI</span>
-                                <span class="badge">Open Source</span>
                             </div>
                         </div>
 
@@ -1016,7 +974,7 @@
                     </article>
 
                     <!-- Project 2: Dictionary Chrome Extension -->
-                    <article class="project-card" data-category="extensions">
+                    <article class="project-card">
                         <div class="project-top">
                             <div class="project-icon-badge" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
@@ -1026,10 +984,6 @@
                                     <path d="M8 7h8"></path>
                                     <path d="M8 11h6"></path>
                                 </svg>
-                            </div>
-                            <div class="project-meta">
-                                <span class="badge badge-accent">Manifest V3</span>
-                                <span class="badge">Zero Dependencies</span>
                             </div>
                         </div>
 
@@ -1085,7 +1039,7 @@
                     </article>
 
                     <!-- Project 3: AI Summarizer Extension -->
-                    <article class="project-card" data-category="extensions">
+                    <article class="project-card">
                         <div class="project-top">
                             <div class="project-icon-badge" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
@@ -1096,10 +1050,6 @@
                                     <line x1="16" y1="17" x2="8" y2="17"></line>
                                     <polyline points="10 9 9 9 8 9"></polyline>
                                 </svg>
-                            </div>
-                            <div class="project-meta">
-                                <span class="badge badge-accent">Local-First AI</span>
-                                <span class="badge">Streaming</span>
                             </div>
                         </div>
 
@@ -1496,6 +1446,10 @@
             <div class="container">
                 <div class="contact-box">
                     <div class="contact-header text-center">
+                        <div class="contact-location-badge" aria-label="Current Location and Availability">
+                            <span class="status-dot status-dot-emerald"></span>
+                            <span>Based in Singapore (SGT / UTC+8) &middot; Open to Lead &amp; Staff Backend / Applied AI Roles</span>
+                        </div>
                         <span class="section-kicker">GET IN TOUCH</span>
                         <h2 class="contact-title">
                             Looking for backend platform leadership with an <span class="gradient-text">applied AI
