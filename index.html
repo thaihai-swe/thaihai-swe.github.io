@@ -9,7 +9,7 @@
     <meta name="keywords"
         content="Hai Nguyen Thai, Senior Software Engineer, Distributed Systems, Event Sourcing, CQRS, DDD, Kafka, .NET Core, AWS, IRAS, Applied AI, Singapore">
     <meta name="author" content="Hai Nguyen Thai">
-    <meta name="theme-color" content="#080C14">
+    <meta name="theme-color" content="#070A11">
     <meta name="color-scheme" content="dark light">
 
     <!-- Open Graph / Social Media -->
@@ -32,7 +32,7 @@
 
     <title>Hai Nguyen Thai | Senior Software Engineer &amp; Distributed Systems Lead</title>
 
-    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <!-- Google Fonts: Inter & JetBrains Mono with System Resilient Fallbacks -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -44,11 +44,11 @@
         (function () {
             try {
                 var savedTheme = localStorage.getItem('hai-theme-preference');
-                var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark');
+                var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
                 document.documentElement.setAttribute('data-theme', theme);
                 var metaThemeColor = document.querySelector('meta[name="theme-color"]');
                 if (metaThemeColor) {
-                    metaThemeColor.setAttribute('content', theme === 'dark' ? '#080C14' : '#F8FAFC');
+                    metaThemeColor.setAttribute('content', theme === 'dark' ? '#070A11' : '#F8FAFC');
                 }
             } catch (e) { }
         })();
@@ -62,96 +62,168 @@
     <!-- Skip Link for Accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Top Navigation -->
+    <!-- Background Ambient Glow & Mesh -->
+    <div class="bg-glow" aria-hidden="true"></div>
+    <div class="bg-grid-pattern" aria-hidden="true"></div>
+
+    <!-- Top Navigation Header -->
     <header class="navbar" id="navbar" role="banner">
         <div class="nav-container">
             <a href="#home" class="nav-brand" aria-label="Hai Nguyen Thai — Home">
-                <span class="brand-badge" aria-hidden="true">HN</span>
-                <div class="brand-text">
+                <span class="brand-avatar" id="brandAvatar" aria-hidden="true">
+                    <!-- Live Availability / Operational Status Dot -->
+                    <span class="avatar-status-dot" aria-hidden="true"></span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                        stroke-linecap="round" stroke-linejoin="round" class="brand-avatar-svg" aria-hidden="true">
+                        <!-- Boy's Hair: Volume, crown tuft & front swoop (Ref 1 & 2) -->
+                        <path d="M6 8c-.3-4.2 2.5-6 6-6s6.3 1.8 6 6" stroke-width="1.85"></path>
+                        <path d="M12.8 2.2c.6-.9 1.5-.8 2 0" stroke-width="1.6"></path>
+                        <path d="M6 7.5c1.8-1 3.5-.8 5 .2 2 1.2 4.2-.6 6.8.6" stroke-width="1.75"></path>
+                        <!-- Jawline & Face contour -->
+                        <path d="M7.2 8.5v2a4.8 4.8 0 0 0 9.6 0v-2" stroke-width="1.85"></path>
+                        <!-- Left & Right Ears -->
+                        <path d="M6.8 9.2a1.2 1.2 0 0 0 0 2" stroke-width="1.6"></path>
+                        <path d="M17.2 9.2a1.2 1.2 0 0 1 0 2" stroke-width="1.6"></path>
+                        <!-- Focused Eyes & Friendly Smile -->
+                        <circle cx="9.5" cy="9.6" r="0.85" fill="#FFFFFF" stroke="none"></circle>
+                        <circle cx="14.5" cy="9.6" r="0.85" fill="#FFFFFF" stroke="none"></circle>
+                        <path d="M11 12.3a1.4 1.4 0 0 0 2 0" stroke-width="1.4"></path>
+                        <!-- Neck & Crewneck T-shirt Collar -->
+                        <path d="M10.2 13.5v1.3" stroke-width="1.4"></path>
+                        <path d="M13.8 13.5v1.3" stroke-width="1.4"></path>
+                        <path d="M10 14.8a2 2 0 0 0 4 0" stroke-width="1.6"></path>
+                        <!-- Torso & Shoulders -->
+                        <path d="M4.5 21.5c.2-3.8 2.5-6.2 5.5-6.8" stroke-width="1.8"></path>
+                        <path d="M19.5 21.5c-.2-3.8-2.5-6.2-5.5-6.8" stroke-width="1.8"></path>
+                        <!-- Laptop in foreground -->
+                        <rect x="6" y="15.8" width="12" height="5.7" rx="1.3" fill="rgba(8,12,20,0.35)" stroke="#FFFFFF" stroke-width="1.8"></rect>
+                        <circle cx="12" cy="18.6" r="0.9" fill="#FFFFFF" stroke="none"></circle>
+                        <!-- Grounding Laptop Base -->
+                        <line x1="4.2" y1="21.5" x2="19.8" y2="21.5" stroke-width="2.2"></line>
+                    </svg>
+                </span>
+                <div class="brand-info">
                     <span class="brand-name">Hai Nguyen Thai</span>
-                    <span class="brand-role">Distributed Systems · AI</span>
                 </div>
             </a>
 
-            <!-- Capsule Pill Navigation Menu -->
-            <ul class="nav-menu" id="navMenu" role="menubar" aria-label="Main Navigation">
-                <li class="nav-item" role="none"><a href="#home" class="nav-link is-active" role="menuitem">Home</a>
-                </li>
-                <li class="nav-item" role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
-                <li class="nav-item" role="none"><a href="#experience" class="nav-link" role="menuitem">Experience</a>
-                </li>
-                <li class="nav-item" role="none"><a href="#projects" class="nav-link" role="menuitem">Work</a></li>
-                <li class="nav-item" role="none"><a href="#skills" class="nav-link" role="menuitem">Skills</a></li>
-                <li class="nav-item" role="none"><a href="#certifications" class="nav-link" role="menuitem">Certs</a>
-                </li>
-                <li class="nav-item" role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
-                <li class="nav-item" role="none">
-                    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light theme"
-                        title="Toggle color theme">
-                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </button>
-                </li>
-            </ul>
+            <!-- Desktop Navigation Menu -->
+            <nav class="nav-menu-wrapper" aria-label="Main Navigation">
+                <ul class="nav-menu" id="navMenu" role="menubar">
+                    <li class="nav-item" role="none"><a href="#home" class="nav-link is-active" role="menuitem">Home</a>
+                    </li>
+                    <li class="nav-item" role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+                    <li class="nav-item" role="none"><a href="#experience" class="nav-link"
+                            role="menuitem">Experience</a></li>
+                    <li class="nav-item" role="none"><a href="#projects" class="nav-link" role="menuitem">Work</a></li>
+                    <li class="nav-item" role="none"><a href="#skills" class="nav-link" role="menuitem">Skills</a></li>
+                    <li class="nav-item" role="none"><a href="#certifications" class="nav-link"
+                            role="menuitem">Certs</a></li>
+                    <li class="nav-item" role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a>
+                    </li>
+                </ul>
+            </nav>
 
-            <!-- Hamburger Button for Mobile -->
-            <button class="hamburger" id="hamburger" type="button" aria-label="Open mobile navigation"
-                aria-expanded="false" aria-controls="mobileDrawer">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
+            <!-- Actions Group: Command Menu + Resume + Theme + Mobile Toggle -->
+            <div class="nav-actions">
+                <!-- Command Palette Shortcut Button -->
+                <button id="cmdPaletteBtn" class="cmd-palette-btn" type="button"
+                    aria-label="Open command palette (Press Cmd+K or Ctrl+K)" title="Command Menu (⌘K)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span class="cmd-badge" aria-hidden="true"><kbd>⌘</kbd><kbd>K</kbd></span>
+                </button>
+
+                <!-- Quick Resume Button in Header -->
+                <a href="resume.pdf" class="btn btn-nav-resume" target="_blank" rel="noopener noreferrer"
+                    aria-label="View Resume PDF">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="12" y1="18" x2="12" y2="12"></line>
+                        <polyline points="9 15 12 18 15 15"></polyline>
+                    </svg>
+                    <span>CV</span>
+                </a>
+
+                <!-- Theme Toggle Button -->
+                <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light theme"
+                    title="Toggle color theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <!-- Mobile Hamburger Button -->
+                <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation menu"
+                    aria-expanded="false" aria-controls="mobileDrawer">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
         </div>
 
-        <!-- Mobile Drawer -->
+        <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-            <nav class="mobile-nav" aria-label="Mobile Navigation">
+            <nav class="mobile-nav" aria-label="Mobile Navigation Menu">
                 <a href="#home" class="mobile-nav-link">Home</a>
                 <a href="#about" class="mobile-nav-link">About</a>
                 <a href="#experience" class="mobile-nav-link">Experience</a>
-                <a href="#projects" class="mobile-nav-link">Work</a>
+                <a href="#projects" class="mobile-nav-link">Work &amp; AI</a>
                 <a href="#skills" class="mobile-nav-link">Skills</a>
                 <a href="#certifications" class="mobile-nav-link">Certs</a>
                 <a href="#contact" class="mobile-nav-link">Contact</a>
+                <div class="mobile-nav-footer">
+                    <a href="resume.pdf" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer">
+                        Download Full CV (PDF)
+                    </a>
+                </div>
             </nav>
         </div>
     </header>
 
     <main id="main-content">
-        <!-- Hero Section -->
+        <!-- HERO SECTION -->
         <section id="home" class="hero-section">
             <div class="container hero-container">
                 <div class="hero-content">
-                    <p class="hero-kicker">
-                        <span class="live-dot" aria-hidden="true"></span>
-                        Backend Platforms &middot; Applied AI Systems
-                    </p>
+                    <!-- Status / Availability Badge -->
+                    <div class="hero-status-pill">
+                        <span class="pulse-status-dot" aria-hidden="true"></span>
+                        <span class="status-text">Distributed Systems Lead &middot; Applied AI</span>
+                    </div>
 
+                    <!-- Hero Main Headline -->
                     <h1 class="hero-title">
                         Engineering the Future with <span class="gradient-text">AI-Powered Intelligence.</span>
                     </h1>
 
+                    <!-- Hero Description -->
                     <p class="hero-description">
-                        Senior Software Engineer moving deeply into <strong>AI engineering</strong> &mdash; designing
-                        resilient distributed backends and grounded AI workflows for real-world production. Leading
-                        core financial microservices at <strong>IRAS</strong> with <strong>100% auditability</strong>,
-                        tier-1 bank integrations (DBS, UOB), and zero data loss.
+                        Senior Software Engineer &amp; Distributed Systems Lead moving deeply into <strong>applied AI engineering</strong> &mdash;
+                        designing resilient, mission-critical backends and grounded AI workflows for real-world production.
+                        Specializing in high-throughput <strong>event-driven architectures</strong> with <strong>100% auditability</strong> and zero data loss.
                     </p>
 
+                    <!-- Hero CTA Buttons -->
                     <div class="hero-actions">
                         <a href="#projects" class="btn btn-primary">
                             Explore Selected Work
@@ -161,11 +233,26 @@
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </a>
-                        <a href="#experience" class="btn btn-secondary">
-                            View Experience
+                        <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="12" y1="18" x2="12" y2="12"></line>
+                                <polyline points="9 15 12 18 15 15"></polyline>
+                            </svg>
+                            View Resume
                         </a>
+                        <a href="#experience" class="btn btn-ghost">
+                            Career Track
+                        </a>
+                    </div>
+
+                    <!-- Social / Direct Reach Links -->
+                    <div class="hero-social-strip">
+                        <span class="social-label">Connect:</span>
                         <a href="https://linkedin.com/in/haint97" target="_blank" rel="noopener noreferrer"
-                            class="btn btn-ghost" aria-label="Hai Nguyen Thai on LinkedIn">
+                            class="social-chip" aria-label="Hai Nguyen Thai on LinkedIn">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path
@@ -174,29 +261,50 @@
                                 <rect x="2" y="9" width="4" height="12"></rect>
                                 <circle cx="4" cy="4" r="2"></circle>
                             </svg>
-                            LinkedIn
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/thaihai-swe" target="_blank" rel="noopener noreferrer"
+                            class="social-chip" aria-label="Hai Nguyen Thai on GitHub">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="mailto:nguyenthaihai00@gmail.com" class="social-chip"
+                            aria-label="Email Hai Nguyen Thai">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>Email</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Hero Visual: Interactive System Architecture Card -->
+                <!-- Hero Visual: Interactive System Architecture & Telemetry Terminal -->
                 <div class="hero-visual">
-                    <div class="system-panel" aria-label="System Architecture Visualizer">
+                    <div class="system-panel" aria-label="Interactive System Architecture Visualizer">
+                        <!-- Terminal Window Chrome -->
                         <div class="panel-header">
                             <div class="panel-dots" aria-hidden="true">
                                 <span class="panel-dot dot-red"></span>
                                 <span class="panel-dot dot-yellow"></span>
                                 <span class="panel-dot dot-green"></span>
                             </div>
-                            <span class="panel-title">financial-pipeline.eventstream</span>
-                            <span class="panel-status-tag">
-                                <span class="live-dot" aria-hidden="true"></span>
-                                PRODUCTION &middot; ZERO LOSS
-                            </span>
+
                         </div>
 
                         <!-- Tab Triggers -->
-                        <div class="panel-tabs" role="tablist" aria-label="System Architecture View Options">
+                        <div class="panel-tabs" role="tablist" aria-label="System Architecture Visualizer Tabs">
+                            <button class="panel-tab" id="tabDailyLoopBtn" role="tab" aria-selected="false"
+                                aria-controls="tabDailyLoop" type="button">
+                                Daily Loop
+                            </button>
                             <button class="panel-tab is-active" id="tabArchitectureBtn" role="tab" aria-selected="true"
                                 aria-controls="tabArchitecture" type="button">
                                 Architecture Flow
@@ -209,59 +317,77 @@
                                 aria-controls="tabMetrics" type="button">
                                 Live Telemetry
                             </button>
-                            <button class="panel-tab" id="tabDailyLoopBtn" role="tab" aria-selected="false"
-                                aria-controls="tabDailyLoop" type="button">
-                                daily-loop.
-                            </button>
+
                         </div>
 
                         <!-- Tab 1: Architecture Pipeline -->
                         <div class="panel-body tab-content is-active" id="tabArchitecture" role="tabpanel"
                             aria-labelledby="tabArchitectureBtn">
                             <div class="pipeline-flow">
-                                <div class="pipeline-node node-bank">
-                                    <div class="node-tag">INBOUND</div>
+                                <!-- Node 1: Bank Ingestion -->
+                                <div class="pipeline-node node-bank" tabindex="0" role="button"
+                                    aria-label="Bank Ingestion stage: DBS, UOB, AXS">
+                                    <div class="node-badge">INBOUND</div>
                                     <div class="node-name">Bank Ingestion</div>
                                     <div class="node-meta">DBS &middot; UOB &middot; AXS</div>
                                 </div>
+
                                 <div class="pipeline-connector">
                                     <span class="connector-line"></span>
                                     <span class="pulse-packet" aria-hidden="true"></span>
                                 </div>
-                                <div class="pipeline-node node-engine">
-                                    <div class="node-tag">VALIDATION</div>
+
+                                <!-- Node 2: Idempotency Engine -->
+                                <div class="pipeline-node node-engine" tabindex="0" role="button"
+                                    aria-label="Idempotency Engine: Deduplication and hash check">
+                                    <div class="node-badge">DEDUPLICATION</div>
                                     <div class="node-name">Idempotency Engine</div>
-                                    <div class="node-meta">Deduplication &middot; Hash Check</div>
+                                    <div class="node-meta">Hash Key &middot; Lock Gate</div>
                                 </div>
+
                                 <div class="pipeline-connector">
                                     <span class="connector-line"></span>
                                     <span class="pulse-packet" aria-hidden="true"></span>
                                 </div>
-                                <div class="pipeline-node node-events">
-                                    <div class="node-tag">STREAMING</div>
+
+                                <!-- Node 3: Kafka Event Sourcing -->
+                                <div class="pipeline-node node-events" tabindex="0" role="button"
+                                    aria-label="Kafka Event Sourcing: Replay log and audit stream">
+                                    <div class="node-badge">STREAMING</div>
                                     <div class="node-name">Kafka Event Sourcing</div>
-                                    <div class="node-meta">Replay Log &middot; Audit Trail</div>
+                                    <div class="node-meta">Immutable Log &middot; Audit Replay</div>
                                 </div>
+
                                 <div class="pipeline-connector">
                                     <span class="connector-line"></span>
                                     <span class="pulse-packet" aria-hidden="true"></span>
                                 </div>
-                                <div class="pipeline-node node-reconcile">
-                                    <div class="node-tag">TARGET</div>
+
+                                <!-- Node 4: 100% Tax Ledger -->
+                                <div class="pipeline-node node-reconcile" tabindex="0" role="button"
+                                    aria-label="100% Tax Ledger: Zero data loss compliant">
+                                    <div class="node-badge">TARGET</div>
                                     <div class="node-name">100% Tax Ledger</div>
                                     <div class="node-meta">Zero Data Loss &middot; Compliant</div>
                                 </div>
                             </div>
-                            <div class="pipeline-footnote">
-                                <span class="footnote-key">Guaranteed semantics:</span> Exactly-once processing via
-                                Outbox Pattern &amp; Idempotent Consumers.
+
+                            <div class="pipeline-footer-info">
+                                <span class="footer-key">Semantics:</span> Exactly-once delivery via Outbox Pattern
+                                &amp; Idempotent Consumers with strict auditability.
                             </div>
                         </div>
 
                         <!-- Tab 2: Event Ledger Preview -->
                         <div class="panel-body tab-content" id="tabLedger" role="tabpanel"
                             aria-labelledby="tabLedgerBtn">
-                            <pre class="code-preview"><code><span class="c-comment">// Immutable Event Sourcing Log Stream</span>
+                            <div class="code-preview-wrapper">
+                                <div class="code-toolbar">
+                                    <span class="code-lang">JSON &middot; IMMUTABLE EVENT</span>
+                                    <button class="btn-copy-code" type="button" aria-label="Copy event payload"
+                                        id="copyEventPayloadBtn">Copy</button>
+                                </div>
+                                <pre class="code-preview"><code><span class="c-comment">// Immutable Event Sourcing Log Stream</span>
 {
   <span class="c-key">"eventId"</span>: <span class="c-str">"evt_iras_884920419"</span>,
   <span class="c-key">"type"</span>: <span class="c-str">"TaxCollectionBatchProcessedEvent"</span>,
@@ -269,9 +395,10 @@
   <span class="c-key">"records"</span>: <span class="c-num">2450000</span>,
   <span class="c-key">"status"</span>: <span class="c-str">"RECONCILED"</span>,
   <span class="c-key">"auditIntegrity"</span>: <span class="c-bool">true</span>,
-  <span class="c-key">"reconciledAt"</span>: <span class="c-str">"2026-10-13T12:00:00Z"</span>,
+  <span class="c-key">"reconciledAt"</span>: <span class="c-str">"2026-10-22T21:00:00Z"</span>,
   <span class="c-key">"dataLossRatio"</span>: <span class="c-num">0.0000</span>
 }</code></pre>
+                            </div>
                         </div>
 
                         <!-- Tab 3: Live Telemetry -->
@@ -281,51 +408,54 @@
                                 <div class="telemetry-card">
                                     <span class="telemetry-val">100%</span>
                                     <span class="telemetry-lbl">Auditability Score</span>
+                                    <span class="telemetry-sub">Replayable event logs</span>
                                 </div>
                                 <div class="telemetry-card">
                                     <span class="telemetry-val">0.00%</span>
                                     <span class="telemetry-lbl">Data Loss Ratio</span>
+                                    <span class="telemetry-sub">Zero transaction drops</span>
                                 </div>
                                 <div class="telemetry-card">
                                     <span class="telemetry-val">+40%</span>
                                     <span class="telemetry-lbl">Batch Speedup</span>
+                                    <span class="telemetry-sub">Optimized partition queues</span>
                                 </div>
                                 <div class="telemetry-card">
                                     <span class="telemetry-val">&lt; 25ms</span>
                                     <span class="telemetry-lbl">Partition Latency</span>
+                                    <span class="telemetry-sub">High throughput Kafka</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Tab 4: Engineer Routine & Mindset -->
+                        <!-- Tab 4: Daily Loop & Mindset -->
                         <div class="panel-body tab-content" id="tabDailyLoop" role="tabpanel"
                             aria-labelledby="tabDailyLoopBtn">
                             <div class="daily-loop-content">
-                                <code class="hero-quote-code">
-                                    <span class="hero-quote-line">brewCoffee();</span>
-                                    <span class="hero-quote-line">reading();</span>
-                                    <span class="hero-quote-line">makeThings();</span>
-                                    <span class="hero-quote-line">vibeCode();</span>
-                                    <span class="hero-quote-line">sleep();</span>
-                                    <span class="hero-quote-line">stayCurious();</span>
-                                    <span class="hero-quote-line">keepGrowing();</span>
-                                    <span class="hero-quote-line">beMoreThanCode();</span>
-                                    <span class="hero-quote-line">makeItMeaningful();</span>
-                                    <span class="hero-quote-line">becomeUnforgettable();</span>
-                                </code>
+                                <pre class="hero-quote-code"><code><span class="c-func">brewCoffee</span>();
+<span class="c-func">studyDistributedSystems</span>();
+<span class="c-func">architectResilientBackends</span>();
+<span class="c-func">vibeCodeWithAI</span>();
+<span class="c-func">shipProductionGradeCode</span>();
+<span class="c-func">stayCurious</span>();
+<span class="c-func">makeItMeaningful</span>();
+<span class="c-func">becomeUnforgettable</span>();</code></pre>
                                 <div class="terminal-status-strip">
                                     <span class="terminal-tag-pill">production-ready</span>
-                                    <span class="terminal-tag-sub">event-sourced &middot; observable</span>
+                                    <span class="terminal-tag-sub">event-sourced &middot; observable &middot;
+                                        reliable</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </section>
 
-        <!-- Proof Strip / Metrics Bar -->
-        <section class="proof-section" aria-label="Key Career Statistics">
+        <!-- PROOF STRIP / KEY STATISTICS -->
+        <section class="proof-section" aria-label="Key Career Statistics &amp; Metrics">
             <div class="container">
                 <div class="proof-grid">
                     <article class="proof-card">
@@ -333,8 +463,10 @@
                             <span class="counter-val" data-target="6">6</span><span class="accent-mark">+</span>
                         </div>
                         <div class="proof-label">Years Shipping Systems</div>
-                        <p class="proof-text">From high-velocity edtech to national-scale financial infrastructure.</p>
+                        <p class="proof-text">From high-velocity enterprise software to national-scale financial
+                            infrastructure.</p>
                     </article>
+
                     <article class="proof-card">
                         <div class="proof-number">
                             <span class="counter-val" data-target="10">10</span><span class="accent-mark">M+</span>
@@ -343,6 +475,7 @@
                         <p class="proof-text">Mission-critical financial microservices for Singapore's tax authority
                             (IRAS).</p>
                     </article>
+
                     <article class="proof-card">
                         <div class="proof-number">
                             <span class="counter-val" data-target="100">100</span><span class="accent-mark">%</span>
@@ -351,6 +484,7 @@
                         <p class="proof-text">Event Sourcing with replayable records and strict banking reconciliation.
                         </p>
                     </article>
+
                     <article class="proof-card">
                         <div class="proof-number">
                             <span class="counter-val" data-target="30">30</span><span class="accent-mark">+</span>
@@ -363,159 +497,154 @@
             </div>
         </section>
 
-        <!-- About & Architectural Philosophy -->
+        <!-- ABOUT & ARCHITECTURAL PHILOSOPHY -->
         <section id="about" class="section about-section">
             <div class="container">
                 <div class="section-header text-center">
                     <p class="section-kicker">PROFILE</p>
-                    <h2 class="section-title">About <span class="gradient-text">me</span></h2>
+                    <h2 class="section-title">About <span class="gradient-text">Hai Nguyen Thai</span></h2>
+                    <p class="section-subtitle">
+                        Building the dependable systems teams rely on when stakes are high, rules are strict, and margin
+                        for error is zero.
+                    </p>
                 </div>
 
                 <div class="about-layout">
-                    <!-- Lead Card: Who I Am -->
-                    <div class="about-lead">
-                        <p class="about-lead-kicker">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <circle cx="12" cy="8" r="3"></circle>
-                                <path d="M6.5 18a5.5 5.5 0 0 1 11 0"></path>
-                            </svg>
-                            WHO I AM
-                        </p>
+                    <!-- Lead Narrative -->
+                    <div class="about-lead-card">
+                        <div class="lead-header">
+                            <div class="lead-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="8" r="4"></circle>
+                                    <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"></path>
+                                </svg>
+                                <span>WHO I AM &amp; WHAT I VALUE</span>
+                            </div>
+                        </div>
                         <div class="about-copy">
                             <p>
-                                I'm <strong>Hai Nguyen Thai</strong>, a backend lead and senior software engineer who
-                                builds the kind of systems teams depend on when the workload is high, the rules
-                                are strict, and the margin for error is small. I enjoy turning operational complexity
-                                into systems people can actually reason about in production.
+                                I'm <strong>Hai Nguyen Thai</strong>, a backend lead and senior software engineer based
+                                in Singapore. I build systems that perform calmly under high pressure, turning
+                                operational complexity into clear architectures engineers can reason about and trust in
+                                production.
                             </p>
                             <p>
                                 At <strong>NCS (IRAS)</strong>, I lead financial microservices for Singapore's national
                                 tax authority, designing <strong>event-driven services</strong> that process
-                                <strong>multi-million-user batches</strong> with full auditability, replayability, and
-                                compliance.
+                                <strong>multi-million record batches</strong> with end-to-end auditability,
+                                replayability, and strict banking reconciliation.
                             </p>
                             <p>
-                                My sweet spot is the space between <strong>architecture and execution</strong>:
-                                event-sourced systems, pragmatic domain modeling, and AI workflows that are useful
-                                because they are grounded, observable, and built for real teams.
+                                My passion sits at the intersection of <strong>distributed systems architecture and
+                                    applied AI engineering</strong>: building event-sourced systems, pragmatic domain
+                                models, and developer AI workflows that are grounded, deterministic, and built for real
+                                engineering teams.
                             </p>
                         </div>
                     </div>
 
-                    <!-- 6 Highlights Cards Grid -->
-                    <div class="about-highlights">
-                        <article class="about-card">
-                            <div class="about-card-header">
-                                <span class="about-card-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <rect x="5" y="6" width="14" height="12" rx="2"></rect>
-                                        <path d="M9 10h6"></path>
-                                        <path d="M9 14h3"></path>
-                                    </svg>
-                                </span>
-                                <h3>What I build</h3>
+                    <!-- 6 Engineering Philosophy Cards -->
+                    <div class="about-cards-grid">
+                        <article class="philosophy-card">
+                            <div class="phil-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="6" width="14" height="12" rx="2"></rect>
+                                    <path d="M9 10h6"></path>
+                                    <path d="M9 14h3"></path>
+                                </svg>
                             </div>
-                            <p>Distributed backend platforms, financial workflows, and internal tools that need clear
-                                ownership, replayability, and scale.</p>
+                            <h3 class="phil-title">What I Build</h3>
+                            <p class="phil-desc">Resilient distributed backend platforms, financial workflows, and
+                                developer tools that need clear domain boundaries, replayability, and scale.</p>
                         </article>
 
-                        <article class="about-card">
-                            <div class="about-card-header">
-                                <span class="about-card-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M4.5 8 12 4l7.5 4-7.5 4-7.5-4Z"></path>
-                                        <path d="M7.5 10.5V15"></path>
-                                        <path d="M16.5 10.5V15"></path>
-                                        <path d="M7.5 15c1 .8 2.8 1.5 4.5 1.5s3.5-.7 4.5-1.5"></path>
-                                    </svg>
-                                </span>
-                                <h3>CS foundation</h3>
+                        <article class="philosophy-card">
+                            <div class="phil-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4.5 8 12 4l7.5 4-7.5 4-7.5-4Z"></path>
+                                    <path d="M7.5 10.5V15"></path>
+                                    <path d="M16.5 10.5V15"></path>
+                                    <path d="M7.5 15c1 .8 2.8 1.5 4.5 1.5s3.5-.7 4.5-1.5"></path>
+                                </svg>
                             </div>
-                            <p>I rely on <strong>data structures, algorithms, OOP, and design patterns</strong> to keep
-                                systems efficient and maintainable.</p>
+                            <h3 class="phil-title">CS Foundations</h3>
+                            <p class="phil-desc">Deep grounding in data structures, algorithms, OOP, and system design
+                                patterns to keep systems performant and maintainable.</p>
                         </article>
 
-                        <article class="about-card">
-                            <div class="about-card-header">
-                                <span class="about-card-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M12 5v7l4 2"></path>
-                                        <circle cx="12" cy="12" r="7"></circle>
-                                    </svg>
-                                </span>
-                                <h3>How I work</h3>
+                        <article class="philosophy-card">
+                            <div class="phil-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 5v7l4 2"></path>
+                                    <circle cx="12" cy="12" r="7"></circle>
+                                </svg>
                             </div>
-                            <p>I stay hands-on with architecture and delivery, turning messy requirements into technical
-                                direction teams can execute with confidence.</p>
+                            <h3 class="phil-title">Hands-On Direction</h3>
+                            <p class="phil-desc">Hands-on with both architecture and code, translating ambiguous
+                                business requirements into precise technical plans teams execute with confidence.</p>
                         </article>
 
-                        <article class="about-card">
-                            <div class="about-card-header">
-                                <span class="about-card-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M9 18h6"></path>
-                                        <path d="M10 14h4"></path>
-                                        <path
-                                            d="M12 5a4.5 4.5 0 0 0-2.9 7.9c.6.5.9 1 .9 1.6h4c0-.6.3-1.1.9-1.6A4.5 4.5 0 0 0 12 5Z">
-                                        </path>
-                                    </svg>
-                                </span>
-                                <h3>Solution-driven</h3>
+                        <article class="philosophy-card">
+                            <div class="phil-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 18h6"></path>
+                                    <path d="M10 14h4"></path>
+                                    <path
+                                        d="M12 5a4.5 4.5 0 0 0-2.9 7.9c.6.5.9 1 .9 1.6h4c0-.6.3-1.1.9-1.6A4.5 4.5 0 0 0 12 5Z">
+                                    </path>
+                                </svg>
                             </div>
-                            <p>I adapt quickly to emerging technologies, explore practical approaches, and stay focused
-                                on <strong>solving the real bottleneck</strong>.</p>
+                            <h3 class="phil-title">Bottleneck Focus</h3>
+                            <p class="phil-desc">Pragmatic and solution-driven. Rapidly evaluating new technologies and
+                                choosing architectures that eliminate the actual system bottleneck.</p>
                         </article>
 
-                        <article class="about-card">
-                            <div class="about-card-header">
-                                <span class="about-card-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M6 7h12v8H9l-3 3V7Z"></path>
-                                        <path d="M9 10h6"></path>
-                                        <path d="M9 13h4"></path>
-                                    </svg>
-                                </span>
-                                <h3>Stakeholder translation</h3>
+                        <article class="philosophy-card">
+                            <div class="phil-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 7h12v8H9l-3 3V7Z"></path>
+                                    <path d="M9 10h6"></path>
+                                    <path d="M9 13h4"></path>
+                                </svg>
                             </div>
-                            <p>I turn <strong>complex requirements</strong> into actionable plans, align stakeholders
-                                early, and keep delivery moving.</p>
+                            <h3 class="phil-title">Stakeholder Translation</h3>
+                            <p class="phil-desc">Aligning engineering and business early, decomposing complex enterprise
+                                mandates into achievable sprints and milestones.</p>
                         </article>
 
-                        <article class="about-card">
-                            <div class="about-card-header">
-                                <span class="about-card-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M6 16 16 6"></path>
-                                        <path d="M9 6h7v7"></path>
-                                        <path d="M6 19h12"></path>
-                                    </svg>
-                                </span>
-                                <h3>Where I'm heading</h3>
+                        <article class="philosophy-card">
+                            <div class="phil-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 16 16 6"></path>
+                                    <path d="M9 6h7v7"></path>
+                                    <path d="M6 19h12"></path>
+                                </svg>
                             </div>
-                            <p>I'm extending that backend foundation into AI tooling, agent workflows, and
-                                evaluation-minded product experiences that still respect production reality.</p>
+                            <h3 class="phil-title">Applied AI Edge</h3>
+                            <p class="phil-desc">Extending backend reliability into AI: deterministic CLI harnesses,
+                                bounded context budgets, local LLMs, and inspectable agent workflows.</p>
                         </article>
                     </div>
 
-                    <!-- 3. Core Architectural Pillars (Preserved Enterprise Content) -->
-                    <div class="about-pillars-subgroup">
-                        <div class="pillars-subgroup-header">
-                            <span class="subgroup-kicker">PRODUCTION PILLARS</span>
-                            <h3 class="subgroup-title">Architectural Foundation in Mission-Critical Systems</h3>
+                    <!-- Production Pillars -->
+                    <div class="pillars-container">
+                        <div class="pillars-header">
+                            <span class="subgroup-kicker">ENGINEERING ANCHORS</span>
+                            <h3 class="subgroup-title">Architectural Pillars in Mission-Critical Systems</h3>
                         </div>
 
                         <div class="pillars-grid">
                             <article class="pillar-card">
                                 <div class="pillar-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M12 2v20"></path>
                                         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                                     </svg>
@@ -523,17 +652,14 @@
                                 <h4 class="pillar-title">National-Scale Financial Systems</h4>
                                 <p class="pillar-desc">
                                     Leading financial microservices at <strong>NCS for IRAS</strong>, processing
-                                    multi-million
-                                    user collection batches while integrating major banks like <strong>DBS and
-                                        UOB</strong> with
-                                    strict end-to-end data integrity.
+                                    multi-million user collection batches while integrating major banks like <strong>DBS and UOB</strong> with strict end-to-end data integrity.
                                 </p>
                             </article>
 
                             <article class="pillar-card">
                                 <div class="pillar-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <circle cx="12" cy="12" r="10"></circle>
                                         <polyline points="12 6 12 12 16 14"></polyline>
                                     </svg>
@@ -541,17 +667,15 @@
                                 <h4 class="pillar-title">Event Sourcing &amp; Zero Data Loss</h4>
                                 <p class="pillar-desc">
                                     Deep expertise applying <strong>Event Sourcing, CQRS, and Domain-Driven Design
-                                        (DDD)</strong>.
-                                    Every transaction is an immutable event, providing replayable audit trails and
-                                    meeting
-                                    rigorous regulatory standards.
+                                        (DDD)</strong>. Every transaction is an immutable event, providing replayable
+                                    audit trails and meeting rigorous regulatory standards.
                                 </p>
                             </article>
 
                             <article class="pillar-card">
                                 <div class="pillar-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                         <circle cx="9" cy="7" r="4"></circle>
                                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -560,10 +684,8 @@
                                 </div>
                                 <h4 class="pillar-title">Proven Technical Leadership</h4>
                                 <p class="pillar-desc">
-                                    Proven experience directing a <strong>30-engineer unit across 5 microservices
-                                        teams</strong>
-                                    at FPT Software, achieving <strong>100% on-time delivery</strong>, 98% CSAT, and
-                                    earning
+                                    Directing a <strong>30-engineer unit across 5 microservices teams</strong> at FPT
+                                    Software, achieving <strong>100% on-time delivery</strong>, 98% CSAT, and earning
                                     Top Performer (top 10 of 400).
                                 </p>
                             </article>
@@ -571,29 +693,29 @@
                             <article class="pillar-card">
                                 <div class="pillar-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                                     </svg>
                                 </div>
-                                <h4 class="pillar-title">Practical Applied AI &amp; Tooling</h4>
+                                <h4 class="pillar-title">Applied AI &amp; Developer Tooling</h4>
                                 <p class="pillar-desc">
-                                    Extending enterprise reliability into AI workflows: creating deterministic CLI
-                                    harnesses
-                                    with bounded context budgets, privacy-first local LLM registries, and tool-augmented
-                                    agents.
+                                    Extending enterprise reliability into AI: deterministic CLI harnesses with bounded
+                                    context budgets, privacy-first local LLM registries, and tool-augmented agents.
                                 </p>
                             </article>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </section>
 
-        <!-- Experience Section -->
+        <!-- CAREER TRACK / EXPERIENCE -->
         <section id="experience" class="section experience-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-kicker">Career Track</span>
+                    <span class="section-kicker">CAREER TRACK</span>
                     <h2 class="section-title">Leadership &amp; Engineering Experience</h2>
                     <p class="section-subtitle">
                         Proven history of architecting, delivering, and scaling distributed platforms from inception to
@@ -602,10 +724,11 @@
                 </div>
 
                 <div class="timeline">
-                    <!-- NCS (IRAS) -->
+                    <!-- ROLE 1: NCS (IRAS) -->
                     <article class="timeline-item is-featured">
                         <div class="timeline-marker" aria-hidden="true"></div>
                         <div class="timeline-card">
+                            <div class="timeline-badge-active">CURRENT ROLE &middot; NATIONAL SCALE</div>
                             <div class="timeline-header">
                                 <div class="timeline-role-group">
                                     <h3 class="timeline-role">Back-end Leader / Senior Software Engineer</h3>
@@ -620,8 +743,7 @@
                             <p class="timeline-summary">
                                 <em>IRAS (Inland Revenue Authority of Singapore)</em> is Singapore's national tax
                                 authority. Leads the back-end design and engineering of mission-critical financial
-                                microservices, processing multi-million record batches and connecting with DBS, UOB,
-                                and ABS payment channels.
+                                microservices, processing multi-million record batches and connecting with DBS, UOB, and ABS payment channels.
                             </p>
 
                             <ul class="timeline-points">
@@ -644,8 +766,7 @@
                                 <li>
                                     <strong>Security &amp; Compliance:</strong> Enforced security-by-design:
                                     least-privilege access, data protection in transit and at rest, and keeping
-                                    sensitive
-                                    financial data strictly out of logs.
+                                    sensitive financial data strictly out of logs.
                                 </li>
                                 <li>
                                     <strong>Reusable Architecture:</strong> Cut maintenance overhead by
@@ -670,7 +791,7 @@
                         </div>
                     </article>
 
-                    <!-- FPT Software -->
+                    <!-- ROLE 2: FPT Software -->
                     <article class="timeline-item">
                         <div class="timeline-marker" aria-hidden="true"></div>
                         <div class="timeline-card">
@@ -687,9 +808,8 @@
 
                             <ul class="timeline-points">
                                 <li>
-                                    <strong>30-Engineer Unit Leadership:</strong> Managed a cross-functional unit
-                                    across 5 microservices teams, delivering complex enterprise features under
-                                    aggressive
+                                    <strong>30-Engineer Unit Leadership:</strong> Managed a cross-functional unit across
+                                    5 microservices teams, delivering complex enterprise features under aggressive
                                     deadlines with <strong>100% on-time delivery</strong> and <strong>98% CSAT</strong>.
                                 </li>
                                 <li>
@@ -700,8 +820,7 @@
                                 <li>
                                     <strong>Database Optimization:</strong> Improved application responsiveness by
                                     <strong>20%</strong> via materialized views, partitioning, indexing, and
-                                    execution-plan
-                                    tuning.
+                                    execution-plan tuning.
                                 </li>
                                 <li>
                                     <strong>DevOps &amp; CI/CD:</strong> Reduced release cycle times by
@@ -736,7 +855,7 @@
                         </div>
                     </article>
 
-                    <!-- Rikkeisoft -->
+                    <!-- ROLE 3: Rikkeisoft -->
                     <article class="timeline-item">
                         <div class="timeline-marker" aria-hidden="true"></div>
                         <div class="timeline-card">
@@ -764,7 +883,7 @@
                         </div>
                     </article>
 
-                    <!-- Vinh Danh Education -->
+                    <!-- ROLE 4: Vinh Danh Education -->
                     <article class="timeline-item">
                         <div class="timeline-marker" aria-hidden="true"></div>
                         <div class="timeline-card">
@@ -789,8 +908,7 @@
                                 </li>
                                 <li>
                                     Translated complex business requirements into technical roadmaps, ensuring 100%
-                                    alignment between architecture and core
-                                    business objectives.
+                                    alignment between architecture and core business objectives.
                                 </li>
                             </ul>
                         </div>
@@ -799,11 +917,11 @@
             </div>
         </section>
 
-        <!-- Selected Work & Applied AI Projects -->
+        <!-- SELECTED WORK & APPLIED AI PROJECTS -->
         <section id="projects" class="section projects-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-kicker">Portfolio &amp; AI Builds</span>
+                    <span class="section-kicker">PORTFOLIO &amp; AI BUILDS</span>
                     <h2 class="section-title">Selected Work &amp; Applied AI</h2>
                     <p class="section-subtitle">
                         Systems and developer tools showcasing grounded architectures, clean boundaries, and reliable
@@ -811,13 +929,23 @@
                     </p>
                 </div>
 
-                <div class="projects-grid">
+                <!-- Category Filter Pills -->
+                <div class="project-filters" role="tablist" aria-label="Filter Projects">
+                    <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true"
+                        type="button">All Work (3)</button>
+                    <button class="filter-btn" data-filter="ai-agents" role="tab" aria-selected="false"
+                        type="button">Applied AI &amp; Agents</button>
+                    <button class="filter-btn" data-filter="extensions" role="tab" aria-selected="false"
+                        type="button">Chrome Extensions &amp; Tools</button>
+                </div>
+
+                <div class="projects-grid" id="projectsGrid">
                     <!-- Project 1: CoreBase SpecHarness -->
-                    <article class="project-card">
+                    <article class="project-card" data-category="ai-agents">
                         <div class="project-top">
                             <div class="project-icon-badge" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                                     <polyline points="2 17 12 22 22 17"></polyline>
                                     <polyline points="2 12 12 17 22 12"></polyline>
@@ -858,7 +986,7 @@
                         <div class="project-actions">
                             <a href="https://thaihai-swe.github.io/corebase-specharness/" target="_blank"
                                 rel="noopener noreferrer" class="btn btn-sm btn-primary">
-                                Product Page
+                                Launch Product
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
                                     class="icon-right">
@@ -875,17 +1003,17 @@
                             <button class="btn btn-sm btn-ghost btn-details" type="button"
                                 data-project="corebase-specharness"
                                 aria-label="View CoreBase SpecHarness technical specifications">
-                                Specs
+                                Technical Specs
                             </button>
                         </div>
                     </article>
 
                     <!-- Project 2: Dictionary Chrome Extension -->
-                    <article class="project-card">
+                    <article class="project-card" data-category="extensions">
                         <div class="project-top">
                             <div class="project-icon-badge" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                                     <path d="M8 7h8"></path>
@@ -900,9 +1028,9 @@
 
                         <h3 class="project-title">Dictionary Chrome Extension</h3>
                         <p class="project-summary">
-                            In-page overlay that brings progressive dictionary lookup, translation, speech practice,
-                            and sentence-aware contextual AI right where you are reading without leaving the browser
-                            tab.
+                            In-page overlay that brings progressive dictionary lookup, neural translation, speech
+                            practice, and sentence-aware contextual AI right where you are reading without leaving the
+                            browser tab.
                         </p>
 
                         <div class="project-highlights">
@@ -927,7 +1055,7 @@
                         <div class="project-actions">
                             <a href="https://thaihai-swe.github.io/dictionary-extension/" target="_blank"
                                 rel="noopener noreferrer" class="btn btn-sm btn-primary">
-                                Product Page
+                                Launch Product
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
                                     class="icon-right">
@@ -944,17 +1072,17 @@
                             <button class="btn btn-sm btn-ghost btn-details" type="button"
                                 data-project="dictionary-extension"
                                 aria-label="View Dictionary Extension technical specifications">
-                                Specs
+                                Technical Specs
                             </button>
                         </div>
                     </article>
 
                     <!-- Project 3: AI Summarizer Extension -->
-                    <article class="project-card">
+                    <article class="project-card" data-category="extensions">
                         <div class="project-top">
                             <div class="project-icon-badge" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                     <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -972,8 +1100,7 @@
                         <p class="project-summary">
                             Privacy-first Chrome extension featuring a unified provider registry (Gemini, OpenAI,
                             Ollama, LM Studio) that streams structured summaries of videos, articles, and courses
-                            directly
-                            into a side panel.
+                            directly into a side panel.
                         </p>
 
                         <div class="project-highlights">
@@ -998,7 +1125,7 @@
                         <div class="project-actions">
                             <a href="https://thaihai-swe.github.io/summarizer-extension/" target="_blank"
                                 rel="noopener noreferrer" class="btn btn-sm btn-primary">
-                                Product Page
+                                Launch Product
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
                                     class="icon-right">
@@ -1015,7 +1142,7 @@
                             <button class="btn btn-sm btn-ghost btn-details" type="button"
                                 data-project="ai-summarizer-extension"
                                 aria-label="View AI Summarizer technical specifications">
-                                Specs
+                                Technical Specs
                             </button>
                         </div>
                     </article>
@@ -1023,7 +1150,7 @@
             </div>
         </section>
 
-        <!-- Skills / Capability Matrix -->
+        <!-- SKILLS / CAPABILITY MATRIX -->
         <section id="skills" class="section skills-section">
             <div class="container">
                 <div class="section-header">
@@ -1036,12 +1163,12 @@
                 </div>
 
                 <div class="skills-grid">
-                    <!-- Category 1 -->
+                    <!-- Category 1: Architecture & System Design -->
                     <div class="skill-group-card">
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="6" cy="6" r="2"></circle>
                                     <circle cx="18" cy="6" r="2"></circle>
                                     <circle cx="12" cy="18" r="2"></circle>
@@ -1064,12 +1191,12 @@
                         </div>
                     </div>
 
-                    <!-- Category 2 -->
+                    <!-- Category 2: Languages & Frameworks -->
                     <div class="skill-group-card">
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="16 18 22 12 16 6"></polyline>
                                     <polyline points="8 6 2 12 8 18"></polyline>
                                 </svg>
@@ -1087,12 +1214,12 @@
                         </div>
                     </div>
 
-                    <!-- Category 3 -->
+                    <!-- Category 3: Messaging & Integration -->
                     <div class="skill-group-card">
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path
                                         d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
                                     </path>
@@ -1112,12 +1239,12 @@
                         </div>
                     </div>
 
-                    <!-- Category 4 -->
+                    <!-- Category 4: Databases & Performance -->
                     <div class="skill-group-card">
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                                     <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
                                     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
@@ -1136,12 +1263,12 @@
                         </div>
                     </div>
 
-                    <!-- Category 5 -->
+                    <!-- Category 5: Cloud, Serverless & DevOps -->
                     <div class="skill-group-card">
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
                                 </svg>
                             </div>
@@ -1157,12 +1284,12 @@
                         </div>
                     </div>
 
-                    <!-- Category 6 -->
+                    <!-- Category 6: Security & Verification -->
                     <div class="skill-group-card">
                         <div class="skill-group-header">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                                     <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                                 </svg>
@@ -1180,14 +1307,15 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- Certifications & Credentials -->
+        <!-- CERTIFICATIONS & ACCREDITATIONS -->
         <section id="certifications" class="section certs-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-kicker">Verified Credentials</span>
+                    <span class="section-kicker">VERIFIED CREDENTIALS</span>
                     <h2 class="section-title">Certifications &amp; Accreditations</h2>
                     <p class="section-subtitle">
                         Industry-recognized certifications in cloud architecture, data engineering, algorithms, and AI.
@@ -1200,7 +1328,7 @@
                         <div class="cert-header">
                             <div class="cert-icon-wrap" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M7.5 18h9a3.5 3.5 0 0 0 .4-7A5 5 0 0 0 7.5 9.5 3.5 3.5 0 0 0 7.5 18Z">
                                     </path>
                                 </svg>
@@ -1219,7 +1347,7 @@
                                 data-cert-title="AWS Certified Solutions Architect"
                                 data-cert-issuer="Amazon Web Services"
                                 data-cert-verify="https://www.credly.com/badges/34b9ed42-8404-4f80-ae94-08d3966c9b9d">
-                                View
+                                View Credential
                             </button>
                         </div>
                     </div>
@@ -1229,7 +1357,7 @@
                         <div class="cert-header">
                             <div class="cert-icon-wrap" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <ellipse cx="12" cy="6.5" rx="6.5" ry="2.5"></ellipse>
                                     <path d="M5.5 6.5v10c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-10"></path>
                                     <path d="M5.5 11.5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5"></path>
@@ -1248,7 +1376,7 @@
                                 data-cert-image="SQL Nanodegree Program.png" data-cert-title="SQL Nanodegree Program"
                                 data-cert-issuer="Udacity"
                                 data-cert-verify="https://www.udacity.com/certificate/TFQLFKGX">
-                                View
+                                View Credential
                             </button>
                         </div>
                     </div>
@@ -1258,7 +1386,7 @@
                         <div class="cert-header">
                             <div class="cert-icon-wrap" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="3" y="3" width="7" height="7" rx="1"></rect>
                                     <rect x="14" y="3" width="7" height="7" rx="1"></rect>
                                     <rect x="3" y="14" width="7" height="7" rx="1"></rect>
@@ -1268,7 +1396,7 @@
                             <span class="cert-issuer">UC San Diego (Coursera)</span>
                         </div>
                         <h3 class="cert-name">Data Structures</h3>
-                        <p class="cert-sub">Advanced algorithmic foundation &amp; trees/graphs</p>
+                        <p class="cert-sub">Advanced algorithmic foundations, trees &amp; graphs</p>
                         <div class="cert-actions">
                             <a href="https://coursera.org/verify/9PRRDWUH63JC" target="_blank" rel="noopener noreferrer"
                                 class="btn btn-sm btn-primary">
@@ -1278,7 +1406,7 @@
                                 data-cert-image="data-structure.optimized.jpg" data-cert-title="Data Structures"
                                 data-cert-issuer="University of California San Diego"
                                 data-cert-verify="https://coursera.org/verify/9PRRDWUH63JC">
-                                View
+                                View Credential
                             </button>
                         </div>
                     </div>
@@ -1288,7 +1416,7 @@
                         <div class="cert-header">
                             <div class="cert-icon-wrap" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M12 3v3"></path>
                                     <path d="M12 18v3"></path>
                                     <path d="M3 12h3"></path>
@@ -1299,7 +1427,7 @@
                             <span class="cert-issuer">IBM (Coursera)</span>
                         </div>
                         <h3 class="cert-name">Generative AI for Software Developers</h3>
-                        <p class="cert-sub">LLM application patterns &amp; generative engineering</p>
+                        <p class="cert-sub">LLM application patterns &amp; agentic engineering</p>
                         <div class="cert-actions">
                             <a href="https://coursera.org/verify/specialization/7T7FP3FT5DB6" target="_blank"
                                 rel="noopener noreferrer" class="btn btn-sm btn-primary">
@@ -1309,15 +1437,17 @@
                                 data-cert-image="Generative AI for Software Developers.optimized.jpg"
                                 data-cert-title="Generative AI for Software Developers" data-cert-issuer="IBM"
                                 data-cert-verify="https://coursera.org/verify/specialization/7T7FP3FT5DB6">
-                                View
+                                View Credential
                             </button>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </section>
 
-        <!-- Education Section -->
+        <!-- FORMAL EDUCATION -->
         <section id="education" class="section education-section">
             <div class="container">
                 <div class="section-header text-center">
@@ -1328,7 +1458,7 @@
                 <div class="education-card">
                     <div class="edu-icon-wrapper" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4.5 8 12 4l7.5 4-7.5 4-7.5-4Z"></path>
                             <path d="M7.5 10.5V15"></path>
                             <path d="M16.5 10.5V15"></path>
@@ -1347,32 +1477,37 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- CONTACT SECTION -->
         <section id="contact" class="section contact-section">
             <div class="container">
                 <div class="contact-box">
                     <div class="contact-header text-center">
                         <span class="section-kicker">GET IN TOUCH</span>
-                        <h2 class="contact-title">Looking for backend platform leadership with a practical <span
-                                class="gradient-text">AI edge</span>?</h2>
+                        <h2 class="contact-title">
+                            Looking for backend platform leadership with an <span class="gradient-text">applied AI
+                                edge</span>?
+                        </h2>
                         <p class="contact-subtitle">
-                            I’m most energized by backend platform work, regulated systems, and AI-enabled internal
-                            tools.
-                            If you’re building something that needs to stay fast, auditable, and calm in production,
-                            I’d love to hear where you’re heading.
+                            I’m most energized by distributed platform architecture, regulated systems, and AI-enabled
+                            developer tooling. If you're building systems that need to stay fast, auditable, and
+                            resilient in production, let's connect.
                         </p>
+
                         <div class="contact-pills" aria-label="Key conversation areas">
                             <span class="contact-pill">Backend platform leadership</span>
-                            <span class="contact-pill">Distributed systems</span>
+                            <span class="contact-pill">Distributed systems &amp; Kafka</span>
                             <span class="contact-pill">Applied AI workflows</span>
                         </div>
+
                         <div class="contact-actions-row">
-                            <a href="mailto:nguyenthaihai00@gmail.com" class="btn btn-primary">Start a conversation</a>
+                            <a href="mailto:nguyenthaihai00@gmail.com" class="btn btn-primary">Start a Conversation</a>
                             <a href="resume.pdf" class="btn btn-secondary" target="_blank"
-                                rel="noopener noreferrer">View resume</a>
+                                rel="noopener noreferrer">View Full Resume (PDF)</a>
                         </div>
                     </div>
 
@@ -1381,7 +1516,7 @@
                         <div class="contact-card">
                             <div class="contact-card-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path
                                         d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
                                     </path>
@@ -1396,7 +1531,7 @@
                             </div>
                             <div class="contact-card-actions">
                                 <button class="btn btn-sm btn-secondary btn-copy-email" type="button"
-                                    data-email="nguyenthaihai00@gmail.com">
+                                    data-email="nguyenthaihai00@gmail.com" aria-label="Copy email address to clipboard">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -1405,7 +1540,7 @@
                                     <span>Copy</span>
                                 </button>
                                 <a href="mailto:nguyenthaihai00@gmail.com" class="btn btn-sm btn-primary">
-                                    Send Email
+                                    Send
                                 </a>
                             </div>
                         </div>
@@ -1414,7 +1549,7 @@
                         <div class="contact-card">
                             <div class="contact-card-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path
                                         d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
                                     </path>
@@ -1441,14 +1576,14 @@
                         <div class="contact-card">
                             <div class="contact-card-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path
                                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
                                     </path>
                                 </svg>
                             </div>
                             <div class="contact-card-body">
-                                <span class="contact-card-label">Open Source &amp; Code</span>
+                                <span class="contact-card-label">Open Source &amp; Repos</span>
                                 <a href="https://github.com/thaihai-swe" target="_blank" rel="noopener noreferrer"
                                     class="contact-card-val">
                                     github.com/thaihai-swe
@@ -1463,11 +1598,13 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer" role="contentinfo">
         <div class="container footer-container">
             <div class="footer-left">
@@ -1478,12 +1615,20 @@
             </div>
             <div class="footer-right">
                 <p class="footer-copy">
-                    &copy; <span id="currentYear">2026</span> Hai Nguyen Thai. Designed and built with care, code, and
-                    a little AI assistance.
+                    &copy; <span id="currentYear">2026</span> Hai Nguyen Thai. Built with semantic HTML, vanilla CSS,
+                    and zero dependencies.
                 </p>
             </div>
         </div>
     </footer>
+
+    <!-- FLOATING BACK TO TOP BUTTON -->
+    <button id="backToTopBtn" class="back-to-top" type="button" aria-label="Back to top" title="Scroll to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
 
     <!-- MODAL 1: Certificate Preview Modal -->
     <div id="certModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle"
@@ -1504,10 +1649,12 @@
                 </div>
             </div>
             <div class="modal-body cert-modal-body">
-                <img id="certModalImg" alt="Certificate Preview" class="cert-modal-image" loading="lazy" decoding="async">
+                <img id="certModalImg" alt="Certificate Preview" class="cert-modal-image" loading="lazy"
+                    decoding="async">
             </div>
             <div class="modal-footer">
-                <a id="certModalVerifyBtn" target="_blank" rel="noopener noreferrer" class="btn btn-primary" hidden>
+                <a id="certModalVerifyBtn" target="_blank" rel="noopener noreferrer" class="btn btn-primary" hidden
+                    style="display: none;">
                     Verify Credential Online
                 </a>
                 <button type="button" class="btn btn-secondary modal-cancel-btn">Close</button>
@@ -1515,7 +1662,7 @@
         </div>
     </div>
 
-    <!-- MODAL 2: Project Details Modal -->
+    <!-- MODAL 2: Project Specifications Modal -->
     <div id="projectDetailsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="projectDetailsTitle"
         aria-hidden="true">
         <div class="modal-overlay" tabindex="-1"></div>
@@ -1546,14 +1693,110 @@
             </div>
             <div class="modal-footer">
                 <a id="projectDetailsProductLink" target="_blank" rel="noopener noreferrer" class="btn btn-primary"
-                    hidden>
-                    Product Page
+                    hidden style="display: none;">
+                    Launch Product
                 </a>
                 <a id="projectDetailsGithubLink" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"
-                    hidden>
+                    hidden style="display: none;">
                     View on GitHub
                 </a>
                 <button type="button" class="btn btn-ghost modal-cancel-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Command Palette (Cmd+K) -->
+    <div id="cmdPaletteModal" class="modal cmd-palette-modal" role="dialog" aria-modal="true"
+        aria-labelledby="cmdPaletteTitle" aria-hidden="true">
+        <div class="modal-overlay" tabindex="-1"></div>
+        <div class="modal-box cmd-palette-box">
+            <div class="cmd-input-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true" class="cmd-search-icon">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="cmdPaletteInput" class="cmd-palette-input"
+                    placeholder="Type a command or jump to section..." autocomplete="off" spellcheck="false"
+                    aria-autocomplete="list" aria-controls="cmdPaletteList">
+                <span class="cmd-esc-badge"><kbd>ESC</kbd></span>
+            </div>
+            <h2 id="cmdPaletteTitle" class="sr-only">Command Palette Navigation</h2>
+            <div class="cmd-results-container" id="cmdPaletteList" role="listbox">
+                <!-- Group 1: Navigation -->
+                <div class="cmd-group">
+                    <div class="cmd-group-title">Navigation</div>
+                    <div class="cmd-item" role="option" data-action="nav" data-target="#home" tabindex="0">
+                        <span class="cmd-item-icon">⚡</span>
+                        <span class="cmd-item-label">Home &middot; Overview</span>
+                        <span class="cmd-item-hint">Go to Top</span>
+                    </div>
+                    <div class="cmd-item" role="option" data-action="nav" data-target="#about" tabindex="0">
+                        <span class="cmd-item-icon">👤</span>
+                        <span class="cmd-item-label">About Hai &middot; Background</span>
+                        <span class="cmd-item-hint">#about</span>
+                    </div>
+                    <div class="cmd-item" role="option" data-action="nav" data-target="#experience" tabindex="0">
+                        <span class="cmd-item-icon">💼</span>
+                        <span class="cmd-item-label">Experience &middot; NCS (IRAS) &amp; FPT</span>
+                        <span class="cmd-item-hint">#experience</span>
+                    </div>
+                    <div class="cmd-item" role="option" data-action="nav" data-target="#projects" tabindex="0">
+                        <span class="cmd-item-icon">🚀</span>
+                        <span class="cmd-item-label">Selected Work &middot; Applied AI</span>
+                        <span class="cmd-item-hint">#projects</span>
+                    </div>
+                    <div class="cmd-item" role="option" data-action="nav" data-target="#skills" tabindex="0">
+                        <span class="cmd-item-icon">🛠️</span>
+                        <span class="cmd-item-label">Capability Matrix &middot; Skills</span>
+                        <span class="cmd-item-hint">#skills</span>
+                    </div>
+                    <div class="cmd-item" role="option" data-action="nav" data-target="#certifications" tabindex="0">
+                        <span class="cmd-item-icon">📜</span>
+                        <span class="cmd-item-label">Certifications &middot; AWS, SQL, IBM</span>
+                        <span class="cmd-item-hint">#certifications</span>
+                    </div>
+                    <div class="cmd-item" role="option" data-action="nav" data-target="#contact" tabindex="0">
+                        <span class="cmd-item-icon">✉️</span>
+                        <span class="cmd-item-label">Contact &middot; Connect with Hai</span>
+                        <span class="cmd-item-hint">#contact</span>
+                    </div>
+                </div>
+
+                <!-- Group 2: Quick Actions -->
+                <div class="cmd-group">
+                    <div class="cmd-group-title">Quick Actions</div>
+                    <div class="cmd-item" role="option" data-action="resume" tabindex="0">
+                        <span class="cmd-item-icon">📄</span>
+                        <span class="cmd-item-label">Open Resume PDF</span>
+                        <span class="cmd-item-hint">resume.pdf</span>
+                    </div>
+                    <div class="cmd-item" role="option" data-action="copy-email" tabindex="0">
+                        <span class="cmd-item-icon">📋</span>
+                        <span class="cmd-item-label">Copy Direct Email</span>
+                        <span class="cmd-item-hint">nguyenthaihai00@gmail.com</span>
+                    </div>
+                    <div class="cmd-item" role="option" data-action="theme" tabindex="0">
+                        <span class="cmd-item-icon">🌓</span>
+                        <span class="cmd-item-label">Toggle Color Theme (Dark/Light)</span>
+                        <span class="cmd-item-hint">Theme</span>
+                    </div>
+                    <div class="cmd-item" role="option" data-action="github" tabindex="0">
+                        <span class="cmd-item-icon">🐙</span>
+                        <span class="cmd-item-label">Open GitHub Profile</span>
+                        <span class="cmd-item-hint">github.com</span>
+                    </div>
+                    <div class="cmd-item" role="option" data-action="linkedin" tabindex="0">
+                        <span class="cmd-item-icon">🔗</span>
+                        <span class="cmd-item-label">Open LinkedIn Profile</span>
+                        <span class="cmd-item-hint">linkedin.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cmd-palette-footer">
+                <span class="cmd-footer-tip"><kbd>↑</kbd><kbd>↓</kbd> to navigate</span>
+                <span class="cmd-footer-tip"><kbd>↵</kbd> to select</span>
+                <span class="cmd-footer-tip"><kbd>ESC</kbd> to dismiss</span>
             </div>
         </div>
     </div>
