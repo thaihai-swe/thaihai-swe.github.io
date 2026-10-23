@@ -306,6 +306,11 @@ body {
   flex-shrink: 0;
 }
 
+/* Ensure SVG sprite <use> elements pass pointer events directly to interactive parents */
+svg use {
+  pointer-events: none;
+}
+
 .btn-primary {
   background: linear-gradient(135deg, var(--primary) 0%, #4338CA 100%);
   color: #FFFFFF;

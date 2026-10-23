@@ -622,9 +622,7 @@ function initCopyEmail() {
                 const origHTML = btn.innerHTML;
                 btn.classList.add('is-copied');
                 btn.innerHTML = `
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-check"></use></svg>
                     <span>Copied!</span>
                 `;
                 setTimeout(() => {
@@ -645,9 +643,7 @@ function showToast(message, duration = 3000) {
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.innerHTML = `
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--success); flex-shrink: 0;">
-            <polyline points="20 6 9 17 4 12"></polyline>
-        </svg>
+        <svg width="16" height="16" aria-hidden="true" style="color: var(--success); flex-shrink: 0;"><use href="#icon-check"></use></svg>
         <span>${message}</span>
     `;
 
