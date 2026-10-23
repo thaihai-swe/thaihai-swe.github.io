@@ -225,6 +225,13 @@
       <circle cx="11.5" cy="14.5" r="2.5"></circle>
       <path d="M13.5 16.5 16 19"></path>
     </symbol>
+    <symbol id="icon-skill-circuit-breaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path>
+      <circle cx="18" cy="18" r="3"></circle>
+    </symbol>
+    <symbol id="icon-skill-ai-agent-workflows" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+    </symbol>
     <symbol id="icon-group-languages" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="16 18 22 12 16 6"></polyline>
                                     <polyline points="8 6 2 12 8 18"></polyline>
@@ -249,6 +256,15 @@
     </symbol>
     <symbol id="icon-skill-dapper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path>
+    </symbol>
+    <symbol id="icon-skill-tool-calling" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+    </symbol>
+    <symbol id="icon-skill-context-window" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+      <path d="M9 3v18"></path>
+      <path d="M14 9h4"></path>
+      <path d="M14 15h4"></path>
     </symbol>
     <symbol id="icon-group-messaging" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
       <path
@@ -284,6 +300,15 @@
       <line x1="8.7" y1="10.7" x2="15.3" y2="7.3"></line>
       <line x1="8.7" y1="13.3" x2="15.3" y2="16.7"></line>
     </symbol>
+    <symbol id="icon-skill-dead-letter-queue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+      <path d="m15 15 4 4m0-4-4 4"></path>
+    </symbol>
+    <symbol id="icon-skill-rate-limiting" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 14v-4"></path>
+      <path d="M3.34 19a10 10 0 1 1 17.32 0"></path>
+    </symbol>
     <symbol id="icon-group-databases" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
       <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                                     <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
@@ -309,6 +334,17 @@
     </symbol>
     <symbol id="icon-skill-mongodb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"></path><path d="M12 6v12"></path>
+    </symbol>
+    <symbol id="icon-skill-vector-databases" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+      <circle cx="12" cy="12" r="1.5"></circle>
+      <path d="m9 15 6-6"></path>
+    </symbol>
+    <symbol id="icon-skill-semantic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      <path d="M11 8v6M8 11h6"></path>
     </symbol>
     <symbol id="icon-group-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
       <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
