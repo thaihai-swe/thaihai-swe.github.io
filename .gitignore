@@ -26,3 +26,4 @@ Gemfile.lock
 # Logs & Diagnostics
 *.log
 scratch/
+test_*.html
